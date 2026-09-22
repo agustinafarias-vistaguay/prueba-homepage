@@ -1,0 +1,32 @@
+.leaflet-container {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #121212 !important;
+}
+
+.leaflet-control-zoom,
+.leaflet-control-attribution {
+    display: none !important;
+}
+
+.leaflet-tile-container img {
+    box-shadow: 0 0 1px rgba(18, 18, 18, 0.5);
+}
+
+.leaflet-tile {
+    outline: 1px solid transparent;
+}
+
+.leaflet-tooltip {
+    background: #1a1c1c !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 6px 12px !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.leaflet-tooltip-top:before {
+    border-top-color: #1a1c1c !important;
+}

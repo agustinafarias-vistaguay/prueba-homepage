@@ -1,0 +1,212 @@
+.btn-primary {
+    background-color: #47C278;
+    color: #ffffff;
+    padding: 10px 22px;
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 2px 6px rgba(71, 194, 120, 0.2);
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background-color: #39A864;
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 4px 12px rgba(71, 194, 120, 0.35);
+}
+
+.btn-primary:active {
+    transform: scale(0.96);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid #cbd5e1;
+    color: #1e293b;
+    padding: 8px 18px;
+    border-radius: 9999px;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-outline:hover {
+    border-color: #47C278;
+    color: #47C278;
+    background-color: rgba(71, 194, 120, 0.04);
+    transform: translateY(-1px) scale(1.02);
+}
+
+.btn-outline:active {
+    transform: scale(0.96);
+}
+
+.btn-secondary-hero {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    padding: 10px 22px;
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-secondary-hero:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.7);
+    transform: translateY(-1px) scale(1.02);
+}
+
+.btn-secondary-hero:active {
+    transform: scale(0.96);
+}
+
+.btn-circle-icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    background-color: #47C278;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(71, 194, 120, 0.35);
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.btn-circle-icon:hover {
+    background-color: #39A864;
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(71, 194, 120, 0.5);
+}
+
+.btn-circle-icon:active {
+    transform: scale(0.95);
+}
+
+.tab-btn {
+    padding: 8px 18px;
+    border-radius: 9999px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    outline: none;
+}
+
+.tab-btn:active {
+    transform: scale(0.96);
+}
+
+.tab-btn-active {
+    background-color: #47C278;
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(71, 194, 120, 0.25);
+}
+
+.tab-btn-active:hover {
+    background-color: #39A864;
+}
+
+.tab-btn-inactive {
+    background-color: #ffffff;
+    border-color: rgba(226, 232, 240, 0.9);
+    color: #334155;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.tab-btn-inactive:hover {
+    border-color: rgba(71, 194, 120, 0.5);
+    background-color: #f8fafc;
+    color: #0f172a;
+}
+
+.benefit-pill {
+    background-color: rgba(243, 244, 246, 0.9);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 9999px;
+    padding: 6px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.benefit-pill:hover {
+    border-color: rgba(71, 194, 120, 0.5);
+    background-color: #ffffff;
+}
+
+.testimonial-card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.segmented-control {
+    padding: 4px;
+    background-color: rgba(241, 245, 249, 0.9);
+    border: 1px solid #e2e8f0;
+    border-radius: 9999px;
+    align-items: center;
+    gap: 4px;
+}
+
+.segmented-btn {
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.segmented-btn-active {
+    background-color: #47C278;
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.segmented-btn-inactive {
+    background-color: transparent;
+    color: #475569;
+}
+
+.segmented-btn-inactive:hover {
+    color: #0f172a;
+}
