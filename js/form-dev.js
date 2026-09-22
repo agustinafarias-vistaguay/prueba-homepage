@@ -1,4 +1,58 @@
 (function () {
+    // =========================================================================
+    // CONFIGURACIÓN DE PARÁMETROS
+    // =========================================================================
+    const N8N_WEBHOOK_URL = 'https://n8n.soy-agus.com.ar/webhook/propuesta-algoritmo'; // Tu Webhook en n8n
+    const GITHUB_TOKEN = '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'; // Tu Fine-Grained Token de GitHub
+    const GITHUB_REPO = 'Vistaguay-resources/Homepage';
+    // =========================================================================
+
+    // Función con límite de tiempo (5 segundos max)
+    async function fetchWithTimeout(resource, options = {}, timeoutMs = 5000) {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), timeoutMs);
+        try {
+            const response = await fetch(resource, {
+                ...options,
+                signal: controller.signal
+            });
+            clearTimeout(timer);
+            return response;
+        } catch (err) {
+            clearTimeout(timer);
+            throw err;
+        }
+    }
+
+    // Respaldo secundario: Guarda JSON directo en GitHub si n8n no responde
+    async function saveBackupToGithub(data) {
+        try {
+            const fileName = `lead_${Date.now()}.json`;
+            const path = `data/backups/${fileName}`;
+            const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`;
+
+            const jsonString = JSON.stringify(data, null, 2);
+            const contentBase64 = btoa(unescape(encodeURIComponent(jsonString)));
+
+            const res = await fetchWithTimeout(url, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${GITHUB_TOKEN}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: `Backup automático por caída de n8n: ${fileName}`,
+                    content: contentBase64
+                })
+            }, 5000);
+
+            return res.ok;
+        } catch (err) {
+            console.error('Fallo el guardado directo en GitHub:', err);
+            return false;
+        }
+    }
+
     function resetModalState() {
         const form = document.getElementById('algo-form');
         const formBody = document.getElementById('algo-form-body');
@@ -25,7 +79,6 @@
             iconCheck.classList.remove('scale-100', 'scale-125', 'opacity-100');
         }
 
-        // Limpieza del estado de error y botón
         if (status) {
             status.innerText = '';
             status.className = 'text-xs text-center font-semibold hidden mt-2';
@@ -112,15 +165,11 @@
 
         if (!isPhoneValid || !isEmailValid) return;
 
-        // Ocultar cualquier mensaje de error anterior antes de iniciar el envío
         if (status) {
             status.innerText = '';
             status.className = 'text-xs text-center font-semibold hidden mt-2';
         }
 
-        const N8N_WEBHOOK_URL = 'https://n8n.soy-agus.com.ar/webhook-test/propuesta-algoritmo';
-
-        // Botón con estado de carga y spinner animado
         if (btn) {
             btn.disabled = true;
             btn.innerHTML = `<span class="flex items-center justify-center gap-2">
@@ -134,56 +183,63 @@
 
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
+        data.fecha_hora = new Date().toLocaleString('es-AR');
+
+        let isSuccess = false;
 
         try {
-            const response = await fetch(N8N_WEBHOOK_URL, {
+            // Intentar enviar a n8n con timeout de 5 segundos
+            const response = await fetchWithTimeout(N8N_WEBHOOK_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
-            });
+            }, 5000);
 
             if (response.ok) {
-                // Asegurar limpieza total del texto de error al tener éxito
-                if (status) {
-                    status.innerText = '';
-                    status.className = 'text-xs text-center font-semibold hidden mt-2';
-                }
-
-                if (formBody) formBody.classList.add('hidden');
-                if (successState) {
-                    successState.classList.remove('hidden');
-                    successState.classList.add('flex');
-                }
-
-                // Animación Pop del icono Check
-                setTimeout(() => {
-                    if (iconCheck) {
-                        iconCheck.classList.remove('scale-0', 'opacity-0');
-                        iconCheck.classList.add('scale-125', 'opacity-100');
-                        setTimeout(() => {
-                            iconCheck.classList.remove('scale-125');
-                            iconCheck.classList.add('scale-100');
-                        }, 250);
-                    }
-                }, 50);
-
-                // Cierre automático del modal a los 3.2 segundos
-                setTimeout(() => {
-                    window.toggleAlgoModal();
-                }, 3200);
-
+                isSuccess = true;
             } else {
-                throw new Error();
+                throw new Error('Webhook n8n devolvió error');
             }
         } catch (error) {
-            if (status) {
-                status.innerText = 'Ocurrió un error al enviar. Volvé a intentarlo.';
-                status.className = 'text-xs text-center font-semibold text-red-600 block mt-2';
-            }
+            console.warn('n8n fuera de servicio o timeout. Ejecutando respaldo en GitHub...');
+            isSuccess = await saveBackupToGithub(data);
         } finally {
             if (btn) {
                 btn.disabled = false;
                 btn.innerHTML = 'Enviar propuesta';
+            }
+        }
+
+        if (isSuccess) {
+            if (status) {
+                status.innerText = '';
+                status.className = 'text-xs text-center font-semibold hidden mt-2';
+            }
+
+            if (formBody) formBody.classList.add('hidden');
+            if (successState) {
+                successState.classList.remove('hidden');
+                successState.classList.add('flex');
+            }
+
+            setTimeout(() => {
+                if (iconCheck) {
+                    iconCheck.classList.remove('scale-0', 'opacity-0');
+                    iconCheck.classList.add('scale-125', 'opacity-100');
+                    setTimeout(() => {
+                        iconCheck.classList.remove('scale-125');
+                        iconCheck.classList.add('scale-100');
+                    }, 250);
+                }
+            }, 50);
+
+            setTimeout(() => {
+                window.toggleAlgoModal();
+            }, 3200);
+        } else {
+            if (status) {
+                status.innerText = 'Ocurrió un error al enviar. Volvé a intentarlo.';
+                status.className = 'text-xs text-center font-semibold text-red-600 block mt-2';
             }
         }
     };
