@@ -27,16 +27,18 @@
             const nextImg = images[nextIndex];
 
             if (nextIndex !== currentIndex) {
+                const baseClasses = 'biz-img absolute inset-0 w-full h-full flex items-center justify-center p-1 sm:p-4';
+
                 nextImg.style.transition = 'none';
-                nextImg.className = 'biz-img absolute max-h-[360px] w-auto object-contain translate-x-full opacity-0 z-10';
+                nextImg.className = `${baseClasses} translate-x-full opacity-0 z-10`;
                 nextImg.offsetHeight;
 
                 const transitionStyle = 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)';
                 currentImg.style.transition = transitionStyle;
                 nextImg.style.transition = transitionStyle;
 
-                currentImg.className = 'biz-img absolute max-h-[360px] w-auto object-contain -translate-x-full opacity-0 z-0';
-                nextImg.className = 'biz-img absolute max-h-[360px] w-auto object-contain translate-x-0 opacity-100 z-10';
+                currentImg.className = `${baseClasses} -translate-x-full opacity-0 z-0`;
+                nextImg.className = `${baseClasses} translate-x-0 opacity-100 z-10`;
             }
 
             // Actualiza estilos de las cards
