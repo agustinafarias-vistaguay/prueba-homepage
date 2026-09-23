@@ -1,2 +1,3 @@
-data/backups/*.json
 node_modules/
+data/backups/*
+!data/backups/.gitkeep
