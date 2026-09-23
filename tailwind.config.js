@@ -1,8 +1,13 @@
-tailwind.config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+    content: [
+        "./*.html",
+        "./js/**/*.js"
+    ],
     darkMode: "class",
     theme: {
         extend: {
-            "colors": {
+            colors: {
                 "primary": "#47C278",
                 "primary-container": "#47C278",
                 "on-primary": "#ffffff",
@@ -22,13 +27,13 @@ tailwind.config = {
                 "inverse-surface": "#2f3131",
                 "surface-variant": "#e2e2e2"
             },
-            "borderRadius": {
+            borderRadius: {
                 "DEFAULT": "0.25rem",
                 "lg": "8px",
                 "xl": "12px",
                 "full": "9999px"
             },
-            "spacing": {
+            spacing: {
                 "4.5": "18px",
                 "1.8": "7.2px",
                 "stack-sm": "8px",
@@ -39,7 +44,7 @@ tailwind.config = {
                 "container-max": "1360px",
                 "stack-md": "16px"
             },
-            "fontFamily": {
+            fontFamily: {
                 "headline-md": ["Plus Jakarta Sans"],
                 "label-sm": ["Plus Jakarta Sans"],
                 "display-lg": ["Plus Jakarta Sans"],
@@ -48,7 +53,7 @@ tailwind.config = {
                 "body-md": ["Plus Jakarta Sans"],
                 "stat-xl": ["Plus Jakarta Sans"]
             },
-            "fontSize": {
+            fontSize: {
                 "headline-md": ["22px", { "lineHeight": "1.3", "fontWeight": "700" }],
                 "label-sm": ["13px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
                 "display-lg": ["56px", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "800" }],
@@ -58,5 +63,9 @@ tailwind.config = {
                 "stat-xl": ["40px", { "lineHeight": "1", "fontWeight": "800" }]
             }
         }
-    }
-};
+    },
+    plugins: [
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/container-queries'),
+    ],
+}

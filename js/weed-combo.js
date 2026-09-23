@@ -143,10 +143,8 @@ let comboInterval = null;
         }
     }
 
-    // Bind functions to global window object for inline HTML event handling
     window.openComboDemoModal = openComboDemoModal;
     window.closeComboDemoModal = closeComboDemoModal;
-
-    window.closeWeedComboModal = closeWeedComboModal;
+    window.closeWeedComboModal = closeComboDemoModal;
 
 })();
