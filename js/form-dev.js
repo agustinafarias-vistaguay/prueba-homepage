@@ -181,6 +181,9 @@
 
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
+        data.protocol_details = data.protocol_details && data.protocol_details.trim() ? data.protocol_details.trim() : 'No especificado';
+        data.pricing_idea = data.pricing_idea && data.pricing_idea.trim() ? data.pricing_idea.trim() : 'A convenir';
+        data.estado = 'Nuevo';
         data.fecha_hora = new Date().toLocaleString('es-AR');
 
         let isSuccess = false;
