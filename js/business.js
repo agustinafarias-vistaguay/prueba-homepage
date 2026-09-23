@@ -27,7 +27,7 @@
             const nextImg = images[nextIndex];
 
             if (nextIndex !== currentIndex) {
-                const baseClasses = 'biz-img absolute inset-0 w-full h-full flex items-center justify-center px-4 py-2 sm:px-6 sm:py-4';
+                const baseClasses = 'biz-img absolute inset-0 w-full h-full flex items-center justify-center p-3 sm:p-4';
 
                 nextImg.style.transition = 'none';
                 nextImg.className = `${baseClasses} translate-x-full opacity-0 z-10`;
