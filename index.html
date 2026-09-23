@@ -368,25 +368,21 @@
         <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
             <div
                 class="bg-surface rounded-3xl shadow-lg overflow-hidden reveal border border-outline-variant/20 p-5 md:p-8">
-                <!-- Se ajustó lg:gap-x-12 y lg:gap-y-3 para controlar el espacio horizontal y vertical por separado -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-6 lg:gap-x-12 lg:gap-y-3 items-center">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 lg:gap-x-12 lg:gap-y-3 items-center">
 
-                    <!-- 1. TÍTULO Y SUBTÍTULO (lg:self-end para pegarse hacia las cards en desktop) -->
                     <div class="order-1 lg:order-2 lg:row-start-1 lg:col-start-2 flex flex-col justify-end lg:self-end">
                         <h2 class="text-xl md:text-2xl font-extrabold text-on-surface tracking-tight mb-1 sm:mb-2">
                             Vistaguay <span class="text-primary font-bold">Business</span>
                         </h2>
-                        <p class="text-sm text-slate-600 mb-0 lg:mb-1 leading-relaxed">
+                        <p class="text-sm text-slate-600 mb-3 lg:mb-1 leading-relaxed">
                             Potenciamos la gestión de grandes empresas y agroinsumos con una interfaz adaptada a tus
                             operaciones.
                         </p>
                     </div>
 
-                    <!-- 2. IMÁGENES / ANIMACIÓN -->
                     <div class="w-full h-full min-h-[240px] sm:min-h-[320px] lg:min-h-[440px] flex items-center justify-center p-0 sm:p-4 relative overflow-hidden order-2 lg:order-1 lg:row-span-2 lg:col-start-1"
                         id="biz-image-container">
 
-                        <!-- ANIMACIÓN 0: SOLICITUD -->
                         <div id="biz-img-0"
                             class="biz-img absolute inset-0 w-full h-full flex items-center justify-center p-1 sm:p-4 transition-all duration-700 ease-in-out translate-x-0 opacity-100 z-10">
                             <div
@@ -426,7 +422,6 @@
                             </div>
                         </div>
 
-                        <!-- ANIMACIÓN 1: DASHBOARD -->
                         <div id="biz-img-1"
                             class="biz-img absolute inset-0 w-full h-full flex items-center justify-center p-1 sm:p-4 transition-all duration-700 ease-in-out translate-x-full opacity-0 z-0">
                             <div
@@ -583,7 +578,7 @@
 
                         </div>
 
-                        <div id="biz-pagination" class="flex lg:hidden justify-center items-center gap-1.5 mt-2">
+                        <div id="biz-pagination" class="flex lg:hidden justify-center items-center gap-1.5 mt-3">
                             <button aria-label="Ir a sección 1"
                                 class="biz-dot w-6 h-1.5 rounded-full bg-primary transition-all duration-300"
                                 onclick="scrollToBizCard(0)"></button>
