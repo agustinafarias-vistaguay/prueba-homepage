@@ -1,0 +1,2 @@
+# Ignorar los JSONs de respaldo que se generen en local
+data/backups/*.json

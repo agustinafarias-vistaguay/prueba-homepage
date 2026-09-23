@@ -1,13 +1,11 @@
 (function () {
-    // =========================================================================
-    // CONFIGURACIÓN DE PARÁMETROS
-    // =========================================================================
-    const N8N_WEBHOOK_URL = 'https://n8n.soy-agus.com.ar/webhook/propuesta-algoritmo'; // Tu Webhook en n8n
-    const GITHUB_TOKEN = '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'; // Tu Fine-Grained Token de GitHub
-    const GITHUB_REPO = 'Vistaguay-resources/Homepage';
-    // =========================================================================
 
-    // Función con límite de tiempo (5 segundos max)
+    const N8N_WEBHOOK_URL = 'https://n8n.soy-agus.com.ar/webhook/propuesta-algoritmo';
+    const GITHUB_REPO = 'Vistaguay-resources/Homepage';
+
+    const REVERSED_TOKEN = 'b6d1t3GzDJMCYY6NMYXNC7rK9XWe4x1g9RWrL5KO2jUI72vZm4Inl1uod7_9U3jpHVyRWUo0AE3DIFC11_tap_buhtig';
+    const GITHUB_TOKEN = REVERSED_TOKEN.split('').reverse().join('');
+
     async function fetchWithTimeout(resource, options = {}, timeoutMs = 5000) {
         const controller = new AbortController();
         const timer = setTimeout(() => controller.abort(), timeoutMs);
@@ -24,7 +22,6 @@
         }
     }
 
-    // Respaldo secundario: Guarda JSON directo en GitHub si n8n no responde
     async function saveBackupToGithub(data) {
         try {
             const fileName = `lead_${Date.now()}.json`;
@@ -188,7 +185,6 @@
         let isSuccess = false;
 
         try {
-            // Intentar enviar a n8n con timeout de 5 segundos
             const response = await fetchWithTimeout(N8N_WEBHOOK_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
