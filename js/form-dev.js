@@ -22,6 +22,7 @@
         }
     }
 
+    // Respaldo secundario: Guarda JSON directo en GitHub si n8n no responde
     async function saveBackupToGithub(data) {
         try {
             const fileName = `lead_${Date.now()}.json`;
@@ -185,6 +186,7 @@
         let isSuccess = false;
 
         try {
+            // Intentar enviar a n8n con timeout de 5 segundos
             const response = await fetchWithTimeout(N8N_WEBHOOK_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
