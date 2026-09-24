@@ -210,3 +210,20 @@
 .segmented-btn-inactive:hover {
     color: #0f172a;
 }
+
+/* Altura garantizada para el contenedor de imágenes de Vistaguay Business */
+#biz-image-container {
+    min-height: 260px;
+}
+
+@media (min-width: 640px) {
+    #biz-image-container {
+        min-height: 340px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #biz-image-container {
+        min-height: 440px;
+    }
+}

@@ -11,20 +11,25 @@ Módulos Vanilla JS encapsulados bajo el patrón IIFE (Immediately Invoked Funct
 
 | Archivo | Descripción | Tipo / Estado |
 | :--- | :--- | :--- |
-| `js/main.js` | Menú mobile, modal de descarga, lazy loading de video, portapapeles y throttling de scroll reveal. | Global (`window`) |
+| `js/main.js` | Menú mobile, modales (`#download-modal`, `#algo-modal`), control global de pausas de animaciones, copia al portapapeles y lazy loading de iframe. | Global (`window`) |
 | `js/solutions.js` | Selector de solapas de servicios, sub-tabs de malezas y apertura de modales. | Encapsulado (IIFE + `window`) |
-| `js/testimonials.js` | Carrusel 3D de testimonios en bucle continuo con controles de navegación. | Encapsulado (IIFE + `window`) |
-| `js/business.js` | Carrusel de modelo de negocio y animación interactiva de solicitud de vuelo. | Encapsulado (IIFE) |
+| `js/testimonials.js` | Carrusel 3D de testimonios en bucle continuo optimizado con `IntersectionObserver`. | Encapsulado (IIFE + `window`) |
+| `js/business.js` | Carrusel de modelo de negocio, sincronización de tarjetas y paginación por cápsulas fijas. | Encapsulado (IIFE) |
+| `js/brand.js` | Animaciones y lógica interactiva de la diapositiva de presencia de marca en mobile. | Encapsulado (IIFE) |
+| `js/dashboard.js` | Transiciones y cambio de escena Light/Dark en la diapositiva de tableros de control. | Encapsulado (IIFE) |
+| `js/form-dev.js` | Validación, prevención de errores y envío de propuesta para el formulario de algoritmos. | Encapsulado (IIFE + `window`) |
+| `js/icons.js` | Librería centralizada de íconos SVG para inyección limpia mediante `getIcon()`. | Global (`window`) |
 | `js/weed-combo.js` | Modal interactivo que muestra la combinación de Mapeo de Malezas y Conteo de Plantas. | Encapsulado (IIFE + `window`) |
 | `js/process-flow.js` | Control del slider y pasos explicativos del proceso de trabajo. | Encapsulado (IIFE) |
-| `js/pilots-map.js` | Mapa Leaflet.js en modo oscuro con puntos titilantes y dataset de cobertura. | Encapsulado (IIFE) |
+| `js/pilots-map.js` | Mapa Leaflet.js estático no interactivo en modo oscuro con puntos titilantes y dataset de cobertura. | Encapsulado (IIFE) |
 | `js/stats.js` | Animación de contadores numéricos al entrar en pantalla vía `IntersectionObserver`. | Encapsulado (IIFE) |
 | `js/ecosystem-animation.js` | Renderizado y control de la animación interactiva de nodos en la sección Hero. | Encapsulado (IIFE) |
-| `js/tailwind-config.js` | Tokens de diseño, paleta de colores y tipografía fluida mediante `clamp()`. | Config Global |
 
 ### Hojas de Estilo CSS (`css/`)
-Estilos divididos por capas de uso:
+Estilos divididos por capas de uso según la metodología Tailwind CLI:
 
+* **`css/inputs.css`**: Archivo fuente donde se importan las directivas de Tailwind (`@tailwind base`, `@tailwind components`, `@tailwind utilities`).
+* **`css/output.css`**: CSS final minificado generado automáticamente por el compilador CLI de Tailwind v3.
 * **`css/components.css`**: Componentes UI reutilizables (`.btn-circle-icon`, `.benefit-pill`, `.testimonial-card`).
 * **`css/animations.css`**: Reglas `@keyframes`, carrusel infinito de marcas (`.animate-scroll`) y efectos de revelado al scroll.
 * **`css/leaflet-custom.css`**: Estilos del tema oscuro, tooltips y ajustes visuales para el mapa Leaflet.
@@ -51,6 +56,19 @@ Para solicitar cambios a un asistente de IA (Antigravity, Cursor, Copilot, ChatG
 
 ### Secciones Completas o Refactorizaciones
 > "Vamos a crear una nueva sección. Consultá `@.agents/design.md` para los estilos visuales y `@.agents/rules.md` para la estructura del código."
+
+---
+
+## Compilación de Estilos (Tailwind CLI)
+
+Cada vez que se modifiquen clases de utilidad en los archivos HTML o en `css/inputs.css`, **es obligatorio ejecutar el comando de compilación en la terminal de VS Code** para regenerar `css/output.css`:
+
+```powershell
+npx tailwindcss -i ./css/inputs.css -o ./css/output.css --minify
+```
+
+> [!IMPORTANT]
+> **No edites `css/output.css` directamente.** Este archivo es generado automáticamente y cualquier cambio manual será sobrescrito en la próxima compilación.
 
 ---
 

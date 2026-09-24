@@ -39,6 +39,7 @@ function toggleMobileMenu() {
 function toggleDownloadModal() {
     const modal = document.getElementById('download-modal');
     if (!modal) return;
+
     if (modal.classList.contains('hidden')) {
         modal.classList.remove('hidden');
         modal.classList.add('flex');
@@ -46,6 +47,10 @@ function toggleDownloadModal() {
             modal.style.opacity = '1';
         }, 10);
         document.body.style.overflow = 'hidden';
+
+        if (typeof window.pauseTestimonialCycling === 'function') {
+            window.pauseTestimonialCycling();
+        }
     } else {
         modal.style.opacity = '0';
         setTimeout(() => {
@@ -53,19 +58,60 @@ function toggleDownloadModal() {
             modal.classList.remove('flex');
         }, 300);
         document.body.style.overflow = '';
+
+        if (typeof window.startTestimonialCycling === 'function') {
+            window.startTestimonialCycling();
+        }
+    }
+}
+
+/**
+ * Toggles the visibility of the algorithm developer modal with smooth backdrop transitions and disables body scroll.
+ * @returns {void}
+ */
+function toggleAlgoModal() {
+    const modal = document.getElementById('algo-modal');
+    if (!modal) return;
+
+    if (modal.classList.contains('hidden')) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        setTimeout(() => {
+            modal.style.opacity = '1';
+        }, 10);
+        document.body.style.overflow = 'hidden';
+
+        if (typeof window.pauseTestimonialCycling === 'function') {
+            window.pauseTestimonialCycling();
+        }
+    } else {
+        modal.style.opacity = '0';
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }, 300);
+        document.body.style.overflow = '';
+
+        if (typeof window.startTestimonialCycling === 'function') {
+            window.startTestimonialCycling();
+        }
     }
 }
 
 window.toggleMobileMenu = toggleMobileMenu;
 window.toggleDownloadModal = toggleDownloadModal;
+window.toggleAlgoModal = toggleAlgoModal;
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Carga diferida del video institucional
     const videoIframe = document.getElementById('featured-video');
     if (videoIframe) {
         const videoObserver = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    videoIframe.src = videoIframe.dataset.src;
+                    if (videoIframe.dataset.src) {
+                        videoIframe.src = videoIframe.dataset.src;
+                    }
                     obs.unobserve(entry.target);
                 }
             });
@@ -73,29 +119,23 @@ document.addEventListener('DOMContentLoaded', () => {
         videoObserver.observe(videoIframe);
     }
 
+    // Revelado progresivo de secciones (.reveal) vía IntersectionObserver
     const reveals = document.querySelectorAll('.reveal');
-    const revealOnScroll = () => {
-        reveals.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            if (elementTop < windowHeight * 0.9) {
-                element.classList.add('active');
-            }
-        });
-    };
-
-    let isScrolling = false;
-    window.addEventListener('scroll', () => {
-        if (!isScrolling) {
-            window.requestAnimationFrame(() => {
-                revealOnScroll();
-                isScrolling = false;
+    if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    obs.unobserve(entry.target); // Una vez visible, deja de observar
+                }
             });
-            isScrolling = true;
-        }
-    });
+        }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
 
-    revealOnScroll();
+        reveals.forEach(element => revealObserver.observe(element));
+    } else {
+        // Fallback de seguridad: activa todo inmediatamente si el navegador no soporta el observador
+        reveals.forEach(element => element.classList.add('active'));
+    }
 });
 
 window.copyEmailToClipboard = function (event, email) {

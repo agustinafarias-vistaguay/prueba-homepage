@@ -51,7 +51,7 @@
 * **Soft Elevation (`shadow-sm`):** Small cards, badges, and secondary buttons (`shadow-sm border border-slate-200/70`).
 * **Container Elevation (`shadow-md` / `shadow-lg`):** Main section containers (End-to-End Solution, Developers, Experts).
 * **Interactive Elevation (`shadow-xl`):** Service cards 50/50, Pilot Map container, and Video showcase.
-* **Floating Overlay Elevation (`shadow-2xl`):** Global modals (`#download-modal`, `#weed-combo-modal`) and mobile slide-out menu (`#mobile-menu`).
+* **Floating Overlay Elevation (`shadow-2xl`):** Global modals (`#download-modal`, `#algo-modal`, `#weed-combo-modal`) and mobile slide-out menu (`#mobile-menu`).
 
 ---
 
@@ -60,7 +60,7 @@
 All buttons use **Sentence case** and flex alignment (`inline-flex items-center justify-center gap-2`).
 
 ### A. Primary CTA Button (`.btn-primary`)
-* **Usage:** Main conversion actions (*Conocer la plataforma*, *Registrarse*, *Sumate como Expert*).
+* **Usage:** Main conversion actions (*Conocer la plataforma*, *Registrarse*, *Sumate como Expert*, *Contanos sobre tu algoritmo*).
 * **CSS Class:** `bg-primary hover:bg-[#3db067] text-white py-2.5 px-5 rounded-full font-bold text-sm shadow-sm transition-all hover:scale-[1.02] active:scale-95 inline-flex items-center justify-center gap-2`
 
 ### B. Secondary CTA Button - Dark/Hero Variant (`.btn-secondary-hero`)
@@ -75,6 +75,12 @@ All buttons use **Sentence case** and flex alignment (`inline-flex items-center 
 * **Usage:** Service parameters, crop chips, and technical stats.
 * **CSS Class:** `bg-slate-50 border border-slate-200 rounded-xl py-2 px-3.5 flex items-center gap-2.5 text-sm font-semibold text-slate-700 hover:border-primary/50 hover:bg-white transition-all`
 
+### E. Mobile Segmented Pagination Capsules (`.biz-dot`)
+* **Usage:** Fixed-width slide indicators for mobile carousels.
+* **Active Capsule Class:** `biz-dot block w-8 h-1.5 rounded-full bg-primary transition-colors duration-300`
+* **Inactive Capsule Class:** `biz-dot block w-8 h-1.5 rounded-full bg-slate-200 transition-colors duration-300`
+* **Container Area:** Wrapped in a `<button>` with `p-2.5` to ensure a minimum 40px touch target.
+
 ---
 
 ## 5. Mobile & Responsive Layout Rules (Organisms)
@@ -83,6 +89,7 @@ All buttons use **Sentence case** and flex alignment (`inline-flex items-center 
 * **Process Flow (6 Steps):** Must use **1 column in mobile (`grid-cols-1`)**, switching to 2-3 columns on tablets (`sm:grid-cols-2 md:grid-cols-3`) and 6 columns on desktop (`lg:grid-cols-6`).
 * **Service Pills & Sub-tabs:** Must use `grid-cols-1` on mobile to prevent text wrapping into 4+ lines.
 * **Stats Counter Cards:** Internal padding `p-5 md:p-6`. Stat numbers `text-3xl sm:text-4xl font-extrabold text-primary`. Stat labels `text-sm font-bold text-slate-700`. Partner logos upscaled to `h-8 sm:h-10`.
+* **Section Anchoring (`scroll-mt`):** Every section targeted by navigation links MUST include `scroll-mt-14 md:scroll-mt-16` to offset the fixed navbar height (56px / 64px).
 
 ### Tablet Layout Constraints (768px - 1023px)
 * **Hero Section Constraint:** Must use natural height (`min-h-[80vh] md:min-h-[85vh]`). The SVG animation container must be constrained with `max-h-[380px] md:max-h-[420px]` to prevent vertical stretching and viewport overflow.
@@ -91,10 +98,12 @@ All buttons use **Sentence case** and flex alignment (`inline-flex items-center 
 
 ## 6. Media, Modals & Quality Standards
 
-* **Modal Overlay:** `fixed inset-0 z-[100] bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4`.
-* **Modal Surface:** `rounded-3xl bg-white shadow-2xl border border-slate-200 max-h-[90vh] my-auto overflow-hidden`.
+* **Standardized Modal Overlay:** `fixed inset-0 z-[100] hidden bg-slate-950/70 backdrop-blur-sm items-center justify-center p-4 transition-opacity duration-300 opacity-0`.
+* **Standardized Modal Card Surface:** `relative bg-white rounded-3xl shadow-2xl overflow-hidden max-w-2xl w-full max-h-[90vh] my-auto flex flex-col`.
+* **Standardized Modal Header:** `p-6 sm:p-8 border-b border-slate-100 flex items-center justify-between bg-slate-50`.
+* **DOM Location Rule:** Modals MUST be placed at the root level of `index.html` (just before `</body>`) to prevent stacking context bugs caused by section animations (`reveal`).
 * **Mandatory Accessibility Attributes:**
   * Mobile Menu Toggle: `aria-label="Abrir menú de navegación"`
   * Carousel Arrows: `aria-label="Anterior testimonio"` / `aria-label="Siguiente testimonio"`
-  * Close Buttons: `aria-label="Cerrar ventana"`
+  * Close Buttons: `aria-label="Cerrar modal"`
 * **Image Optimization:** All production photos must be served in `.webp` or compressed `.jpg` under 200KB. Raw original files (`>1MB`) must be excluded from web bundles.

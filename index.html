@@ -229,7 +229,7 @@
             </div>
 
             <div
-                class="bg-surface rounded-3xl shadow-lg p-6 md:p-10 border border-outline-variant/20 reveal space-y-10">
+                class="bg-surface rounded-3xl shadow-lg p-6 md:p-10 border border-outline-variant/20 reveal space-y-20">
                 <div id="process-container" class="relative pt-2 pb-2">
                     <div
                         class="hidden lg:block absolute top-[60px] left-[8.33%] right-[8.33%] h-1 bg-slate-200 z-0 pointer-events-none">
@@ -311,14 +311,12 @@
                     </div>
                 </div>
 
-                <!-- Contenedor del video achicado en desktop con max-w-3xl y max-w-2xl para la pantalla del iframe -->
-                <div
-                    class="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-5 sm:p-7 w-full max-w-3xl mx-auto text-center">
+                <div class="w-full max-w-2xl mx-auto text-center">
                     <p class="text-sm font-semibold text-slate-700 mb-4">
                         Un recorrido visual por nuestra plataforma y ecosistema en acción.
                     </p>
                     <div
-                        class="relative w-full max-w-2xl mx-auto aspect-video rounded-xl overflow-hidden border border-slate-200 bg-slate-900 shadow-md">
+                        class="relative w-full aspect-video rounded-xl overflow-hidden border border-slate-200 bg-slate-900 shadow-md">
                         <iframe id="featured-video" class="w-full h-full"
                             data-src="https://www.youtube.com/embed/TP_SOfIKqRk?autoplay=1&mute=1&cc_load_policy=1&hl=es&cc_lang_pref=es&rel=0&modestbranding=1&iv_load_policy=3&loop=1&playlist=TP_SOfIKqRk"
                             title="Descubrí cómo Vistaguay transforma la gestión agrícola" frameborder="0"
@@ -331,9 +329,9 @@
         </div>
     </section>
 
-    <section class="py-10 md:py-12 bg-slate-50" id="servicios">
+    <section class="py-10 md:py-12 bg-slate-50 scroll-mt-14 md:scroll-mt-16" id="servicios">
         <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
-            <div class="text-center mb-6">
+            <div class="text-center mb-6 reveal">
                 <h2 class="text-xl md:text-2xl font-extrabold text-on-surface mb-4 tracking-tight">
                     Tecnología de precisión y servicios para cada etapa del cultivo
                 </h2>
@@ -342,7 +340,7 @@
                 </p>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-2 mb-6">
+            <div class="flex flex-wrap justify-center gap-2 mb-6 reveal">
                 <button id="tab-btn-weed" class="tab-btn tab-btn-active" onclick="switchTab('weed')">Mapeo de
                     malezas</button>
                 <button id="tab-btn-plant" class="tab-btn tab-btn-inactive" onclick="switchTab('plant')">Conteo de
@@ -355,7 +353,8 @@
                     especiales</button>
             </div>
 
-            <div class="bg-white rounded-3xl border border-outline-variant/30 shadow-xl overflow-hidden lg:h-[480px]">
+            <div
+                class="bg-white rounded-3xl border border-outline-variant/30 shadow-xl overflow-hidden lg:h-[480px] reveal">
                 <div class="grid grid-cols-1 lg:grid-cols-2 opacity-100 transform translate-y-0 h-full"
                     id="solutions-content-card"></div>
             </div>
@@ -378,13 +377,14 @@
                         </p>
                     </div>
 
-                    <div class="w-full h-full min-h-[240px] sm:min-h-[320px] lg:min-h-[440px] flex items-center justify-center p-0 sm:p-4 relative overflow-hidden order-2 lg:order-1 lg:row-span-2 lg:col-start-1"
+                    <div class="w-full h-full min-h-[280px] sm:min-h-[340px] lg:min-h-[440px] flex items-center justify-center p-3 sm:p-4 my-2 sm:my-4 lg:my-0 relative overflow-hidden order-2 lg:order-1 lg:row-span-2 lg:col-start-1"
                         id="biz-image-container">
 
+                        <!-- Diapositiva 1 (Solicitud) -->
                         <div id="biz-img-0"
-                            class="biz-img absolute inset-0 w-full h-full flex items-center justify-center p-1 sm:p-4 transition-all duration-700 ease-in-out translate-x-0 opacity-100 z-10">
+                            class="biz-img absolute inset-0 w-full h-full flex items-center justify-center p-3 sm:p-4 transition-all duration-700 ease-in-out translate-x-0 opacity-100 z-10">
                             <div
-                                class="relative w-full max-w-[460px] sm:max-w-[500px] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-white">
+                                class="relative w-full max-w-[310px] sm:max-w-[440px] lg:max-w-[480px] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-white">
                                 <img id="anim-base-ui" src="images/business/solicitud/base-ui.svg" alt="Base Dashboard"
                                     class="w-full h-auto block blur-md opacity-0 transition-all duration-700">
                                 <img id="anim-btn-solicitud" src="images/business/solicitud/btn-solicitud.svg"
@@ -420,10 +420,11 @@
                             </div>
                         </div>
 
+                        <!-- Diapositiva 2 (Dashboard) -->
                         <div id="biz-img-1"
-                            class="biz-img absolute inset-0 w-full h-full flex items-center justify-center p-1 sm:p-4 transition-all duration-700 ease-in-out translate-x-full opacity-0 z-0">
+                            class="biz-img absolute inset-0 w-full h-full flex items-center justify-center p-3 sm:p-4 transition-all duration-700 ease-in-out translate-x-full opacity-0 z-0">
                             <div
-                                class="relative w-full max-w-[460px] sm:max-w-[500px] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-white">
+                                class="relative w-full max-w-[310px] sm:max-w-[440px] lg:max-w-[480px] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-white">
                                 <div id="dash-scene-1"
                                     class="relative w-full h-auto transition-opacity duration-700 z-10 bg-white">
                                     <img id="dash-base-ui" src="images/business/dashboard/base-ui.svg" alt="Base Light"
@@ -471,8 +472,9 @@
                             </div>
                         </div>
 
+                        <!-- Diapositiva 3 (Mobile) -->
                         <div id="biz-img-2"
-                            class="biz-img absolute inset-0 w-full h-full flex items-center justify-center p-1 sm:p-4 transition-all duration-700 ease-in-out translate-x-full opacity-0 z-0">
+                            class="biz-img absolute inset-0 w-full h-full flex items-center justify-center p-3 sm:p-4 transition-all duration-700 ease-in-out translate-x-full opacity-0 z-0">
                             <div
                                 class="relative h-[230px] sm:h-[320px] lg:h-[360px] aspect-[9/19] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-white">
                                 <img id="brand-base-ui" src="images/business/marca/mobile-base.svg" alt="Base Mobile"
@@ -576,16 +578,22 @@
 
                         </div>
 
-                        <div id="biz-pagination" class="flex lg:hidden justify-center items-center gap-1.5 mt-3">
-                            <button aria-label="Ir a sección 1"
-                                class="biz-dot w-6 h-1.5 rounded-full bg-primary transition-all duration-300"
-                                onclick="scrollToBizCard(0)"></button>
-                            <button aria-label="Ir a sección 2"
-                                class="biz-dot w-1.5 h-1.5 rounded-full bg-slate-300 transition-all duration-300"
-                                onclick="scrollToBizCard(1)"></button>
-                            <button aria-label="Ir a sección 3"
-                                class="biz-dot w-1.5 h-1.5 rounded-full bg-slate-300 transition-all duration-300"
-                                onclick="scrollToBizCard(2)"></button>
+                        <div id="biz-pagination" class="flex lg:hidden justify-center items-center gap-1 mt-2">
+                            <button aria-label="Ir a sección 1" class="p-2.5 focus:outline-none"
+                                onclick="scrollToBizCard(0)">
+                                <span
+                                    class="biz-dot block w-8 h-1.5 rounded-full bg-primary transition-colors duration-300"></span>
+                            </button>
+                            <button aria-label="Ir a sección 2" class="p-2.5 focus:outline-none"
+                                onclick="scrollToBizCard(1)">
+                                <span
+                                    class="biz-dot block w-8 h-1.5 rounded-full bg-slate-200 transition-colors duration-300"></span>
+                            </button>
+                            <button aria-label="Ir a sección 3" class="p-2.5 focus:outline-none"
+                                onclick="scrollToBizCard(2)">
+                                <span
+                                    class="biz-dot block w-8 h-1.5 rounded-full bg-slate-200 transition-colors duration-300"></span>
+                            </button>
                         </div>
                     </div>
 
@@ -680,19 +688,11 @@
                         </div>
                     </div>
                     <div class="w-full h-full flex flex-col min-h-[380px] lg:min-h-0">
-                        <div class="mb-4 lg:hidden">
-                            <a href="https://onelink.to/xjay8d" target="_blank"
-                                class="btn-primary w-full flex items-center justify-center gap-2">
-                                <span data-icon="download" data-icon-class="w-5 h-5 stroke-current"></span>
-                                Descargar App Experts
-                            </a>
-                        </div>
                         <div id="pilots-native-map" role="region"
                             aria-label="Mapa de cobertura de pilotos Vistaguay Experts"
-                            class="w-full flex-1 rounded-2xl overflow-hidden border border-slate-200 shadow-md z-10 min-h-[380px]">
+                            class="w-full flex-1 rounded-2xl overflow-hidden border border-slate-200 shadow-md z-10 min-h-[380px] pointer-events-none select-none cursor-default">
                         </div>
-                        <div class="hidden lg:flex items-center justify-end gap-3 pt-4">
-                            <span class="text-sm font-bold text-slate-800 mr-1">Descargar App Experts:</span>
+                        <div class="flex items-center justify-start lg:justify-end gap-3 pt-4">
                             <a href="https://play.google.com/store/apps/details?id=com.vistaguay.experts"
                                 target="_blank"
                                 class="inline-block transition-transform hover:scale-105 active:scale-95">
@@ -748,7 +748,7 @@
         </div>
     </section>
 
-    <section class="py-10 md:py-12 bg-slate-50" id="devs">
+    <section class="py-10 md:py-12 bg-slate-50 scroll-mt-14 md:scroll-mt-16" id="devs">
         <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
             <div
                 class="bg-inverse-surface rounded-3xl shadow-lg p-6 md:p-10 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 reveal relative overflow-hidden">
@@ -785,98 +785,6 @@
         </div>
     </section>
 
-    <div id="algo-modal"
-        class="fixed inset-0 z-[100] hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 opacity-0"
-        onclick="if(event.target === this) toggleAlgoModal()">
-        <div
-            class="relative bg-white rounded-3xl shadow-2xl overflow-hidden max-w-2xl w-full max-h-[90vh] my-auto flex flex-col">
-
-            <!-- Header del Modal -->
-            <div class="p-6 sm:p-8 border-b border-slate-100 flex items-center justify-between bg-slate-50">
-                <div>
-                    <h3 class="text-xl font-bold text-slate-900">Contanos sobre tu algoritmo</h3>
-                </div>
-                <button onclick="toggleAlgoModal()"
-                    class="w-8 h-8 rounded-full bg-slate-200/70 hover:bg-slate-300 flex items-center justify-center text-slate-700 transition-colors"
-                    aria-label="Cerrar modal">
-                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-
-            <!-- Vista de Éxito con Animación (Oculta por defecto) -->
-            <div id="algo-success-state"
-                class="hidden flex-col items-center justify-center p-8 sm:p-12 text-center my-auto space-y-3">
-                <img id="algo-icon-check" src="images/business/marca/icon-check.svg" alt="Éxito"
-                    class="w-14 h-14 scale-0 opacity-0 transition-all duration-500 ease-out transform">
-                <h4 class="text-lg font-extrabold text-slate-900">¡Propuesta enviada con éxito!</h4>
-                <p class="text-sm text-slate-600 max-w-sm">Nos comunicaremos a la brevedad a tu correo o teléfono
-                    ingresado.</p>
-            </div>
-
-            <!-- Formulario -->
-            <form id="algo-form" onsubmit="submitAlgoForm(event)" class="p-6 sm:p-8 overflow-y-auto flex-1">
-                <div id="algo-form-body" class="space-y-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 mb-1">Nombre / Empresa *</label>
-                            <input type="text" name="developer_name" required
-                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-primary">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 mb-1">WhatsApp / Teléfono *</label>
-                            <input type="tel" id="phone-input" name="phone" required placeholder="Ej: +54 9 3467 635917"
-                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-primary transition-colors">
-                            <p id="phone-error" class="text-[11px] font-medium text-red-500 mt-1 hidden">Ingresá un
-                                número válido (solo dígitos y símbolos como +, -).</p>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 mb-1">Email de contacto *</label>
-                            <input type="email" id="email-input" name="email" required placeholder="nombre@ejemplo.com"
-                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-primary transition-colors">
-                            <p id="email-error" class="text-[11px] font-medium text-red-500 mt-1 hidden">Ingresá un
-                                correo válido (debe contener @ y un dominio como .com).</p>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 mb-1">Precio sugerido o modelo
-                                (Opcional)</label>
-                            <input type="text" name="pricing_idea" placeholder="Ej: USD 2/ha o % comisión"
-                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-primary">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1">¿De qué trata tu algoritmo? *</label>
-                        <textarea name="description" rows="3" required
-                            placeholder="Describí brevemente el objetivo y resultado de tu procesamiento..."
-                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-primary"></textarea>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1">Detalle del protocolo de vuelo (en
-                            caso de requerirlo)</label>
-                        <textarea name="protocol_details" rows="2"
-                            placeholder="Cámaras específicas, alturas de vuelo o pegá acá un enlace a la documentación/protocolo..."
-                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-primary"></textarea>
-                    </div>
-
-                    <div class="pt-4">
-                        <button type="submit" id="submit-btn" class="btn-primary w-full">
-                            Enviar propuesta
-                        </button>
-                    </div>
-                </div>
-
-                <p id="form-status" class="text-xs text-center font-semibold hidden mt-2"></p>
-            </form>
-
-        </div>
-    </div>
-
     <section class="relative py-16 md:py-20 flex items-center overflow-hidden">
         <div class="absolute inset-0 z-0">
             <img class="w-full h-full object-cover" alt="Campo Maiz" src="images/fondo2.jpg">
@@ -894,14 +802,10 @@
                     Sumate al mayor ecosistema para la agricultura
                 </h2>
 
-                <div class="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto">
-                    <a href="https://onelink.to/6g4qbv" target="_blank" rel="noopener noreferrer" class="btn-primary">
-                        Empezar como productor
-                    </a>
-                    <a href="https://onelink.to/xjay8d" target="_blank" rel="noopener noreferrer"
-                        class="btn-secondary-hero">
-                        Registrarme como piloto
-                    </a>
+                <div class="flex justify-center w-full sm:w-auto">
+                    <button onclick="toggleDownloadModal()" class="btn-primary">
+                        Registrarse en Vistaguay
+                    </button>
                 </div>
 
                 <div id="vistaguay-badge" class="mt-16">
@@ -1011,6 +915,99 @@
     <script src="js/solutions.js"></script>
     <script src="js/form-dev.js"></script>
 
+    <div id="algo-modal"
+        class="fixed inset-0 z-[100] hidden flex bg-slate-950/70 backdrop-blur-sm items-center justify-center p-3 sm:p-4 transition-opacity duration-300 opacity-0"
+        onclick="if(event.target === this) toggleAlgoModal()">
+
+        <div
+            class="relative bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden max-w-lg w-full max-h-[85vh] sm:max-h-[90vh] my-auto mx-auto flex flex-col">
+
+            <div
+                class="px-5 py-3.5 sm:px-6 sm:py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50 shrink-0">
+                <h3 class="text-base sm:text-lg font-extrabold text-slate-900">Contanos sobre tu algoritmo</h3>
+                <button onclick="toggleAlgoModal()"
+                    class="w-8 h-8 rounded-full bg-slate-200/70 hover:bg-slate-300 flex items-center justify-center text-slate-700 transition-colors focus:outline-none"
+                    aria-label="Cerrar modal">
+                    <span data-icon="close" data-icon-class="w-5 h-5"></span>
+                </button>
+            </div>
+
+            <div id="algo-success-state"
+                class="hidden flex-col items-center justify-center p-6 sm:p-10 text-center my-auto space-y-3">
+                <img id="algo-icon-check" src="images/business/marca/icon-check.svg" alt="Éxito"
+                    class="w-12 h-12 scale-0 opacity-0 transition-all duration-500 ease-out transform">
+                <h4 class="text-base sm:text-lg font-extrabold text-slate-900">¡Propuesta enviada con éxito!</h4>
+                <p class="text-xs sm:text-sm text-slate-600 max-w-sm">Nos comunicaremos a la brevedad a tu correo o
+                    teléfono ingresado.</p>
+            </div>
+
+            <form id="algo-form" onsubmit="submitAlgoForm(event)" class="p-4 sm:p-6 overflow-y-auto flex-1">
+                <div id="algo-form-body" class="space-y-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-[11px] sm:text-xs font-bold text-slate-700 mb-1">Nombre / Empresa
+                                *</label>
+                            <input type="text" name="developer_name" required
+                                class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] sm:text-xs font-bold text-slate-700 mb-1">WhatsApp /
+                                Teléfono *</label>
+                            <input type="tel" id="phone-input" name="phone" required placeholder="Ej: +54 9 3467 635917"
+                                class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-primary transition-colors">
+                            <p id="phone-error" class="text-[10px] font-medium text-red-500 mt-0.5 hidden">
+                                Ingresá un número válido (solo dígitos y símbolos como +, -).
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-[11px] sm:text-xs font-bold text-slate-700 mb-1">Email de contacto
+                                *</label>
+                            <input type="email" id="email-input" name="email" required placeholder="nombre@ejemplo.com"
+                                class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-primary transition-colors">
+                            <p id="email-error" class="text-[10px] font-medium text-red-500 mt-0.5 hidden">
+                                Ingresá un correo válido (debe contener @ y dominio).
+                            </p>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] sm:text-xs font-bold text-slate-700 mb-1">Precio sugerido
+                                (Opcional)</label>
+                            <input type="text" name="pricing_idea" placeholder="Ej: USD 2/ha o % comisión"
+                                class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-primary">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] sm:text-xs font-bold text-slate-700 mb-1">¿De qué trata tu
+                            algoritmo? *</label>
+                        <textarea name="description" rows="2" required
+                            placeholder="Describí brevemente el objetivo y resultado..."
+                            class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-primary resize-none"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] sm:text-xs font-bold text-slate-700 mb-1">Detalle del protocolo
+                            de vuelo (Opcional)</label>
+                        <textarea name="protocol_details" rows="2"
+                            placeholder="Cámaras específicas, alturas de vuelo o enlace a la documentación..."
+                            class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-primary resize-none"></textarea>
+                    </div>
+
+                    <div class="pt-2">
+                        <button type="submit" id="submit-btn" class="btn-primary w-full py-2 sm:py-2.5">
+                            Enviar propuesta
+                        </button>
+                    </div>
+                </div>
+
+                <p id="form-status" class="text-xs text-center font-semibold hidden mt-2"></p>
+            </form>
+
+        </div>
+    </div>
+
     <div id="download-modal"
         class="fixed inset-0 z-[100] hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 ease-out opacity-0"
         onclick="if(event.target === this) toggleDownloadModal()">
@@ -1057,23 +1054,16 @@
                         </li>
                     </ul>
                 </div>
-                <div class="pt-6">
-                    <a href="https://onelink.to/6g4qbv" target="_blank"
-                        class="btn-primary w-full flex md:hidden items-center justify-center gap-2">
-                        <span data-icon="download" data-icon-class="w-5 h-5 stroke-current"></span>
-                        Descargar App Vistaguay
-                    </a>
 
-                    <div class="hidden md:flex flex-row flex-wrap items-center gap-3">
-                        <a href="https://play.google.com/store/apps/details?id=com.vistaguay" target="_blank"
-                            class="inline-block transition-transform hover:scale-105 active:scale-95">
-                            <img src="images/Google_Play.svg" alt="Disponible en Google Play" class="h-10 w-auto">
-                        </a>
-                        <a href="https://apps.apple.com/us/app/vistaguay/id6747275455" target="_blank"
-                            class="inline-block transition-transform hover:scale-105 active:scale-95">
-                            <img src="images/App_Store.svg" alt="Consíguelo en el App Store" class="h-10 w-auto">
-                        </a>
-                    </div>
+                <div class="pt-6 flex flex-row flex-wrap items-center gap-3">
+                    <a href="https://play.google.com/store/apps/details?id=com.vistaguay" target="_blank"
+                        class="inline-block transition-transform hover:scale-105 active:scale-95">
+                        <img src="images/Google_Play.svg" alt="Disponible en Google Play" class="h-10 w-auto">
+                    </a>
+                    <a href="https://apps.apple.com/us/app/vistaguay/id6747275455" target="_blank"
+                        class="inline-block transition-transform hover:scale-105 active:scale-95">
+                        <img src="images/App_Store.svg" alt="Consíguelo en el App Store" class="h-10 w-auto">
+                    </a>
                 </div>
             </div>
 
@@ -1107,23 +1097,16 @@
                         </li>
                     </ul>
                 </div>
-                <div class="pt-6">
-                    <a href="https://onelink.to/xjay8d" target="_blank"
-                        class="btn-secondary-hero w-full flex md:hidden items-center justify-center gap-2">
-                        <span data-icon="download" data-icon-class="w-5 h-5 stroke-current"></span>
-                        Descargar App Experts
-                    </a>
 
-                    <div class="hidden md:flex flex-row flex-wrap items-center gap-3">
-                        <a href="https://play.google.com/store/apps/details?id=com.vistaguay.experts" target="_blank"
-                            class="inline-block transition-transform hover:scale-105 active:scale-95">
-                            <img src="images/Google_Play-Light.svg" alt="Disponible en Google Play" class="h-10 w-auto">
-                        </a>
-                        <a href="https://apps.apple.com/us/app/vistaguay-experts/id6747045323" target="_blank"
-                            class="inline-block transition-transform hover:scale-105 active:scale-95">
-                            <img src="images/App_Store-Light.svg" alt="Consíguelo en el App Store" class="h-10 w-auto">
-                        </a>
-                    </div>
+                <div class="pt-6 flex flex-row flex-wrap items-center gap-3">
+                    <a href="https://play.google.com/store/apps/details?id=com.vistaguay.experts" target="_blank"
+                        class="inline-block transition-transform hover:scale-105 active:scale-95">
+                        <img src="images/Google_Play-Light.svg" alt="Disponible en Google Play" class="h-10 w-auto">
+                    </a>
+                    <a href="https://apps.apple.com/us/app/vistaguay-experts/id6747045323" target="_blank"
+                        class="inline-block transition-transform hover:scale-105 active:scale-95">
+                        <img src="images/App_Store-Light.svg" alt="Consíguelo en el App Store" class="h-10 w-auto">
+                    </a>
                 </div>
             </div>
         </div>

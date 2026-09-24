@@ -133,7 +133,11 @@
             zoomControl: false,
             attributionControl: false,
             scrollWheelZoom: false,
-            dragging: true
+            doubleClickZoom: false,
+            boxZoom: false,
+            touchZoom: false,
+            dragging: false,
+            keyboard: false
         });
 
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {

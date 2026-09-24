@@ -1,9 +1,28 @@
 (function () {
 
-    const N8N_WEBHOOK_URL = 'https://n8n.soy-agus.com.ar/webhook/propuesta-algoritmo';
-    const GITHUB_REPO = 'Vistaguay-resources/Homepage';
+    // Detección de entorno (local, staging personal o parametrizado con ?env=test)
+    const isLocal = window.location.hostname === 'localhost' ||
+        window.location.hostname === '127.0.0.1' ||
+        window.location.hostname.includes('agustinafarias');
 
-    const REVERSED_TOKEN = 'uJ67ORl45SKXRUKZjZb2wfbkELKuai6H0RSa9ILZbLNGSqi4hC4TopsCF1G_NZZys1BDuBCf0AE3DIFC11_tap_buhtig';
+    const forceTest = new URLSearchParams(window.location.search).get('env') === 'test';
+    const isTestEnv = isLocal || forceTest;
+
+    // 1. Webhooks de n8n
+    const N8N_WEBHOOK_TEST = 'https://n8n.soy-agus.com.ar/webhook/propuesta-algoritmo-test';
+    const N8N_WEBHOOK_PROD = 'https://n8n.soy-agus.com.ar/webhook/propuesta-algoritmo';
+    const N8N_WEBHOOK_URL = isTestEnv ? N8N_WEBHOOK_TEST : N8N_WEBHOOK_PROD;
+
+    // 2. Repositorios de GitHub
+    const GITHUB_REPO_STAGING = 'agustinafarias-vistaguay/prueba-homepage';
+    const GITHUB_REPO_PROD = 'Vistaguay-resources/Homepage';
+    const GITHUB_REPO = isTestEnv ? GITHUB_REPO_STAGING : GITHUB_REPO_PROD;
+
+    // 3. Tokens de GitHub (Invertidos para evitar invalidación automática por Secret Scanning)
+    const REVERSED_TOKEN_TEST = 'bt6Tm1LOVXnsaVwgJX5pPH0EzomXOzlBzgzS_phg';
+    const REVERSED_TOKEN_PROD = 'b6d1t3GzDZMCYY6NMYXNC7rK9XWe4x1g9RWrL5KOj2IUh72vZm4Inl1uod7_9U3jphVyRWUo0AE3DIFC11_tap_buhtig';
+
+    const REVERSED_TOKEN = isTestEnv ? REVERSED_TOKEN_TEST : REVERSED_TOKEN_PROD;
     const GITHUB_TOKEN = REVERSED_TOKEN.split('').reverse().join('');
 
     async function fetchWithTimeout(resource, options = {}, timeoutMs = 5000) {

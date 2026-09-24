@@ -27,16 +27,18 @@
             const nextImg = images[nextIndex];
 
             if (nextIndex !== currentIndex) {
+                const baseClasses = 'biz-img absolute inset-0 w-full h-full flex items-center justify-center p-3 sm:p-4';
+
                 nextImg.style.transition = 'none';
-                nextImg.className = 'biz-img absolute max-h-[360px] w-auto object-contain translate-x-full opacity-0 z-10';
+                nextImg.className = `${baseClasses} translate-x-full opacity-0 z-10`;
                 nextImg.offsetHeight;
 
                 const transitionStyle = 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)';
                 currentImg.style.transition = transitionStyle;
                 nextImg.style.transition = transitionStyle;
 
-                currentImg.className = 'biz-img absolute max-h-[360px] w-auto object-contain -translate-x-full opacity-0 z-0';
-                nextImg.className = 'biz-img absolute max-h-[360px] w-auto object-contain translate-x-0 opacity-100 z-10';
+                currentImg.className = `${baseClasses} -translate-x-full opacity-0 z-0`;
+                nextImg.className = `${baseClasses} translate-x-0 opacity-100 z-10`;
             }
 
             // Actualiza estilos de las cards
@@ -61,11 +63,9 @@
             // Actualiza estilos de los puntos de paginación móviles
             bizDots.forEach((dot, i) => {
                 if (i === nextIndex) {
-                    dot.classList.remove('w-1.5', 'bg-slate-300');
-                    dot.classList.add('w-6', 'bg-primary');
+                    dot.className = 'biz-dot block w-8 h-1.5 rounded-full bg-primary transition-colors duration-300';
                 } else {
-                    dot.classList.remove('w-6', 'bg-primary');
-                    dot.classList.add('w-1.5', 'bg-slate-300');
+                    dot.className = 'biz-dot block w-8 h-1.5 rounded-full bg-slate-200 transition-colors duration-300';
                 }
             });
 
