@@ -19,7 +19,7 @@
 * **Mandatory Centralized Classes:** Do NOT write ad-hoc strings of 8+ Tailwind utility classes for repeating buttons or cards. Use centralized classes from `css/components.css`:
   * Buttons: `.btn-primary`, `.btn-secondary-hero`, `.btn-outline`
   * Cards / Pills: `.benefit-pill`, `.tab-btn`
-* **Zero Hardcoded Hex Colors:** Prohibited to use hardcoded hex utilities like `bg-[#47C278]` in HTML. Use `bg-primary`, Tailwind tokens, or declared CSS variables.
+* **Zero Hardcoded Hex Colors:** Prohibited to use hardcoded hex utilities like `bg-[#40a568]` in HTML. Use `bg-primary`, Tailwind tokens, or declared CSS variables.
 
 ---
 

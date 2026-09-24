@@ -1,5 +1,11 @@
+:root {
+    --color-primary: #40a568;
+    --color-primary-hover: #39A864;
+    --color-primary-mint: #66DE96;
+}
+
 .btn-primary {
-    background-color: #47C278;
+    background-color: var(--color-primary);
     color: #ffffff;
     padding: 10px 22px;
     border-radius: 9999px;
@@ -44,8 +50,8 @@
 }
 
 .btn-outline:hover {
-    border-color: #47C278;
-    color: #47C278;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
     background-color: rgba(71, 194, 120, 0.04);
     transform: translateY(-1px) scale(1.02);
 }
@@ -85,7 +91,7 @@
     width: 2rem;
     height: 2rem;
     border-radius: 9999px;
-    background-color: #47C278;
+    background-color: var(--color-primary);
     color: #ffffff;
     display: inline-flex;
     align-items: center;
@@ -126,7 +132,7 @@
 }
 
 .tab-btn-active {
-    background-color: #47C278;
+    background-color: var(--color-primary);
     color: #ffffff;
     font-weight: 700;
     box-shadow: 0 4px 12px rgba(71, 194, 120, 0.25);
@@ -196,7 +202,7 @@
 }
 
 .segmented-btn-active {
-    background-color: #47C278;
+    background-color: var(--color-primary);
     color: #ffffff;
     font-weight: 700;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);

@@ -52,12 +52,12 @@
 
                 if (i === nextIndex) {
                     card.className = 'biz-card w-full min-w-full lg:min-w-0 snap-center group cursor-pointer p-4 rounded-2xl border transition-all duration-500 bg-primary text-white border-primary shadow-md';
-                    iconBox.className = 'biz-icon-box w-9 h-9 rounded-xl bg-white/20 text-white flex items-center justify-center shrink-0 transition-colors mt-0.5';
+                    iconBox.className = 'biz-icon-box w-9 h-9 rounded-xl bg-white/20 border border-white/30 text-white flex items-center justify-center shrink-0 transition-colors mt-0.5';
                     title.className = 'biz-title text-sm font-bold text-white leading-tight mb-1';
                     desc.className = 'biz-desc text-sm text-white/90 leading-relaxed';
                 } else {
                     card.className = 'biz-card w-full min-w-full lg:min-w-0 snap-center group cursor-pointer p-4 rounded-2xl border transition-all duration-500 bg-white border-slate-200/80 text-slate-800 hover:border-primary/50';
-                    iconBox.className = 'biz-icon-box w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 transition-colors mt-0.5';
+                    iconBox.className = 'biz-icon-box w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center shrink-0 transition-colors mt-0.5';
                     title.className = 'biz-title text-sm font-bold text-slate-900 leading-tight mb-1';
                     desc.className = 'biz-desc text-sm text-slate-600 leading-relaxed';
                 }

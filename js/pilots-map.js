@@ -131,7 +131,7 @@
                     if (pilot.lat && pilot.lng) {
                         const staticIcon = L.divIcon({
                             className: 'custom-leaflet-dot',
-                            html: '<div class="w-1.5 h-1.5 rounded-full bg-primary/90 shadow-[0_0_4px_rgba(71,194,120,0.8)]"></div>',
+                            html: '<div class="w-1.5 h-1.5 rounded-full bg-primary-mint/90 shadow-[0_0_4px_rgba(102,222,150,0.8)]"></div>',
                             iconSize: [6, 6],
                             iconAnchor: [3, 3]
                         });

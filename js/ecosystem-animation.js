@@ -20,13 +20,13 @@
         </div>
 
         <svg viewBox="0 0 800 600" class="w-full h-full absolute inset-0 overflow-visible pointer-events-none">
-  <line id="line-farmer-dev" x1="400" y1="60" x2="120" y2="450" stroke="#47C278" stroke-width="3.5" stroke-linecap="round" class="opacity-0 transition-opacity duration-700" />
-  <line id="line-farmer-pilot" x1="400" y1="60" x2="680" y2="450" stroke="#47C278" stroke-width="3.5" stroke-linecap="round" class="opacity-0 transition-opacity duration-700" />
-  <line id="line-dev-pilot" x1="120" y1="450" x2="680" y2="450" stroke="#47C278" stroke-width="3.5" stroke-linecap="round" class="opacity-0 transition-opacity duration-700" />
+  <line id="line-farmer-dev" x1="400" y1="60" x2="120" y2="450" stroke="#40a568" stroke-width="3.5" stroke-linecap="round" class="opacity-0 transition-opacity duration-700" />
+  <line id="line-farmer-pilot" x1="400" y1="60" x2="680" y2="450" stroke="#40a568" stroke-width="3.5" stroke-linecap="round" class="opacity-0 transition-opacity duration-700" />
+  <line id="line-dev-pilot" x1="120" y1="450" x2="680" y2="450" stroke="#40a568" stroke-width="3.5" stroke-linecap="round" class="opacity-0 transition-opacity duration-700" />
 
-  <line id="line-farmer-center" x1="400" y1="60" x2="400" y2="300" stroke="#47C278" stroke-width="4" stroke-linecap="round" stroke-dasharray="6,6" class="opacity-0 transition-opacity duration-700" />
-  <line id="line-dev-center" x1="120" y1="450" x2="400" y2="300" stroke="#47C278" stroke-width="4" stroke-linecap="round" stroke-dasharray="6,6" class="opacity-0 transition-opacity duration-700" />
-  <line id="line-pilot-center" x1="680" y1="450" x2="400" y2="300" stroke="#47C278" stroke-width="4" stroke-linecap="round" stroke-dasharray="6,6" class="opacity-0 transition-opacity duration-700" />
+  <line id="line-farmer-center" x1="400" y1="60" x2="400" y2="300" stroke="#40a568" stroke-width="4" stroke-linecap="round" stroke-dasharray="6,6" class="opacity-0 transition-opacity duration-700" />
+  <line id="line-dev-center" x1="120" y1="450" x2="400" y2="300" stroke="#40a568" stroke-width="4" stroke-linecap="round" stroke-dasharray="6,6" class="opacity-0 transition-opacity duration-700" />
+  <line id="line-pilot-center" x1="680" y1="450" x2="400" y2="300" stroke="#40a568" stroke-width="4" stroke-linecap="round" stroke-dasharray="6,6" class="opacity-0 transition-opacity duration-700" />
 </svg>
 
 <div id="vg-node-farmer" class="vg-node absolute -translate-x-1/2 -translate-y-1/2 z-30 cursor-pointer flex flex-col items-center select-none transition-all duration-700">

@@ -3,13 +3,19 @@
 ## 1. Color Palette & Tokens (Atoms)
 
 ### Core Brand Colors
-* **Primary (Vistaguay Green):** CSS Variable `--color-primary` (`#47C278`)
+* **Primary (Vistaguay Green):** CSS Variable `--color-primary` (`#40a568`)
   * Tailwind Tokens: `primary`, `bg-primary`, `text-primary`, `border-primary`
   * Standard Hover State: `#3DB067` (`--color-primary-hover`)
   * Active/Click State: `#349B5B` (`--color-primary-active`)
   * Light Accent Background: `#EEFAF2` (`--color-primary-light`)
   * Glow Effect: `rgba(71, 194, 120, 0.35)` (`--color-primary-glow`)
-  * **Strict Policy:** Absolute prohibition of hardcoded `#47C278` hex values in HTML classes. Always use Tailwind `primary` or CSS variables.
+  * **Strict Policy:** Absolute prohibition of hardcoded `#40a568` hex values in HTML classes. Always use Tailwind `primary` or CSS variables.
+
+* **Primary Mint (Dark Accent):** CSS Variable `--color-primary-mint` (`#66DE96`)
+  * Token Name: `primary-mint`
+  * Utility Usage: `text-primary-mint`, `bg-primary-mint`, `border-primary-mint`
+  * Uso: Color de acento para elementos (texto, fondo, borde) sobre placas oscuras (`bg-inverse-surface`, `bg-slate-900`).
+
 
 ### Surfaces & Backgrounds
 * **General Page Background:** `#FAFAFA` (`--color-bg-app`)

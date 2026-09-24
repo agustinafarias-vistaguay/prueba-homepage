@@ -98,9 +98,43 @@ function toggleAlgoModal() {
     }
 }
 
+/**
+ * Toggles the visibility of the platform selection login modal with smooth backdrop transitions and disables body scroll.
+ * @returns {void}
+ */
+function toggleLoginModal() {
+    const modal = document.getElementById('login-modal');
+    if (!modal) return;
+
+    if (modal.classList.contains('hidden')) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        setTimeout(() => {
+            modal.style.opacity = '1';
+        }, 10);
+        document.body.style.overflow = 'hidden';
+
+        if (typeof window.pauseTestimonialCycling === 'function') {
+            window.pauseTestimonialCycling();
+        }
+    } else {
+        modal.style.opacity = '0';
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }, 300);
+        document.body.style.overflow = '';
+
+        if (typeof window.startTestimonialCycling === 'function') {
+            window.startTestimonialCycling();
+        }
+    }
+}
+
 window.toggleMobileMenu = toggleMobileMenu;
 window.toggleDownloadModal = toggleDownloadModal;
 window.toggleAlgoModal = toggleAlgoModal;
+window.toggleLoginModal = toggleLoginModal;
 
 document.addEventListener('DOMContentLoaded', () => {
     // Control dinámico de reproducción/pausa del video institucional según visibilidad
@@ -146,6 +180,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Cierre accesible de modales con la tecla Escape
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const algoModal = document.getElementById('algo-modal');
+        const downloadModal = document.getElementById('download-modal');
+        const loginModal = document.getElementById('login-modal');
+
+        if (algoModal && !algoModal.classList.contains('hidden')) {
+            toggleAlgoModal();
+        }
+        if (downloadModal && !downloadModal.classList.contains('hidden')) {
+            toggleDownloadModal();
+        }
+        if (loginModal && !loginModal.classList.contains('hidden')) {
+            toggleLoginModal();
+        }
+    }
+});
+
 window.copyEmailToClipboard = function (event, email) {
     event.preventDefault();
 
@@ -163,20 +216,5 @@ window.copyEmailToClipboard = function (event, email) {
         }
     }).catch(err => {
         console.error('Error al copiar el correo:', err);
-    });
-
-    // Cierre accesible de modales con la tecla Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            const algoModal = document.getElementById('algo-modal');
-            const downloadModal = document.getElementById('download-modal');
-
-            if (algoModal && !algoModal.classList.contains('hidden')) {
-                toggleAlgoModal();
-            }
-            if (downloadModal && !downloadModal.classList.contains('hidden')) {
-                toggleDownloadModal();
-            }
-        }
     });
 };

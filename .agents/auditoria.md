@@ -98,7 +98,7 @@
   * `devDependencies` incluye `tailwindcss: ^3.4.19`, pero el objeto `scripts` no define comandos de compilación.
   * No existen scripts para `npm run build:css` o `npm run dev:css`, dependiendo de la ejecución manual de comandos CLI largos.
 * **`css/inputs.css` vs `css/components.css`:**
-  * `components.css` define clases como `.btn-primary` y `.btn-outline` con valores hexadecimales estáticos (`#47C278`, `#39A864`, `#cbd5e1`), en lugar de utilizar las variables CSS del Design System o las directivas `@apply` de Tailwind.
+  * `components.css` define clases como `.btn-primary` y `.btn-outline` con valores hexadecimales estáticos (`#40a568`, `#39A864`, `#cbd5e1`), en lugar de utilizar las variables CSS del Design System o las directivas `@apply` de Tailwind.
 * **`css/output.css`:**
   * Tamaño actual: ~46.8 KB. Se encuentra adecuadamente purgado gracias al escaneo de `./*.html` y `./js/**/*.js`.
 
