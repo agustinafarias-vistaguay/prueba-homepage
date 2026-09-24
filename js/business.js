@@ -63,11 +63,9 @@
             // Actualiza estilos de los puntos de paginación móviles
             bizDots.forEach((dot, i) => {
                 if (i === nextIndex) {
-                    dot.classList.remove('w-1.5', 'bg-slate-300');
-                    dot.classList.add('w-6', 'bg-primary');
+                    dot.className = 'biz-dot block w-8 h-1.5 rounded-full bg-primary transition-colors duration-300';
                 } else {
-                    dot.classList.remove('w-6', 'bg-primary');
-                    dot.classList.add('w-1.5', 'bg-slate-300');
+                    dot.className = 'biz-dot block w-8 h-1.5 rounded-full bg-slate-200 transition-colors duration-300';
                 }
             });
 
