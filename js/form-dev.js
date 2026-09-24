@@ -13,17 +13,8 @@
     const N8N_WEBHOOK_PROD = 'https://n8n.soy-agus.com.ar/webhook/propuesta-algoritmo';
     const N8N_WEBHOOK_URL = isTestEnv ? N8N_WEBHOOK_TEST : N8N_WEBHOOK_PROD;
 
-    // 2. Repositorios de GitHub
-    const GITHUB_REPO_STAGING = 'agustinafarias-vistaguay/prueba-homepage';
-    const GITHUB_REPO_PROD = 'Vistaguay-resources/Homepage';
-    const GITHUB_REPO = isTestEnv ? GITHUB_REPO_STAGING : GITHUB_REPO_PROD;
-
-    // 3. Tokens de GitHub (Invertidos para evitar invalidación automática por Secret Scanning)
-    const REVERSED_TOKEN_TEST = 'bt6Tm1LOVXnsaVwgJX5pPH0EzomXOzlBzgzS_phg';
-    const REVERSED_TOKEN_PROD = 'b6d1t3GzDZMCYY6NMYXNC7rK9XWe4x1g9RWrL5KOj2IUh72vZm4Inl1uod7_9U3jphVyRWUo0AE3DIFC11_tap_buhtig';
-
-    const REVERSED_TOKEN = isTestEnv ? REVERSED_TOKEN_TEST : REVERSED_TOKEN_PROD;
-    const GITHUB_TOKEN = REVERSED_TOKEN.split('').reverse().join('');
+    // 2. URL del Proxy Seguro en Cloudflare Worker (Pega acá la URL de tu worker)
+    const BACKUP_WORKER_URL = 'https://jolly-sunset-7f99-vistaguay-backup.royal-leaf-89f9.workers.dev';
 
     async function fetchWithTimeout(resource, options = {}, timeoutMs = 5000) {
         const controller = new AbortController();
@@ -41,31 +32,27 @@
         }
     }
 
-    // Respaldo secundario: Guarda JSON directo en GitHub si n8n no responde
+    // Respaldo secundario: Envía el JSON a GitHub a través de Cloudflare Worker si n8n no responde
     async function saveBackupToGithub(data) {
         try {
-            const fileName = `lead_${Date.now()}.json`;
-            const path = `data/backups/${fileName}`;
-            const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`;
+            const payload = {
+                ...data,
+                isTestEnv: isTestEnv
+            };
 
-            const jsonString = JSON.stringify(data, null, 2);
-            const contentBase64 = btoa(unescape(encodeURIComponent(jsonString)));
-
-            const res = await fetchWithTimeout(url, {
-                method: 'PUT',
+            const res = await fetchWithTimeout(BACKUP_WORKER_URL, {
+                method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${GITHUB_TOKEN}`,
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
-                    message: `Backup automático por caída de n8n: ${fileName}`,
-                    content: contentBase64
-                })
+                body: JSON.stringify(payload)
             }, 5000);
 
-            return res.ok;
+            if (!res.ok) return false;
+            const resData = await res.json();
+            return resData.success === true;
         } catch (err) {
-            console.error('Fallo el guardado directo en GitHub:', err);
+            console.error('Fallo el guardado de respaldo vía Cloudflare Worker:', err);
             return false;
         }
     }
@@ -221,7 +208,7 @@
                 throw new Error('Webhook n8n devolvió error');
             }
         } catch (error) {
-            console.warn('n8n fuera de servicio o timeout. Ejecutando respaldo en GitHub...');
+            console.warn('n8n fuera de servicio o timeout. Ejecutando respaldo vía Cloudflare Worker...');
             isSuccess = await saveBackupToGithub(data);
         } finally {
             if (btn) {
