@@ -174,7 +174,22 @@
     document.addEventListener('DOMContentLoaded', () => {
         initTestimonials();
         renderTestimonials();
-        startTestimonialCycling();
+
+        const section = document.getElementById('testimonios');
+        if (section && 'IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startTestimonialCycling();
+                    } else {
+                        pauseTestimonialCycling();
+                    }
+                });
+            }, { threshold: 0.2 });
+            observer.observe(section);
+        } else {
+            startTestimonialCycling();
+        }
 
         const prevBtn = document.getElementById('prev-test-btn');
         const nextBtn = document.getElementById('next-test-btn');

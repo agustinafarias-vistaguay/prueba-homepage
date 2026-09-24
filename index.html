@@ -329,9 +329,9 @@
         </div>
     </section>
 
-    <section class="py-10 md:py-12 bg-slate-50" id="servicios">
+    <section class="py-10 md:py-12 bg-slate-50 scroll-mt-14 md:scroll-mt-16" id="servicios">
         <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
-            <div class="text-center mb-6">
+            <div class="text-center mb-6 reveal">
                 <h2 class="text-xl md:text-2xl font-extrabold text-on-surface mb-4 tracking-tight">
                     Tecnología de precisión y servicios para cada etapa del cultivo
                 </h2>
@@ -340,7 +340,7 @@
                 </p>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-2 mb-6">
+            <div class="flex flex-wrap justify-center gap-2 mb-6 reveal">
                 <button id="tab-btn-weed" class="tab-btn tab-btn-active" onclick="switchTab('weed')">Mapeo de
                     malezas</button>
                 <button id="tab-btn-plant" class="tab-btn tab-btn-inactive" onclick="switchTab('plant')">Conteo de
@@ -353,7 +353,8 @@
                     especiales</button>
             </div>
 
-            <div class="bg-white rounded-3xl border border-outline-variant/30 shadow-xl overflow-hidden lg:h-[480px]">
+            <div
+                class="bg-white rounded-3xl border border-outline-variant/30 shadow-xl overflow-hidden lg:h-[480px] reveal">
                 <div class="grid grid-cols-1 lg:grid-cols-2 opacity-100 transform translate-y-0 h-full"
                     id="solutions-content-card"></div>
             </div>
@@ -915,8 +916,9 @@
     <script src="js/form-dev.js"></script>
 
     <div id="algo-modal"
-        class="fixed inset-0 z-[100] hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 opacity-0"
+        class="fixed inset-0 z-[100] hidden bg-slate-950/70 backdrop-blur-sm items-center justify-center p-4 transition-opacity duration-300 opacity-0"
         onclick="if(event.target === this) toggleAlgoModal()">
+
         <div
             class="relative bg-white rounded-3xl shadow-2xl overflow-hidden max-w-2xl w-full max-h-[90vh] my-auto flex flex-col">
 
@@ -925,7 +927,7 @@
                     <h3 class="text-xl font-bold text-slate-900">Contanos sobre tu algoritmo</h3>
                 </div>
                 <button onclick="toggleAlgoModal()"
-                    class="w-8 h-8 rounded-full bg-slate-200/70 hover:bg-slate-300 flex items-center justify-center text-slate-700 transition-colors"
+                    class="w-8 h-8 rounded-full bg-slate-200/70 hover:bg-slate-300 flex items-center justify-center text-slate-700 transition-colors focus:outline-none"
                     aria-label="Cerrar modal">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -954,8 +956,9 @@
                             <label class="block text-xs font-bold text-slate-700 mb-1">WhatsApp / Teléfono *</label>
                             <input type="tel" id="phone-input" name="phone" required placeholder="Ej: +54 9 3467 635917"
                                 class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-primary transition-colors">
-                            <p id="phone-error" class="text-[11px] font-medium text-red-500 mt-1 hidden">Ingresá un
-                                número válido (solo dígitos y símbolos como +, -).</p>
+                            <p id="phone-error" class="text-[11px] font-medium text-red-500 mt-1 hidden">
+                                Ingresá un número válido (solo dígitos y símbolos como +, -).
+                            </p>
                         </div>
                     </div>
 
@@ -964,8 +967,9 @@
                             <label class="block text-xs font-bold text-slate-700 mb-1">Email de contacto *</label>
                             <input type="email" id="email-input" name="email" required placeholder="nombre@ejemplo.com"
                                 class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-primary transition-colors">
-                            <p id="email-error" class="text-[11px] font-medium text-red-500 mt-1 hidden">Ingresá un
-                                correo válido (debe contener @ y un dominio como .com).</p>
+                            <p id="email-error" class="text-[11px] font-medium text-red-500 mt-1 hidden">
+                                Ingresá un correo válido (debe contener @ y un dominio como .com).
+                            </p>
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-slate-700 mb-1">Precio sugerido o modelo
