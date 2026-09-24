@@ -103,19 +103,27 @@ window.toggleDownloadModal = toggleDownloadModal;
 window.toggleAlgoModal = toggleAlgoModal;
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Carga diferida del video institucional
+    // Control dinámico de reproducción/pausa del video institucional según visibilidad
     const videoIframe = document.getElementById('featured-video');
     if (videoIframe) {
-        const videoObserver = new IntersectionObserver((entries, obs) => {
+        const videoObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    if (videoIframe.dataset.src) {
-                        videoIframe.src = videoIframe.dataset.src;
+                    // Carga y reproduce el video cuando entra al campo de visión
+                    if (!videoIframe.src || videoIframe.src.endsWith('about:blank')) {
+                        if (videoIframe.dataset.src) {
+                            videoIframe.src = videoIframe.dataset.src;
+                        }
                     }
-                    obs.unobserve(entry.target);
+                } else {
+                    // Corta la descarga por red e interrumpe la reproducción al salir de vista
+                    if (videoIframe.src && !videoIframe.src.endsWith('about:blank')) {
+                        videoIframe.src = 'about:blank';
+                    }
                 }
             });
-        }, { threshold: 0.3 });
+        }, { threshold: 0.25 });
+
         videoObserver.observe(videoIframe);
     }
 
