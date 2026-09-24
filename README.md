@@ -4,6 +4,27 @@ Sitio web institucional de Vistaguay AgTech para conectar productores agrícolas
 
 ---
 
+## 🛡️ Arquitectura de Contingencia y Seguridad (Fallback System)
+
+### Contexto del Formulario
+Este flujo aplica al **Formulario de Propuesta para Desarrolladores de Algoritmos** (ubicado en la sección donde desarrolladores y partners postulan sus modelos de procesamiento agrícola para integrarse al ecosistema de Vistaguay).
+
+### Contexto de Infraestructura Actual
+Actualmente, la instancia principal de automatización (**n8n**) opera en un servidor local (*on-premise*). Dado que la disponibilidad de este servicio depende del estado activo y la conectividad de dicho servidor, la arquitectura del frontend (`js/form-dev.js`) implementa un **sistema de conmutación por error (fallback)** transparente con un tiempo de espera (*timeout*) de 5 segundos.
+
+### Flujo de Respaldo y Recuperación Automática
+
+1. **Envío Principal (n8n):** El formulario envía la propuesta directamente al webhook principal de n8n, el cual procesa los datos, actualiza la base de datos centralizada (Google Sheets) y envía notificaciones automáticas (ej. WhatsApp).
+2. **Conmutación por Error (Fallback):** Si la petición a n8n falla o no responde dentro del límite de 5 segundos, el frontend conmuta de forma transparente hacia el proxy serverless.
+3. **Cloudflare Worker (Proxy Serverless):** La solicitud es atajada por el Worker `vistaguay-backup`. Este procesa los datos y se autentica mediante **Fine-Grained Personal Access Tokens (PATs) cifrados** guardados en sus variables de entorno, evitando exponer credenciales en el navegador del cliente.
+   * **Administración y Acceso:** Este Worker está configurado y desplegado dentro de la cuenta institucional de Cloudflare asociada al correo `admin@vistaguay.com`.
+4. **Persistencia Temporal en GitHub (`data/backups/`):** El Worker genera un archivo con el formato `lead_[TIMESTAMP].json` dentro de la ruta `data/backups/`.
+   * **Importancia del `.gitkeep`:** Preserva la estructura del directorio `data/backups/` dentro del repositorio de Git. Esto garantiza que la API de GitHub encuentre la carpeta de destino lista para recibir registros sin lanzar errores de ruta vacía.
+5. **Procesamiento y Limpieza Automática vía Cron:** Cuando la máquina/servidor local de n8n se restablece, un flujo programado (**Cron Job**) dentro de n8n escanea periódicamente el directorio `data/backups/` de GitHub. Lee los JSON acumulados, re-inserta las propuestas pendientes en Google Sheets, dispara las notificaciones correspondientes y **elimina automáticamente los archivos JSON procesados** de GitHub para evitar la acumulación de archivos innecesarios en el repositorio.
+
+### Roadmap Técnico (Migración a AWS)
+Este mecanismo de contingencia (Frontend -> Cloudflare Worker -> GitHub -> Cleanup Cron) fue diseñado como una red de seguridad temporal debido a la naturaleza local del backend. Cuando la infraestructura de n8n sea migrada a una instancia en la nube de alta disponibilidad (AWS EC2 / ECS / Serverless), este flujo conservará únicamente su rol como sistema de respaldo secundario ante caídas críticas.
+
 ## Estructura de Archivos y Módulos
 
 ### Módulos JavaScript (`js/`)
@@ -11,7 +32,7 @@ Módulos Vanilla JS encapsulados bajo el patrón IIFE (Immediately Invoked Funct
 
 | Archivo | Descripción | Tipo / Estado |
 | :--- | :--- | :--- |
-| `js/main.js` | Menú mobile, modales (`#download-modal`, `#algo-modal`), control global de pausas de animaciones, copia al portapapeles y lazy loading de iframe. | Global (`window`) |
+| `js/main.js` | Menú mobile, modales (`#download-modal`, `#algo-modal`), control global de pausas de animaciones, videos, copia al portapapeles y lazy loading de iframe. | Global (`window`) |
 | `js/solutions.js` | Selector de solapas de servicios, sub-tabs de malezas y apertura de modales. | Encapsulado (IIFE + `window`) |
 | `js/testimonials.js` | Carrusel 3D de testimonios en bucle continuo optimizado con `IntersectionObserver`. | Encapsulado (IIFE + `window`) |
 | `js/business.js` | Carrusel de modelo de negocio, sincronización de tarjetas y paginación por cápsulas fijas. | Encapsulado (IIFE) |
