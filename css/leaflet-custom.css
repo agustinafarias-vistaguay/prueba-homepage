@@ -30,3 +30,24 @@
 .leaflet-tooltip-top:before {
     border-top-color: #1a1c1c !important;
 }
+
+@keyframes pulseDotGlow {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(71, 194, 120, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 8px rgba(71, 194, 120, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(71, 194, 120, 0);
+    }
+}
+
+.dot-blinking {
+    animation: pulseDotGlow 2s infinite;
+}

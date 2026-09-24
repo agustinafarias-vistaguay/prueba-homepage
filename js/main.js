@@ -164,4 +164,19 @@ window.copyEmailToClipboard = function (event, email) {
     }).catch(err => {
         console.error('Error al copiar el correo:', err);
     });
+
+    // Cierre accesible de modales con la tecla Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const algoModal = document.getElementById('algo-modal');
+            const downloadModal = document.getElementById('download-modal');
+
+            if (algoModal && !algoModal.classList.contains('hidden')) {
+                toggleAlgoModal();
+            }
+            if (downloadModal && !downloadModal.classList.contains('hidden')) {
+                toggleDownloadModal();
+            }
+        }
+    });
 };

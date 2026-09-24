@@ -5,14 +5,15 @@
  * @description Controls the curtain/swipe preview animation on the solutions showcard.
  */
 
-let comboInterval = null;
-
-/**
- * Opens the combo demo modal layer on the solutions showcase card.
- * @returns {void}
- */
-
 (function () {
+
+    let comboInterval = null;
+
+    /**
+     * Opens the combo demo modal layer on the solutions showcase card.
+     * @returns {void}
+     */
+
     function openComboDemoModal() {
         const cardContainer = document.getElementById('solutions-content-card');
         if (!cardContainer) return;

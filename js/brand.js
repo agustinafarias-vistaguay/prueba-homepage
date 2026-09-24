@@ -88,9 +88,6 @@
             iconCheck.classList.add('hidden');
             iconCheck.style.transform = 'scale(0)';
         }
-
-        if (shimmer) void shimmer.offsetWidth;
-        if (landing) void landing.offsetWidth;
     }
 
     function runBrandAnimation() {

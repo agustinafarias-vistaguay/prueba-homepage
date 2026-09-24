@@ -283,3 +283,50 @@
 2. **Completar Metadatos SEO y Estructura Semántica:** Envolver el cuerpo principal en la etiqueta `<main>`, optimizar el `<title>` y configurar etiquetas OpenGraph / Twitter Cards.
 3. **Alinear Offsets de Navegación (`scroll-mt`):** Añadir `scroll-mt-14 md:scroll-mt-16` a las secciones `#business`, `#expert` y `#devs`.
 4. **Sincronizar Documentación:** Actualizar `README.md` y `.agents/rules.md` para reflejar la arquitectura refactorizada.
+
+
+---
+
+## 6. Checklist de Tareas Pendientes (Roadmap de Refactorización)
+
+### 🟢 Tareas Completadas
+- [x] **Seguridad Crítica:** Eliminación de PATs de GitHub expuestos en client-side (`js/form-dev.js`).
+- [x] **Proxy Serverless:** Implementación y despliegue del Cloudflare Worker (`vistaguay-backup`) para respaldo seguro.
+- [x] **Rendimiento de Red:** Pausa y carga diferida dinámica del video de YouTube en `js/main.js` vía `IntersectionObserver`.
+- [x] **Documentación Técnica:** Actualización del `README.md` con flujo de contingencia, rol del `.gitkeep`, cuenta de administración de Cloudflare y roadmap hacia AWS.
+
+---
+
+### 🛠️ Fase 1: Enlaces, Pipeline y Correcciones Directas (Inmediato)
+- [x] **Links de Producción en Footer:** Modificar los enlaces de Términos y Privacidad en `index.html` (cambiar `web.dev.vistaguay.com` por `web.vistaguay.com`).
+- [x] **Optimización de Carga (`<head>`):** Agregar el atributo `defer` a `<script src="js/icons.js">` en `index.html` para evitar bloquear el renderizado inicial.
+- [x] **Automatización de Build (`package.json`):** Agregar los scripts `build:css` y `dev:css` con la CLI de Tailwind v3.
+- [x] **Controladores de Testimonios (`js/testimonials.js`):** Exponer `window.pauseTestimonialCycling` y `window.startTestimonialCycling` al objeto global `window` para permitir la pausa cuando los modales están abiertos.
+
+---
+
+### 🎨 Fase 2: Consistencia Gráfica y Diseño UI/UX
+- [ ] **Estandarización Estética de la Plataforma (Sección Servicios vs. Business):**
+  - **Diagnóstico:** Actualmente la sección `business` utiliza una representación de la plataforma minimalista, vectorial y animada, mientras que la sección `services` utiliza una captura de pantalla realista. Esta mezcla rompe la cohesión del lenguaje de diseño del sitio.
+  - **Acción:** Diseñar y generar las versiones de pantalla minimalistas y animadas para la sección `services` (`#services`), unificando el estilo gráfico ilustrativo en toda la landing page.
+- [x] **Alineación de Navegación (`scroll-mt`):** Añadir `scroll-mt-14 md:scroll-mt-16` a las secciones navegables (`#business`, `#expert`, `#devs`) para que la barra de navegación fija no pise los títulos al scrollear.
+- [x] **Limpieza de Microtextos:** Revisar y ajustar tamaños inferiores a `13px` (ej. `text-[10px]` en `js/testimonials.js`) según las guías del Design System.
+
+---
+
+### 💻 Fase 3: Calidad de Código y Mantenibilidad JavaScript
+- [x] **Limpieza de Clases CSS Contradictorias:** Eliminar declaraciones simultáneas `hidden flex` en los modales `#algo-modal` y `#download-modal` en `index.html`.
+- [x] **Inyección de Estilos en JS (`js/pilots-map.js`):** Mover la animación `@keyframes pulseDotGlow` del archivo JS a `css/leaflet-custom.css`.
+- [x] **Encapsulamiento de Scope (`js/weed-combo.js`):** Mover la variable `let comboInterval` al interior de la función autoejecutable (IIFE) para evitar fugas al scope global.
+- [x] **Optimización de Reflows GPU:** Reemplazar llamadas que fuerzan el recálculo sincrónico de layout (`offsetHeight`, `offsetWidth`) en `business.js` y `brand.js` por `requestAnimationFrame`.
+
+---
+
+### ♿ Fase 4: SEO, Accesibilidad (WCAG) y Semántica HTML
+- [x] **Estructura HTML5 Semántica:** Envolver el contenido principal de la página (entre `<nav>` y `<footer>`) dentro de la etiqueta `<main>`.
+- [x] **SEO & Metadatos Social Media:**
+  - Optimizar el `<title>` para incluir palabras clave representativas.
+  - Agregar `<meta name="description">`, etiquetas OpenGraph (`og:title`, `og:image`, `og:description`) y Twitter Cards.
+- [x] **Accesibilidad en Modales:**
+  - Agregar atributos ARIA (`role="dialog"`, `aria-modal="true"`, `aria-labelledby`) a los modales.
+  - Implementar el cierre con la tecla `Escape` y trampa de foco (*Focus Trap*) mientras el modal está abierto.

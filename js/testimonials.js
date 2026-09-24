@@ -171,6 +171,9 @@
     window.nextTestimonial = nextTestimonial;
     window.prevTestimonial = prevTestimonial;
 
+    window.pauseTestimonialCycling = pauseTestimonialCycling;
+    window.startTestimonialCycling = startTestimonialCycling;
+
     document.addEventListener('DOMContentLoaded', () => {
         initTestimonials();
         renderTestimonials();

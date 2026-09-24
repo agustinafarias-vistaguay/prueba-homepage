@@ -4,26 +4,36 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Vistaguay</title>
+
+    <title>Vistaguay AgTech | Plataforma de Analítica Agrícola y Drones de Precisión</title>
+    <meta name="description"
+        content="Conectamos a productores agrícolas y asesores con pilotos de drones y algoritmos de precisión para conteo de plantas, malezas y aplicaciones dirigidas.">
     <link rel="icon" type="image/png" href="images/favicon.svg">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Vistaguay AgTech | Ecosistema de Drones para el Agro">
+    <meta property="og:description"
+        content="Monitoreo inteligente de cultivos, prescripciones sectorizadas y red nacional de pilotos certificados.">
+    <meta property="og:image" content="https://vistaguay.com/images/fondo1.jpg">
+    <meta property="og:url" content="https://vistaguay.com">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://server.arcgisonline.com">
-    <link rel="stylesheet" href="css/output.css">
-    <script src="js/icons.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
+    <link rel="stylesheet" href="css/output.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/leaflet-custom.css">
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="js/icons.js" defer></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
 </head>
 
 <body class="bg-background text-on-surface font-body-md selection:bg-primary/20 selection:text-primary">
@@ -96,727 +106,760 @@
         </div>
     </nav>
 
-    <section
-        class="relative min-h-[92vh] lg:min-h-screen flex items-center overflow-visible pt-10 md:pt-12 pb-20 mt-14 md:mt-15">
-        <div class="absolute inset-0 z-0">
-            <img class="w-full h-full object-cover object-right md:object-left" alt="Fondo" src="images/fondo1.jpg">
-            <div class="absolute inset-0 bg-black/80 z-10"></div>
-        </div>
-        <div class="relative z-20 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
-            <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
-                <div class="w-full lg:max-w-md xl:max-w-xl space-y-6 text-left">
+    <main>
 
-                    <div class="flex flex-col items-start max-w-3xl space-y-4">
-                        <h1
-                            class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
-                            Somos especialistas <br>
-                            <span class="text-primary">en drones para el agro</span>
-                        </h1>
+        <section
+            class="relative min-h-[92vh] lg:min-h-screen flex items-center overflow-visible pt-10 md:pt-12 pb-20 mt-14 md:mt-15">
+            <div class="absolute inset-0 z-0">
+                <img class="w-full h-full object-cover object-right md:object-left" alt="Fondo" src="images/fondo1.jpg">
+                <div class="absolute inset-0 bg-black/80 z-10"></div>
+            </div>
+            <div class="relative z-20 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+                    <div class="w-full lg:max-w-md xl:max-w-xl space-y-6 text-left">
 
-                        <p class="text-slate-300 text-sm md:text-base leading-relaxed pt-1">
-                            Conectamos a <strong class="text-white font-bold">productores, asesores y empresas</strong>
-                            con <strong class="text-white font-bold">pilotos de drone</strong> y <strong
-                                class="text-white font-bold">proveedores de analítica y servicios</strong> <span
-                                class="text-primary font-extrabold whitespace-nowrap">en un solo lugar.</span>
+                        <div class="flex flex-col items-start max-w-3xl space-y-4">
+                            <h1
+                                class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
+                                Somos especialistas <br>
+                                <span class="text-primary">en drones para el agro</span>
+                            </h1>
+
+                            <p class="text-slate-300 text-sm md:text-base leading-relaxed pt-1">
+                                Conectamos a <strong class="text-white font-bold">productores, asesores y
+                                    empresas</strong>
+                                con <strong class="text-white font-bold">pilotos de drone</strong> y <strong
+                                    class="text-white font-bold">proveedores de analítica y servicios</strong> <span
+                                    class="text-primary font-extrabold whitespace-nowrap">en un solo lugar.</span>
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                            <a href="#servicios" class="btn-primary">
+                                Conocer la plataforma
+                            </a>
+                            <a href="#expert" class="btn-secondary-hero">
+                                Soy piloto de drone
+                            </a>
+                        </div>
+                    </div>
+                    <div class="w-full lg:flex-1 flex justify-center items-center">
+                        <div id="ecosystem-animation-mount"
+                            class="w-full mt-8 sm:mt-12 lg:mt-0 flex justify-center items-center"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pt-16 pb-12 md:pt-20 md:pb-16 bg-slate-50">
+            <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center reveal">
+                    <div
+                        class="py-3 px-4 sm:py-3.5 sm:px-5 bg-surface rounded-2xl shadow-lg border border-outline-variant/20">
+                        <p class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-primary mb-1 tracking-tighter">
+                            <span class="counter" data-target="80000" data-prefix="+" data-suffix="">0</span>
                         </p>
+                        <p class="text-sm font-bold text-slate-600">Hectáreas procesadas</p>
                     </div>
 
-                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
-                        <a href="#servicios" class="btn-primary">
-                            Conocer la plataforma
-                        </a>
-                        <a href="#expert" class="btn-secondary-hero">
-                            Soy piloto de drone
-                        </a>
-                    </div>
-                </div>
-                <div class="w-full lg:flex-1 flex justify-center items-center">
-                    <div id="ecosystem-animation-mount"
-                        class="w-full mt-8 sm:mt-12 lg:mt-0 flex justify-center items-center"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="pt-16 pb-12 md:pt-20 md:pb-16 bg-slate-50">
-        <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center reveal">
-                <div
-                    class="py-3 px-4 sm:py-3.5 sm:px-5 bg-surface rounded-2xl shadow-lg border border-outline-variant/20">
-                    <p class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-primary mb-1 tracking-tighter">
-                        <span class="counter" data-target="80000" data-prefix="+" data-suffix="">0</span>
-                    </p>
-                    <p class="text-sm font-bold text-slate-600">Hectáreas procesadas</p>
-                </div>
-
-                <div
-                    class="py-3 px-4 sm:py-3.5 sm:px-5 bg-surface rounded-2xl shadow-lg border border-outline-variant/20">
-                    <p class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-primary mb-1 tracking-tighter">
-                        <span class="counter" data-target="800" data-prefix="+" data-suffix="">0</span>
-                    </p>
-                    <p class="text-sm font-bold text-slate-600">Pilotos certificados</p>
-                </div>
-
-                <div
-                    class="py-3 px-4 sm:py-3.5 sm:px-5 bg-surface rounded-2xl shadow-lg border border-outline-variant/20">
-                    <p class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-primary mb-1 tracking-tighter">
-                        <span class="counter" data-target="350" data-prefix="+" data-suffix="">0</span>
-                    </p>
-                    <p class="text-sm font-bold text-slate-600">Productores alcanzados</p>
-                </div>
-            </div>
-
-            <div class="mt-12 pt-8 md:mt-16 md:pt-10 border-t border-outline-variant/30 text-center reveal">
-                <p class="text-sm text-on-surface-variant mb-4 tracking-widest font-bold opacity-85">
-                    Confían en nosotros
-                </p>
-                <div class="relative overflow-hidden w-full">
-                    <div class="flex items-center gap-4 sm:gap-6 animate-scroll whitespace-nowrap py-4">
-                        <img src="images/alianzas/logo-bayer.png" onError="this.src='alianzas/logo-bayer.png'"
-                            alt="Bayer"
-                            class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
-                        <img src="images/alianzas/logo-syngenta.png" onError="this.src='alianzas/logo-syngenta.png'"
-                            alt="Syngenta"
-                            class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
-                        <img src="images/alianzas/logo-corteva.png" onError="this.src='alianzas/logo-corteva.png'"
-                            alt="Corteva"
-                            class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
-                        <img src="images/alianzas/logo-basf.png" onError="this.src='alianzas/logo-basf.png'" alt="BASF"
-                            class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
-                        <img src="images/alianzas/logo-xarvio.png" onError="this.src='alianzas/logo-xarvio.png'"
-                            alt="Xarvio"
-                            class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
-                        <img src="images/alianzas/logo-advanta.png" onError="this.src='alianzas/logo-advanta.png'"
-                            alt="Advanta"
-                            class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
-                        <img src="images/alianzas/logo-nidera.png" onError="this.src='alianzas/logo-nidera.png'"
-                            alt="Nidera"
-                            class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
-                        <img src="images/alianzas/logo-dji-agriculture.png"
-                            onError="this.src='alianzas/logo-dji-agriculture.png'" alt="DJI Agriculture"
-                            class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
-                        <img src="images/alianzas/logo-xag.png" onError="this.src='alianzas/logo-xag.png'" alt="XAG"
-                            class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
-                        <img src="images/alianzas/logo-gaman.png" onError="this.src='alianzas/logo-gaman.png'"
-                            alt="Grupo Gaman"
-                            class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
-                        <img src="images/alianzas/logo-auravant.png" onError="this.src='alianzas/logo-auravant.png'"
-                            alt="Auravant"
-                            class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
-                    </div>
-                </div>
-                <div
-                    class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none">
-                </div>
-                <div
-                    class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-10 md:py-14 bg-slate-50" id="soluciones">
-        <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
-
-            <div class="text-center mb-8 reveal">
-                <h2 class="text-xl md:text-2xl font-extrabold text-on-surface mb-3 tracking-tight">
-                    Una solución de punta a punta
-                </h2>
-                <p class="text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
-                    Orquestamos cada etapa del proceso: desde la solicitud inicial y la ejecución del servicio en campo,
-                    hasta la liquidación a las partes y la entrega del resultado final.
-                </p>
-            </div>
-
-            <div
-                class="bg-surface rounded-3xl shadow-lg p-6 md:p-10 border border-outline-variant/20 reveal space-y-20">
-                <div id="process-container" class="relative pt-2 pb-2">
                     <div
-                        class="hidden lg:block absolute top-[60px] left-[8.33%] right-[8.33%] h-1 bg-slate-200 z-0 pointer-events-none">
-                        <div id="process-progress-line"
-                            class="h-full bg-primary w-0 transition-all duration-700 ease-in-out"></div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
-                        <div class="text-center flex flex-col items-center">
-                            <div class="text-base sm:text-lg font-extrabold text-primary mb-1">01</div>
-                            <div id="process-icon-1"
-                                class="process-icon-circle relative z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-emerald-50 border border-primary/20 flex items-center justify-center mb-2.5 transition-all duration-300">
-                                <span data-icon="cart" data-icon-class="w-5 h-5 text-primary"></span>
-                            </div>
-                            <h3 class="text-sm font-bold text-slate-900 mb-1 leading-snug">Pedido de servicio</h3>
-                            <p class="text-sm text-slate-600 leading-normal max-w-[140px]">Solicitud y delimitación del
-                                lote.</p>
-                        </div>
-
-                        <div class="text-center flex flex-col items-center">
-                            <div class="text-base sm:text-lg font-extrabold text-primary mb-1">02</div>
-                            <div id="process-icon-2"
-                                class="process-icon-circle relative z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-emerald-50 border border-primary/20 flex items-center justify-center mb-2.5 transition-all duration-300">
-                                <span data-icon="drone" data-icon-class="w-5 h-5 text-primary"></span>
-                            </div>
-                            <h3 class="text-sm font-bold text-slate-900 mb-1 leading-snug">Vuelo o aplicación</h3>
-                            <p class="text-sm text-slate-600 leading-normal max-w-[140px]">Captura de datos o trabajo en
-                                campo.</p>
-                        </div>
-
-                        <div class="text-center flex flex-col items-center">
-                            <div class="text-base sm:text-lg font-extrabold text-primary mb-1">03</div>
-                            <div id="process-icon-3"
-                                class="process-icon-circle relative z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-emerald-50 border border-primary/20 flex items-center justify-center mb-2.5 transition-all duration-300">
-                                <span data-icon="cloud_upload" data-icon-class="w-5 h-5 text-primary"></span>
-                            </div>
-                            <h3 class="text-sm font-bold text-slate-900 mb-1 leading-snug">Carga de datos</h3>
-                            <p class="text-sm text-slate-600 leading-normal max-w-[140px]">Subida de imágenes o recetas.
-                            </p>
-                        </div>
-
-                        <div class="text-center flex flex-col items-center">
-                            <div class="text-base sm:text-lg font-extrabold text-primary mb-1">04</div>
-                            <div id="process-icon-4"
-                                class="process-icon-circle relative z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-emerald-50 border border-primary/20 flex items-center justify-center mb-2.5 transition-all duration-300">
-                                <span data-icon="cpu" data-icon-class="w-5 h-5 text-primary"></span>
-                            </div>
-                            <h3 class="text-sm font-bold text-slate-900 mb-1 leading-snug">Procesamiento</h3>
-                            <p class="text-sm text-slate-600 leading-normal max-w-[140px]">Algoritmos y reportes listos.
-                            </p>
-                        </div>
-
-                        <div class="text-center flex flex-col items-center">
-                            <div class="text-base sm:text-lg font-extrabold text-primary mb-1">05</div>
-                            <div id="process-icon-5"
-                                class="process-icon-circle relative z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-emerald-50 border border-primary/20 flex items-center justify-center mb-2.5 transition-all duration-300">
-                                <span data-icon="payment" data-icon-class="w-5 h-5 text-primary"></span>
-                            </div>
-                            <h3 class="text-sm font-bold text-slate-900 mb-1 leading-snug">Liquidación a partes</h3>
-                            <p class="text-sm text-slate-600 leading-normal max-w-[140px]">Pago seguro a pilotos y
-                                desarrolladores.
-                            </p>
-                        </div>
-
-                        <div class="text-center flex flex-col items-center">
-                            <div class="text-base sm:text-lg font-extrabold text-primary mb-1">06</div>
-                            <div id="process-icon-6"
-                                class="process-icon-circle relative z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-emerald-50 border border-primary/20 flex items-center justify-center mb-2.5 transition-all duration-300">
-                                <span id="process-symbol-6" data-icon="check_circle" data-icon-class="w-5 h-5"
-                                    class="text-primary transition-colors duration-300 flex items-center justify-center"></span>
-                            </div>
-                            <h3 id="process-title-6"
-                                class="text-sm font-bold text-slate-900 mb-1 leading-snug transition-colors">Acción en
-                                el lote</h3>
-                            <p id="process-desc-6"
-                                class="text-sm text-slate-600 leading-normal max-w-[140px] transition-colors">Decisiones
-                                e impacto en el campo.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full max-w-2xl mx-auto text-center">
-                    <p class="text-sm font-semibold text-slate-700 mb-4">
-                        Un recorrido visual por nuestra plataforma y ecosistema en acción.
-                    </p>
-                    <div
-                        class="relative w-full aspect-video rounded-xl overflow-hidden border border-slate-200 bg-slate-900 shadow-md">
-                        <iframe id="featured-video" class="w-full h-full"
-                            data-src="https://www.youtube.com/embed/TP_SOfIKqRk?autoplay=1&mute=1&cc_load_policy=1&hl=es&cc_lang_pref=es&rel=0&modestbranding=1&iv_load_policy=3&loop=1&playlist=TP_SOfIKqRk"
-                            title="Descubrí cómo Vistaguay transforma la gestión agrícola" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-10 md:py-12 bg-slate-50 scroll-mt-14 md:scroll-mt-16" id="servicios">
-        <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
-            <div class="text-center mb-6 reveal">
-                <h2 class="text-xl md:text-2xl font-extrabold text-on-surface mb-4 tracking-tight">
-                    Tecnología de precisión y servicios para cada etapa del cultivo
-                </h2>
-                <p class="text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
-                    Soluciones de analítica, aplicación y formación profesional, en un solo lugar.
-                </p>
-            </div>
-
-            <div class="flex flex-wrap justify-center gap-2 mb-6 reveal">
-                <button id="tab-btn-weed" class="tab-btn tab-btn-active" onclick="switchTab('weed')">Mapeo de
-                    malezas</button>
-                <button id="tab-btn-plant" class="tab-btn tab-btn-inactive" onclick="switchTab('plant')">Conteo de
-                    plantas</button>
-                <button id="tab-btn-drone" class="tab-btn tab-btn-inactive" onclick="switchTab('drone')">Aplicaciones
-                    con dron</button>
-                <button id="tab-btn-training" class="tab-btn tab-btn-inactive"
-                    onclick="switchTab('training')">Capacitación para pilotos</button>
-                <button id="tab-btn-special" class="tab-btn tab-btn-inactive" onclick="switchTab('special')">Proyectos
-                    especiales</button>
-            </div>
-
-            <div
-                class="bg-white rounded-3xl border border-outline-variant/30 shadow-xl overflow-hidden lg:h-[480px] reveal">
-                <div class="grid grid-cols-1 lg:grid-cols-2 opacity-100 transform translate-y-0 h-full"
-                    id="solutions-content-card"></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-10 md:py-12 bg-slate-50" id="business">
-        <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
-            <div
-                class="bg-surface rounded-3xl shadow-lg overflow-hidden reveal border border-outline-variant/20 p-5 md:p-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 lg:gap-x-12 lg:gap-y-3 items-center">
-
-                    <div class="order-1 lg:order-2 lg:row-start-1 lg:col-start-2 flex flex-col justify-end lg:self-end">
-                        <h2 class="text-xl md:text-2xl font-extrabold text-on-surface tracking-tight mb-1 sm:mb-2">
-                            Vistaguay <span class="text-primary font-bold">Business</span>
-                        </h2>
-                        <p class="text-sm text-slate-600 mb-3 lg:mb-1 leading-relaxed">
-                            Potenciamos la gestión de grandes empresas y agroinsumos con una interfaz adaptada a tus
-                            operaciones.
+                        class="py-3 px-4 sm:py-3.5 sm:px-5 bg-surface rounded-2xl shadow-lg border border-outline-variant/20">
+                        <p class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-primary mb-1 tracking-tighter">
+                            <span class="counter" data-target="800" data-prefix="+" data-suffix="">0</span>
                         </p>
-                    </div>
-
-                    <div class="w-full h-full min-h-[280px] sm:min-h-[340px] lg:min-h-[440px] flex items-center justify-center p-3 sm:p-4 my-2 sm:my-4 lg:my-0 relative overflow-hidden order-2 lg:order-1 lg:row-span-2 lg:col-start-1"
-                        id="biz-image-container">
-
-                        <div id="biz-img-0"
-                            class="biz-img absolute inset-0 w-full h-full flex items-center justify-center p-3 sm:p-4 transition-all duration-700 ease-in-out translate-x-0 opacity-100 z-10">
-                            <div
-                                class="relative w-full max-w-[310px] sm:max-w-[440px] lg:max-w-[480px] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-white">
-                                <img id="anim-base-ui" src="images/business/solicitud/base-ui.svg" alt="Base Dashboard"
-                                    class="w-full h-auto block blur-md opacity-0 transition-all duration-700">
-                                <img id="anim-btn-solicitud" src="images/business/solicitud/btn-solicitud.svg"
-                                    alt="Botón Solicitud"
-                                    class="absolute top-[3.5%] left-[35%] w-[23%] h-auto transition-all duration-700 opacity-0 blur-md z-2">
-                                <div id="anim-backdrop"
-                                    class="absolute inset-0 bg-slate-900/45 backdrop-blur-[2px] opacity-0 transition-opacity duration-500 z-10">
-                                </div>
-                                <div id="anim-modal-form"
-                                    class="absolute inset-0 flex items-center justify-center p-4 opacity-0 scale-90 transition-all duration-400 pointer-events-none z-20">
-                                    <div class="relative w-[70%]">
-                                        <img src="images/business/solicitud/modal-form-base.svg" alt="Formulario Base"
-                                            class="w-full h-auto drop-shadow-2xl">
-                                        <img id="anim-card-selected" src="images/business/solicitud/card-selected.svg"
-                                            alt="Opción Seleccionada"
-                                            class="absolute top-[38.8%] left-[4.5%] w-[29%] h-auto transition-all duration-300 opacity-0 scale-95">
-                                        <img id="anim-btn-solicitar"
-                                            src="images/business/solicitud/btn-solicitar-vuelo.svg"
-                                            alt="Botón Solicitar"
-                                            class="absolute bottom-[6%] right-[5%] w-[33%] h-auto transition-transform duration-500">
-                                    </div>
-                                </div>
-                                <div id="anim-modal-success"
-                                    class="absolute inset-0 flex items-center justify-center p-4 opacity-0 scale-90 transition-all duration-400 pointer-events-none z-20">
-                                    <div class="relative w-[70%] flex items-center justify-center">
-                                        <img src="images/business/solicitud/modal-success-base.svg"
-                                            alt="Solicitud Enviada" class="w-full h-auto drop-shadow-2xl">
-                                        <img id="anim-icon-check" src="images/business/solicitud/icon-check.svg"
-                                            alt="Check"
-                                            class="absolute top-[32%] w-[18%] h-auto transition-transform duration-300 scale-0">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="biz-img-1"
-                            class="biz-img absolute inset-0 w-full h-full flex items-center justify-center p-3 sm:p-4 transition-all duration-700 ease-in-out translate-x-full opacity-0 z-0">
-                            <div
-                                class="relative w-full max-w-[310px] sm:max-w-[440px] lg:max-w-[480px] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-white">
-                                <div id="dash-scene-1"
-                                    class="relative w-full h-auto transition-opacity duration-700 z-10 bg-white">
-                                    <img id="dash-base-ui" src="images/business/dashboard/base-ui.svg" alt="Base Light"
-                                        class="w-full h-auto block transition-all duration-700 z-0">
-                                    <div id="dash-menu-wrapper-1"
-                                        class="absolute top-[10%] right-[3%] w-[32%] h-auto opacity-0 scale-75 origin-top-right transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform-gpu z-30 rounded-lg overflow-hidden">
-                                        <img src="images/business/dashboard/dash-menu-light.svg" alt="Menú"
-                                            class="w-full h-auto block">
-                                        <img id="dash-btn-panel" src="images/business/dashboard/btn-panel-control.svg"
-                                            alt="Ver Panel"
-                                            class="absolute top-[10%] left-[6%] w-[88%] h-auto transition-transform duration-300 transform-gpu z-10">
-                                    </div>
-                                </div>
-                                <div id="dash-scene-2"
-                                    class="absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-700 z-20 bg-[#161b22] rounded-2xl overflow-hidden">
-                                    <img src="images/business/dashboard/dash-bg-dark.svg" alt="Fondo Dark"
-                                        class="absolute inset-0 w-full h-full object-cover z-0">
-                                    <div id="dash-backdrop-2"
-                                        class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm opacity-0 transition-all duration-700 ease-in-out z-20 pointer-events-none rounded-2xl">
-                                    </div>
-                                    <img id="dash-chart-1" src="images/business/dashboard/dash-chart-1.svg"
-                                        alt="Chart 1"
-                                        class="absolute top-[14%] left-[4%] w-[92%] h-auto transition-all duration-700 ease-in-out transform-gpu z-10">
-                                    <img id="dash-chart-2" src="images/business/dashboard/dash-chart-2.svg"
-                                        alt="Chart 2"
-                                        class="absolute top-[46.5%] left-[4%] w-[92%] h-auto transition-all duration-700 ease-in-out transform-gpu z-10">
-                                    <img id="dash-chart-3" src="images/business/dashboard/dash-chart-3.svg"
-                                        alt="Chart 3"
-                                        class="absolute top-[68%] left-[4%] w-[92%] h-auto transition-all duration-700 ease-in-out transform-gpu z-10">
-                                    <div id="dash-menu-wrapper-2"
-                                        class="absolute top-[10%] right-[3%] w-[32%] h-auto opacity-0 scale-75 origin-top-right transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform-gpu z-40 rounded-lg overflow-hidden">
-                                        <img src="images/business/dashboard/dash-menu-dark.svg" alt="Dropdown"
-                                            class="w-full h-auto block">
-                                        <img id="dash-btn-descargar" src="images/business/dashboard/btn-descargar.svg"
-                                            alt="Descargar"
-                                            class="absolute top-[10%] left-[6%] w-[88%] h-auto transition-transform duration-300 transform-gpu z-10">
-                                        <div id="dash-menu-overlay"
-                                            class="absolute inset-0 bg-[#161b22] flex items-center justify-center opacity-0 transition-opacity duration-500 pointer-events-none z-20">
-                                            <img id="dash-icon-check" src="images/business/dashboard/icon-check.svg"
-                                                alt="Check"
-                                                class="w-7 h-7 hidden scale-0 transition-transform duration-500">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="biz-img-2"
-                            class="biz-img absolute inset-0 w-full h-full flex items-center justify-center p-3 sm:p-4 transition-all duration-700 ease-in-out translate-x-full opacity-0 z-0">
-                            <div
-                                class="relative h-[230px] sm:h-[320px] lg:h-[360px] aspect-[9/19] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-white">
-                                <img id="brand-base-ui" src="images/business/marca/mobile-base.svg" alt="Base Mobile"
-                                    class="w-full h-full object-cover block blur-md opacity-0 transition-all duration-700 z-0">
-                                <div id="brand-backdrop"
-                                    class="absolute inset-0 bg-slate-950/40 opacity-0 transition-opacity duration-700 z-10 pointer-events-none">
-                                </div>
-                                <div id="brand-card-wrapper"
-                                    class="absolute top-[57%] left-[4.5%] w-[75%] h-auto rounded-lg overflow-hidden z-20 blur-md opacity-0 transition-all duration-700 shadow-[0_2px_6px_rgba(0,0,0,0.12)]">
-                                    <img src="images/business/marca/card-banner.svg" alt="Banner Asegura tu campo"
-                                        class="w-full h-auto">
-                                    <div id="brand-shimmer"
-                                        class="absolute inset-0 w-[150%] h-full bg-gradient-to-r from-transparent via-white/80 to-transparent skew-x-[-25deg] -translate-x-[150%] z-30">
-                                    </div>
-                                </div>
-                                <img id="brand-btn-ver" src="images/business/marca/btn-ver-mas.svg" alt="Ver más"
-                                    class="absolute top-[73%] left-[7%] w-[42%] h-auto z-30 blur-md opacity-0 transition-all duration-700">
-                                <div id="brand-bottomsheet"
-                                    class="absolute bottom-0 left-0 w-full h-[85%] bg-white rounded-t-2xl overflow-hidden z-40 translate-y-full transition-all duration-700 ease-out flex flex-col">
-                                    <div id="brand-pill"
-                                        class="w-8 h-1 bg-slate-300 rounded-full mx-auto mt-2 mb-1 shrink-0 z-10 transition-opacity duration-300">
-                                    </div>
-                                    <div class="relative w-full h-full overflow-hidden">
-                                        <img id="brand-landing" src="images/business/marca/landing-content.svg"
-                                            alt="Landing" class="w-full h-auto block transition-all duration-500">
-                                        <img id="brand-btn-cta" src="images/business/marca/btn-cta-landing.svg"
-                                            alt="CTA"
-                                            class="absolute bottom-[15%] left-[18%] w-[64%] h-auto opacity-0 scale-75 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform-gpu z-50">
-                                        <div id="brand-loader"
-                                            class="absolute inset-0 bg-white flex flex-col items-center justify-center p-4 opacity-0 transition-opacity duration-300 pointer-events-none z-60">
-                                            <div id="brand-spinner"
-                                                class="w-6 h-6 border-2 border-emerald-600 border-t-transparent rounded-full animate-spin mb-2">
-                                            </div>
-                                            <span id="brand-loader-text"
-                                                class="text-[10px] font-bold text-slate-800 text-center leading-tight transition-opacity duration-300">Redirigiendo...</span>
-                                            <img id="brand-icon-check" src="images/business/marca/icon-check.svg"
-                                                alt="Check"
-                                                class="w-9 h-9 hidden scale-0 transition-transform duration-300">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        <p class="text-sm font-bold text-slate-600">Pilotos certificados</p>
                     </div>
 
                     <div
-                        class="order-3 lg:order-2 lg:row-start-2 lg:col-start-2 w-full overflow-hidden lg:self-start lg:pt-1">
-                        <div class="flex lg:flex-col overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] gap-4 lg:gap-0 lg:space-y-3.5 pb-1 lg:pb-0"
-                            id="biz-cards-container">
+                        class="py-3 px-4 sm:py-3.5 sm:px-5 bg-surface rounded-2xl shadow-lg border border-outline-variant/20">
+                        <p class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-primary mb-1 tracking-tighter">
+                            <span class="counter" data-target="350" data-prefix="+" data-suffix="">0</span>
+                        </p>
+                        <p class="text-sm font-bold text-slate-600">Productores alcanzados</p>
+                    </div>
+                </div>
 
-                            <div data-index="0"
-                                class="biz-card w-full min-w-full lg:min-w-0 snap-center group cursor-pointer p-4 rounded-2xl border transition-all duration-500 bg-primary text-white border-primary shadow-md">
-                                <div class="flex items-start gap-3.5">
-                                    <div
-                                        class="biz-icon-box w-9 h-9 rounded-xl bg-white/20 text-white flex items-center justify-center shrink-0 transition-colors mt-0.5">
-                                        <span data-icon="bolt" data-icon-class="w-5 h-5"></span>
-                                    </div>
-                                    <div>
-                                        <h4 class="biz-title text-sm font-bold leading-tight mb-1">Solicitudes rápidas y
-                                            asignación delegada</h4>
-                                        <p class="biz-desc text-sm opacity-90 leading-relaxed">Cargás el lote desde una
-                                            interfaz simplificada y nosotros coordinamos al piloto certificado ideal.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="mt-12 pt-8 md:mt-16 md:pt-10 border-t border-outline-variant/30 text-center reveal">
+                    <p class="text-sm text-on-surface-variant mb-4 tracking-widest font-bold opacity-85">
+                        Confían en nosotros
+                    </p>
+                    <div class="relative overflow-hidden w-full">
+                        <div class="flex items-center gap-4 sm:gap-6 animate-scroll whitespace-nowrap py-4">
+                            <img src="images/alianzas/logo-bayer.png" onError="this.src='alianzas/logo-bayer.png'"
+                                alt="Bayer"
+                                class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
+                            <img src="images/alianzas/logo-syngenta.png" onError="this.src='alianzas/logo-syngenta.png'"
+                                alt="Syngenta"
+                                class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
+                            <img src="images/alianzas/logo-corteva.png" onError="this.src='alianzas/logo-corteva.png'"
+                                alt="Corteva"
+                                class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
+                            <img src="images/alianzas/logo-basf.png" onError="this.src='alianzas/logo-basf.png'"
+                                alt="BASF"
+                                class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
+                            <img src="images/alianzas/logo-xarvio.png" onError="this.src='alianzas/logo-xarvio.png'"
+                                alt="Xarvio"
+                                class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
+                            <img src="images/alianzas/logo-advanta.png" onError="this.src='alianzas/logo-advanta.png'"
+                                alt="Advanta"
+                                class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
+                            <img src="images/alianzas/logo-nidera.png" onError="this.src='alianzas/logo-nidera.png'"
+                                alt="Nidera"
+                                class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
+                            <img src="images/alianzas/logo-dji-agriculture.png"
+                                onError="this.src='alianzas/logo-dji-agriculture.png'" alt="DJI Agriculture"
+                                class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
+                            <img src="images/alianzas/logo-xag.png" onError="this.src='alianzas/logo-xag.png'" alt="XAG"
+                                class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
+                            <img src="images/alianzas/logo-gaman.png" onError="this.src='alianzas/logo-gaman.png'"
+                                alt="Grupo Gaman"
+                                class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
+                            <img src="images/alianzas/logo-auravant.png" onError="this.src='alianzas/logo-auravant.png'"
+                                alt="Auravant"
+                                class="h-8 sm:h-9 md:h-10 max-h-10 w-auto object-contain brightness-95 contrast-125 opacity-80 hover:opacity-100 transition-all duration-300 mx-3 sm:mx-4" />
+                        </div>
+                    </div>
+                    <div
+                        class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none">
+                    </div>
+                    <div
+                        class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                            <div data-index="1"
-                                class="biz-card w-full min-w-full lg:min-w-0 snap-center group cursor-pointer p-4 rounded-2xl border transition-all duration-500 bg-white border-slate-200/80 text-slate-800 hover:border-primary/50">
-                                <div class="flex items-start gap-3.5">
-                                    <div
-                                        class="biz-icon-box w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 transition-colors mt-0.5">
-                                        <span data-icon="analytics" data-icon-class="w-5 h-5"></span>
-                                    </div>
-                                    <div>
-                                        <h4 class="biz-title text-sm font-bold text-slate-900 leading-tight mb-1">
-                                            Tableros de control y reportes customizados</h4>
-                                        <p class="biz-desc text-sm text-slate-600 leading-relaxed">Consolidación de
-                                            hectáreas voladas, métricas clave y reportes exportables con tu marca.</p>
-                                    </div>
-                                </div>
-                            </div>
+        <section class="py-10 md:py-14 bg-slate-50" id="soluciones">
+            <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
 
-                            <div data-index="2"
-                                class="biz-card w-full min-w-full lg:min-w-0 snap-center group cursor-pointer p-4 rounded-2xl border transition-all duration-500 bg-white border-slate-200/80 text-slate-800 hover:border-primary/50">
-                                <div class="flex items-start gap-3.5">
-                                    <div
-                                        class="biz-icon-box w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 transition-colors mt-0.5">
-                                        <span data-icon="campaign" data-icon-class="w-5 h-5"></span>
-                                    </div>
-                                    <div>
-                                        <h4 class="biz-title text-sm font-bold text-slate-900 leading-tight mb-1">
-                                            Presencia de marca en plataforma</h4>
-                                        <p class="biz-desc text-sm text-slate-600 leading-relaxed">Visibilidad directa
-                                            hacia productores y asesores mediante banners publicitarios estratégicos.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="text-center mb-8 reveal">
+                    <h2 class="text-xl md:text-2xl font-extrabold text-on-surface mb-3 tracking-tight">
+                        Una solución de punta a punta
+                    </h2>
+                    <p class="text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
+                        Orquestamos cada etapa del proceso: desde la solicitud inicial y la ejecución del servicio en
+                        campo,
+                        hasta la liquidación a las partes y la entrega del resultado final.
+                    </p>
+                </div>
 
+                <div
+                    class="bg-surface rounded-3xl shadow-lg p-6 md:p-10 border border-outline-variant/20 reveal space-y-20">
+                    <div id="process-container" class="relative pt-2 pb-2">
+                        <div
+                            class="hidden lg:block absolute top-[60px] left-[8.33%] right-[8.33%] h-1 bg-slate-200 z-0 pointer-events-none">
+                            <div id="process-progress-line"
+                                class="h-full bg-primary w-0 transition-all duration-700 ease-in-out"></div>
                         </div>
 
-                        <div id="biz-pagination" class="flex lg:hidden justify-center items-center gap-1 mt-2">
-                            <button aria-label="Ir a sección 1" class="p-2.5 focus:outline-none"
-                                onclick="scrollToBizCard(0)">
-                                <span
-                                    class="biz-dot block w-8 h-1.5 rounded-full bg-primary transition-colors duration-300"></span>
-                            </button>
-                            <button aria-label="Ir a sección 2" class="p-2.5 focus:outline-none"
-                                onclick="scrollToBizCard(1)">
-                                <span
-                                    class="biz-dot block w-8 h-1.5 rounded-full bg-slate-200 transition-colors duration-300"></span>
-                            </button>
-                            <button aria-label="Ir a sección 3" class="p-2.5 focus:outline-none"
-                                onclick="scrollToBizCard(2)">
-                                <span
-                                    class="biz-dot block w-8 h-1.5 rounded-full bg-slate-200 transition-colors duration-300"></span>
-                            </button>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
+                            <div class="text-center flex flex-col items-center">
+                                <div class="text-base sm:text-lg font-extrabold text-primary mb-1">01</div>
+                                <div id="process-icon-1"
+                                    class="process-icon-circle relative z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-emerald-50 border border-primary/20 flex items-center justify-center mb-2.5 transition-all duration-300">
+                                    <span data-icon="cart" data-icon-class="w-5 h-5 text-primary"></span>
+                                </div>
+                                <h3 class="text-sm font-bold text-slate-900 mb-1 leading-snug">Pedido de servicio</h3>
+                                <p class="text-sm text-slate-600 leading-normal max-w-[140px]">Solicitud y delimitación
+                                    del
+                                    lote.</p>
+                            </div>
+
+                            <div class="text-center flex flex-col items-center">
+                                <div class="text-base sm:text-lg font-extrabold text-primary mb-1">02</div>
+                                <div id="process-icon-2"
+                                    class="process-icon-circle relative z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-emerald-50 border border-primary/20 flex items-center justify-center mb-2.5 transition-all duration-300">
+                                    <span data-icon="drone" data-icon-class="w-5 h-5 text-primary"></span>
+                                </div>
+                                <h3 class="text-sm font-bold text-slate-900 mb-1 leading-snug">Vuelo o aplicación</h3>
+                                <p class="text-sm text-slate-600 leading-normal max-w-[140px]">Captura de datos o
+                                    trabajo en
+                                    campo.</p>
+                            </div>
+
+                            <div class="text-center flex flex-col items-center">
+                                <div class="text-base sm:text-lg font-extrabold text-primary mb-1">03</div>
+                                <div id="process-icon-3"
+                                    class="process-icon-circle relative z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-emerald-50 border border-primary/20 flex items-center justify-center mb-2.5 transition-all duration-300">
+                                    <span data-icon="cloud_upload" data-icon-class="w-5 h-5 text-primary"></span>
+                                </div>
+                                <h3 class="text-sm font-bold text-slate-900 mb-1 leading-snug">Carga de datos</h3>
+                                <p class="text-sm text-slate-600 leading-normal max-w-[140px]">Subida de imágenes o
+                                    recetas.
+                                </p>
+                            </div>
+
+                            <div class="text-center flex flex-col items-center">
+                                <div class="text-base sm:text-lg font-extrabold text-primary mb-1">04</div>
+                                <div id="process-icon-4"
+                                    class="process-icon-circle relative z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-emerald-50 border border-primary/20 flex items-center justify-center mb-2.5 transition-all duration-300">
+                                    <span data-icon="cpu" data-icon-class="w-5 h-5 text-primary"></span>
+                                </div>
+                                <h3 class="text-sm font-bold text-slate-900 mb-1 leading-snug">Procesamiento</h3>
+                                <p class="text-sm text-slate-600 leading-normal max-w-[140px]">Algoritmos y reportes
+                                    listos.
+                                </p>
+                            </div>
+
+                            <div class="text-center flex flex-col items-center">
+                                <div class="text-base sm:text-lg font-extrabold text-primary mb-1">05</div>
+                                <div id="process-icon-5"
+                                    class="process-icon-circle relative z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-emerald-50 border border-primary/20 flex items-center justify-center mb-2.5 transition-all duration-300">
+                                    <span data-icon="payment" data-icon-class="w-5 h-5 text-primary"></span>
+                                </div>
+                                <h3 class="text-sm font-bold text-slate-900 mb-1 leading-snug">Liquidación a partes</h3>
+                                <p class="text-sm text-slate-600 leading-normal max-w-[140px]">Pago seguro a pilotos y
+                                    desarrolladores.
+                                </p>
+                            </div>
+
+                            <div class="text-center flex flex-col items-center">
+                                <div class="text-base sm:text-lg font-extrabold text-primary mb-1">06</div>
+                                <div id="process-icon-6"
+                                    class="process-icon-circle relative z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-emerald-50 border border-primary/20 flex items-center justify-center mb-2.5 transition-all duration-300">
+                                    <span id="process-symbol-6" data-icon="check_circle" data-icon-class="w-5 h-5"
+                                        class="text-primary transition-colors duration-300 flex items-center justify-center"></span>
+                                </div>
+                                <h3 id="process-title-6"
+                                    class="text-sm font-bold text-slate-900 mb-1 leading-snug transition-colors">Acción
+                                    en
+                                    el lote</h3>
+                                <p id="process-desc-6"
+                                    class="text-sm text-slate-600 leading-normal max-w-[140px] transition-colors">
+                                    Decisiones
+                                    e impacto en el campo.</p>
+                            </div>
                         </div>
                     </div>
 
+                    <div class="w-full max-w-2xl mx-auto text-center">
+                        <p class="text-sm font-semibold text-slate-700 mb-4">
+                            Un recorrido visual por nuestra plataforma y ecosistema en acción.
+                        </p>
+                        <div
+                            class="relative w-full aspect-video rounded-xl overflow-hidden border border-slate-200 bg-slate-900 shadow-md">
+                            <iframe id="featured-video" class="w-full h-full"
+                                data-src="https://www.youtube.com/embed/TP_SOfIKqRk?autoplay=1&mute=1&cc_load_policy=1&hl=es&cc_lang_pref=es&rel=0&modestbranding=1&iv_load_policy=3&loop=1&playlist=TP_SOfIKqRk"
+                                title="Descubrí cómo Vistaguay transforma la gestión agrícola" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="py-10 md:py-12 bg-slate-50" id="expert">
-        <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
-            <div
-                class="bg-surface rounded-3xl shadow-lg overflow-hidden reveal border border-outline-variant/20 p-5 md:p-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
-                    <div class="flex flex-col justify-between space-y-6">
-                        <div>
-                            <h2 class="text-xl md:text-2xl font-extrabold text-on-surface tracking-tight mb-4">
-                                Convertite en un piloto <span class="text-primary font-bold">Expert</span>
+        <section id="servicios" class="py-10 md:py-12 bg-slate-50">
+            <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+                <div class="text-center mb-6 reveal">
+                    <h2 class="text-xl md:text-2xl font-extrabold text-on-surface mb-4 tracking-tight">
+                        Tecnología de precisión y servicios para cada etapa del cultivo
+                    </h2>
+                    <p class="text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
+                        Soluciones de analítica, aplicación y formación profesional, en un solo lugar.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-2 mb-6 reveal">
+                    <button id="tab-btn-weed" class="tab-btn tab-btn-active" onclick="switchTab('weed')">Mapeo de
+                        malezas</button>
+                    <button id="tab-btn-plant" class="tab-btn tab-btn-inactive" onclick="switchTab('plant')">Conteo de
+                        plantas</button>
+                    <button id="tab-btn-drone" class="tab-btn tab-btn-inactive"
+                        onclick="switchTab('drone')">Aplicaciones
+                        con dron</button>
+                    <button id="tab-btn-training" class="tab-btn tab-btn-inactive"
+                        onclick="switchTab('training')">Capacitación para pilotos</button>
+                    <button id="tab-btn-special" class="tab-btn tab-btn-inactive"
+                        onclick="switchTab('special')">Proyectos
+                        especiales</button>
+                </div>
+
+                <div
+                    class="bg-white rounded-3xl border border-outline-variant/30 shadow-xl overflow-hidden lg:h-[480px] reveal">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 opacity-100 transform translate-y-0 h-full"
+                        id="solutions-content-card"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="business" class="py-16 sm:py-24 bg-slate-50">
+            <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+                <div
+                    class="bg-surface rounded-3xl shadow-lg overflow-hidden reveal border border-outline-variant/20 p-5 md:p-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 lg:gap-x-12 lg:gap-y-3 items-center">
+
+                        <div
+                            class="order-1 lg:order-2 lg:row-start-1 lg:col-start-2 flex flex-col justify-end lg:self-end">
+                            <h2 class="text-xl md:text-2xl font-extrabold text-on-surface tracking-tight mb-1 sm:mb-2">
+                                Vistaguay <span class="text-primary font-bold">Business</span>
                             </h2>
-                            <div class="space-y-5 pt-1">
-                                <div class="flex items-start gap-3.5 group cursor-default">
-                                    <div
-                                        class="w-8 h-8 rounded-full bg-primary/10 text-primary font-black text-sm flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-primary group-hover:text-white shadow-sm mt-0.5">
-                                        01
+                            <p class="text-sm text-slate-600 mb-3 lg:mb-1 leading-relaxed">
+                                Potenciamos la gestión de grandes empresas y agroinsumos con una interfaz adaptada a tus
+                                operaciones.
+                            </p>
+                        </div>
+
+                        <div class="w-full h-full min-h-[280px] sm:min-h-[340px] lg:min-h-[440px] flex items-center justify-center p-3 sm:p-4 my-2 sm:my-4 lg:my-0 relative overflow-hidden order-2 lg:order-1 lg:row-span-2 lg:col-start-1"
+                            id="biz-image-container">
+
+                            <div id="biz-img-0"
+                                class="biz-img absolute inset-0 w-full h-full flex items-center justify-center p-3 sm:p-4 transition-all duration-700 ease-in-out translate-x-0 opacity-100 z-10">
+                                <div
+                                    class="relative w-full max-w-[310px] sm:max-w-[440px] lg:max-w-[480px] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-white">
+                                    <img id="anim-base-ui" src="images/business/solicitud/base-ui.svg"
+                                        alt="Base Dashboard"
+                                        class="w-full h-auto block blur-md opacity-0 transition-all duration-700">
+                                    <img id="anim-btn-solicitud" src="images/business/solicitud/btn-solicitud.svg"
+                                        alt="Botón Solicitud"
+                                        class="absolute top-[3.5%] left-[35%] w-[23%] h-auto transition-all duration-700 opacity-0 blur-md z-2">
+                                    <div id="anim-backdrop"
+                                        class="absolute inset-0 bg-slate-900/45 backdrop-blur-[2px] opacity-0 transition-opacity duration-500 z-10">
                                     </div>
-                                    <div class="pt-1">
-                                        <p class="text-sm text-slate-800 font-medium leading-relaxed">
-                                            Recibí <strong>solicitudes de vuelo cercanas a tu ubicación</strong>
-                                            directamente a tu celular.
-                                        </p>
+                                    <div id="anim-modal-form"
+                                        class="absolute inset-0 flex items-center justify-center p-4 opacity-0 scale-90 transition-all duration-400 pointer-events-none z-20">
+                                        <div class="relative w-[70%]">
+                                            <img src="images/business/solicitud/modal-form-base.svg"
+                                                alt="Formulario Base" class="w-full h-auto drop-shadow-2xl">
+                                            <img id="anim-card-selected"
+                                                src="images/business/solicitud/card-selected.svg"
+                                                alt="Opción Seleccionada"
+                                                class="absolute top-[38.8%] left-[4.5%] w-[29%] h-auto transition-all duration-300 opacity-0 scale-95">
+                                            <img id="anim-btn-solicitar"
+                                                src="images/business/solicitud/btn-solicitar-vuelo.svg"
+                                                alt="Botón Solicitar"
+                                                class="absolute bottom-[6%] right-[5%] w-[33%] h-auto transition-transform duration-500">
+                                        </div>
+                                    </div>
+                                    <div id="anim-modal-success"
+                                        class="absolute inset-0 flex items-center justify-center p-4 opacity-0 scale-90 transition-all duration-400 pointer-events-none z-20">
+                                        <div class="relative w-[70%] flex items-center justify-center">
+                                            <img src="images/business/solicitud/modal-success-base.svg"
+                                                alt="Solicitud Enviada" class="w-full h-auto drop-shadow-2xl">
+                                            <img id="anim-icon-check" src="images/business/solicitud/icon-check.svg"
+                                                alt="Check"
+                                                class="absolute top-[32%] w-[18%] h-auto transition-transform duration-300 scale-0">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="flex items-start gap-3.5 group cursor-default">
-                                    <div
-                                        class="w-8 h-8 rounded-full bg-primary/10 text-primary font-black text-sm flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-primary group-hover:text-white shadow-sm mt-0.5">
-                                        02
+                            </div>
+
+                            <div id="biz-img-1"
+                                class="biz-img absolute inset-0 w-full h-full flex items-center justify-center p-3 sm:p-4 transition-all duration-700 ease-in-out translate-x-full opacity-0 z-0">
+                                <div
+                                    class="relative w-full max-w-[310px] sm:max-w-[440px] lg:max-w-[480px] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-white">
+                                    <div id="dash-scene-1"
+                                        class="relative w-full h-auto transition-opacity duration-700 z-10 bg-white">
+                                        <img id="dash-base-ui" src="images/business/dashboard/base-ui.svg"
+                                            alt="Base Light"
+                                            class="w-full h-auto block transition-all duration-700 z-0">
+                                        <div id="dash-menu-wrapper-1"
+                                            class="absolute top-[10%] right-[3%] w-[32%] h-auto opacity-0 scale-75 origin-top-right transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform-gpu z-30 rounded-lg overflow-hidden">
+                                            <img src="images/business/dashboard/dash-menu-light.svg" alt="Menú"
+                                                class="w-full h-auto block">
+                                            <img id="dash-btn-panel"
+                                                src="images/business/dashboard/btn-panel-control.svg" alt="Ver Panel"
+                                                class="absolute top-[10%] left-[6%] w-[88%] h-auto transition-transform duration-300 transform-gpu z-10">
+                                        </div>
                                     </div>
-                                    <div class="pt-1">
-                                        <p class="text-sm text-slate-800 font-medium leading-relaxed">
-                                            Accede a soporte activo, protocolos de vuelo interactivos y algoritmos para
-                                            <strong>garantizar la calidad de tus servicios</strong>.
-                                        </p>
+                                    <div id="dash-scene-2"
+                                        class="absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-700 z-20 bg-[#161b22] rounded-2xl overflow-hidden">
+                                        <img src="images/business/dashboard/dash-bg-dark.svg" alt="Fondo Dark"
+                                            class="absolute inset-0 w-full h-full object-cover z-0">
+                                        <div id="dash-backdrop-2"
+                                            class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm opacity-0 transition-all duration-700 ease-in-out z-20 pointer-events-none rounded-2xl">
+                                        </div>
+                                        <img id="dash-chart-1" src="images/business/dashboard/dash-chart-1.svg"
+                                            alt="Chart 1"
+                                            class="absolute top-[14%] left-[4%] w-[92%] h-auto transition-all duration-700 ease-in-out transform-gpu z-10">
+                                        <img id="dash-chart-2" src="images/business/dashboard/dash-chart-2.svg"
+                                            alt="Chart 2"
+                                            class="absolute top-[46.5%] left-[4%] w-[92%] h-auto transition-all duration-700 ease-in-out transform-gpu z-10">
+                                        <img id="dash-chart-3" src="images/business/dashboard/dash-chart-3.svg"
+                                            alt="Chart 3"
+                                            class="absolute top-[68%] left-[4%] w-[92%] h-auto transition-all duration-700 ease-in-out transform-gpu z-10">
+                                        <div id="dash-menu-wrapper-2"
+                                            class="absolute top-[10%] right-[3%] w-[32%] h-auto opacity-0 scale-75 origin-top-right transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform-gpu z-40 rounded-lg overflow-hidden">
+                                            <img src="images/business/dashboard/dash-menu-dark.svg" alt="Dropdown"
+                                                class="w-full h-auto block">
+                                            <img id="dash-btn-descargar"
+                                                src="images/business/dashboard/btn-descargar.svg" alt="Descargar"
+                                                class="absolute top-[10%] left-[6%] w-[88%] h-auto transition-transform duration-300 transform-gpu z-10">
+                                            <div id="dash-menu-overlay"
+                                                class="absolute inset-0 bg-[#161b22] flex items-center justify-center opacity-0 transition-opacity duration-500 pointer-events-none z-20">
+                                                <img id="dash-icon-check" src="images/business/dashboard/icon-check.svg"
+                                                    alt="Check"
+                                                    class="w-7 h-7 hidden scale-0 transition-transform duration-500">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="flex items-start gap-3.5 group cursor-default">
-                                    <div
-                                        class="w-8 h-8 rounded-full bg-primary/10 text-primary font-black text-sm flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-primary group-hover:text-white shadow-sm mt-0.5">
-                                        03
+                            </div>
+
+                            <div id="biz-img-2"
+                                class="biz-img absolute inset-0 w-full h-full flex items-center justify-center p-3 sm:p-4 transition-all duration-700 ease-in-out translate-x-full opacity-0 z-0">
+                                <div
+                                    class="relative h-[230px] sm:h-[320px] lg:h-[360px] aspect-[9/19] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-white">
+                                    <img id="brand-base-ui" src="images/business/marca/mobile-base.svg"
+                                        alt="Base Mobile"
+                                        class="w-full h-full object-cover block blur-md opacity-0 transition-all duration-700 z-0">
+                                    <div id="brand-backdrop"
+                                        class="absolute inset-0 bg-slate-950/40 opacity-0 transition-opacity duration-700 z-10 pointer-events-none">
                                     </div>
-                                    <div class="pt-1">
-                                        <p class="text-sm text-slate-800 font-medium leading-relaxed">
-                                            Gestionamos tu facturación y <strong>cobro de forma segura</strong> al
-                                            completar el servicio.
-                                        </p>
+                                    <div id="brand-card-wrapper"
+                                        class="absolute top-[57%] left-[4.5%] w-[75%] h-auto rounded-lg overflow-hidden z-20 blur-md opacity-0 transition-all duration-700 shadow-[0_2px_6px_rgba(0,0,0,0.12)]">
+                                        <img src="images/business/marca/card-banner.svg" alt="Banner Asegura tu campo"
+                                            class="w-full h-auto">
+                                        <div id="brand-shimmer"
+                                            class="absolute inset-0 w-[150%] h-full bg-gradient-to-r from-transparent via-white/80 to-transparent skew-x-[-25deg] -translate-x-[150%] z-30">
+                                        </div>
+                                    </div>
+                                    <img id="brand-btn-ver" src="images/business/marca/btn-ver-mas.svg" alt="Ver más"
+                                        class="absolute top-[73%] left-[7%] w-[42%] h-auto z-30 blur-md opacity-0 transition-all duration-700">
+                                    <div id="brand-bottomsheet"
+                                        class="absolute bottom-0 left-0 w-full h-[85%] bg-white rounded-t-2xl overflow-hidden z-40 translate-y-full transition-all duration-700 ease-out flex flex-col">
+                                        <div id="brand-pill"
+                                            class="w-8 h-1 bg-slate-300 rounded-full mx-auto mt-2 mb-1 shrink-0 z-10 transition-opacity duration-300">
+                                        </div>
+                                        <div class="relative w-full h-full overflow-hidden">
+                                            <img id="brand-landing" src="images/business/marca/landing-content.svg"
+                                                alt="Landing" class="w-full h-auto block transition-all duration-500">
+                                            <img id="brand-btn-cta" src="images/business/marca/btn-cta-landing.svg"
+                                                alt="CTA"
+                                                class="absolute bottom-[15%] left-[18%] w-[64%] h-auto opacity-0 scale-75 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform-gpu z-50">
+                                            <div id="brand-loader"
+                                                class="absolute inset-0 bg-white flex flex-col items-center justify-center p-4 opacity-0 transition-opacity duration-300 pointer-events-none z-60">
+                                                <div id="brand-spinner"
+                                                    class="w-6 h-6 border-2 border-emerald-600 border-t-transparent rounded-full animate-spin mb-2">
+                                                </div>
+                                                <span id="brand-loader-text"
+                                                    class="text-[10px] font-bold text-slate-800 text-center leading-tight transition-opacity duration-300">Redirigiendo...</span>
+                                                <img id="brand-icon-check" src="images/business/marca/icon-check.svg"
+                                                    alt="Check"
+                                                    class="w-9 h-9 hidden scale-0 transition-transform duration-300">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="flex items-start gap-3.5 group cursor-default">
-                                    <div
-                                        class="w-8 h-8 rounded-full bg-primary/10 text-primary font-black text-sm flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-primary group-hover:text-white shadow-sm mt-0.5">
-                                        04
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="order-3 lg:order-2 lg:row-start-2 lg:col-start-2 w-full overflow-hidden lg:self-start lg:pt-1">
+                            <div class="flex lg:flex-col overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] gap-4 lg:gap-0 lg:space-y-3.5 pb-1 lg:pb-0"
+                                id="biz-cards-container">
+
+                                <div data-index="0"
+                                    class="biz-card w-full min-w-full lg:min-w-0 snap-center group cursor-pointer p-4 rounded-2xl border transition-all duration-500 bg-primary text-white border-primary shadow-md">
+                                    <div class="flex items-start gap-3.5">
+                                        <div
+                                            class="biz-icon-box w-9 h-9 rounded-xl bg-white/20 text-white flex items-center justify-center shrink-0 transition-colors mt-0.5">
+                                            <span data-icon="bolt" data-icon-class="w-5 h-5"></span>
+                                        </div>
+                                        <div>
+                                            <h4 class="biz-title text-sm font-bold leading-tight mb-1">Solicitudes
+                                                rápidas y
+                                                asignación delegada</h4>
+                                            <p class="biz-desc text-sm opacity-90 leading-relaxed">Cargás el lote desde
+                                                una
+                                                interfaz simplificada y nosotros coordinamos al piloto certificado
+                                                ideal.
+                                            </p>
+                                        </div>
                                     </div>
+                                </div>
+
+                                <div data-index="1"
+                                    class="biz-card w-full min-w-full lg:min-w-0 snap-center group cursor-pointer p-4 rounded-2xl border transition-all duration-500 bg-white border-slate-200/80 text-slate-800 hover:border-primary/50">
+                                    <div class="flex items-start gap-3.5">
+                                        <div
+                                            class="biz-icon-box w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 transition-colors mt-0.5">
+                                            <span data-icon="analytics" data-icon-class="w-5 h-5"></span>
+                                        </div>
+                                        <div>
+                                            <h4 class="biz-title text-sm font-bold text-slate-900 leading-tight mb-1">
+                                                Tableros de control y reportes customizados</h4>
+                                            <p class="biz-desc text-sm text-slate-600 leading-relaxed">Consolidación de
+                                                hectáreas voladas, métricas clave y reportes exportables con tu marca.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div data-index="2"
+                                    class="biz-card w-full min-w-full lg:min-w-0 snap-center group cursor-pointer p-4 rounded-2xl border transition-all duration-500 bg-white border-slate-200/80 text-slate-800 hover:border-primary/50">
+                                    <div class="flex items-start gap-3.5">
+                                        <div
+                                            class="biz-icon-box w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 transition-colors mt-0.5">
+                                            <span data-icon="campaign" data-icon-class="w-5 h-5"></span>
+                                        </div>
+                                        <div>
+                                            <h4 class="biz-title text-sm font-bold text-slate-900 leading-tight mb-1">
+                                                Presencia de marca en plataforma</h4>
+                                            <p class="biz-desc text-sm text-slate-600 leading-relaxed">Visibilidad
+                                                directa
+                                                hacia productores y asesores mediante banners publicitarios
+                                                estratégicos.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="biz-pagination" class="flex lg:hidden justify-center items-center gap-1 mt-2">
+                                <button aria-label="Ir a sección 1" class="p-2.5 focus:outline-none"
+                                    onclick="scrollToBizCard(0)">
+                                    <span
+                                        class="biz-dot block w-8 h-1.5 rounded-full bg-primary transition-colors duration-300"></span>
+                                </button>
+                                <button aria-label="Ir a sección 2" class="p-2.5 focus:outline-none"
+                                    onclick="scrollToBizCard(1)">
+                                    <span
+                                        class="biz-dot block w-8 h-1.5 rounded-full bg-slate-200 transition-colors duration-300"></span>
+                                </button>
+                                <button aria-label="Ir a sección 3" class="p-2.5 focus:outline-none"
+                                    onclick="scrollToBizCard(2)">
+                                    <span
+                                        class="biz-dot block w-8 h-1.5 rounded-full bg-slate-200 transition-colors duration-300"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="expert" class="py-10 md:py-12 bg-slate-50">
+            <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+                <div
+                    class="bg-surface rounded-3xl shadow-lg overflow-hidden reveal border border-outline-variant/20 p-5 md:p-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+                        <div class="flex flex-col justify-between space-y-6">
+                            <div>
+                                <h2 class="text-xl md:text-2xl font-extrabold text-on-surface tracking-tight mb-4">
+                                    Convertite en un piloto <span class="text-primary font-bold">Expert</span>
+                                </h2>
+                                <div class="space-y-5 pt-1">
+                                    <div class="flex items-start gap-3.5 group cursor-default">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-primary/10 text-primary font-black text-sm flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-primary group-hover:text-white shadow-sm mt-0.5">
+                                            01
+                                        </div>
+                                        <div class="pt-1">
+                                            <p class="text-sm text-slate-800 font-medium leading-relaxed">
+                                                Recibí <strong>solicitudes de vuelo cercanas a tu ubicación</strong>
+                                                directamente a tu celular.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3.5 group cursor-default">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-primary/10 text-primary font-black text-sm flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-primary group-hover:text-white shadow-sm mt-0.5">
+                                            02
+                                        </div>
+                                        <div class="pt-1">
+                                            <p class="text-sm text-slate-800 font-medium leading-relaxed">
+                                                Accede a soporte activo, protocolos de vuelo interactivos y algoritmos
+                                                para
+                                                <strong>garantizar la calidad de tus servicios</strong>.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3.5 group cursor-default">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-primary/10 text-primary font-black text-sm flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-primary group-hover:text-white shadow-sm mt-0.5">
+                                            03
+                                        </div>
+                                        <div class="pt-1">
+                                            <p class="text-sm text-slate-800 font-medium leading-relaxed">
+                                                Gestionamos tu facturación y <strong>cobro de forma segura</strong> al
+                                                completar el servicio.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3.5 group cursor-default">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-primary/10 text-primary font-black text-sm flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-primary group-hover:text-white shadow-sm mt-0.5">
+                                            04
+                                        </div>
+                                        <div>
+                                            <h4 class="text-sm font-bold text-slate-800 leading-tight mb-1">Participás
+                                                del
+                                                Programa de Beneficios Vistaguay</h4>
+                                            <p class="text-sm text-slate-700 leading-relaxed">Donde contaras con los
+                                                siguientes beneficios:</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
+                                <div class="benefit-pill !rounded-xl !items-start !p-3.5 !gap-3">
+                                    <span data-icon="shield"
+                                        data-icon-class="w-5 h-5 text-primary shrink-0 mt-0.5"></span>
                                     <div>
-                                        <h4 class="text-sm font-bold text-slate-800 leading-tight mb-1">Participás del
-                                            Programa de Beneficios Vistaguay</h4>
-                                        <p class="text-sm text-slate-700 leading-relaxed">Donde contaras con los
-                                            siguientes beneficios:</p>
+                                        <h4 class="text-sm font-bold text-slate-800 leading-tight">Seguros Integrales
+                                        </h4>
+                                        <p class="text-sm text-slate-600 font-normal leading-relaxed mt-1">
+                                            Coberturas preferenciales de Responsabilidad Civil, deriva y equipos junto a
+                                            Grupo Gaman.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="benefit-pill !rounded-xl !items-start !p-3.5 !gap-3">
+                                    <span data-icon="tag" data-icon-class="w-5 h-5 text-primary shrink-0 mt-0.5"></span>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-slate-800 leading-tight">Descuentos Especiales
+                                        </h4>
+                                        <p class="text-sm text-slate-600 font-normal leading-relaxed mt-1">
+                                            Beneficios y descuentos preferenciales en la compra de drones individuales o
+                                            combos, repuestos y accesorios.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
-                            <div class="benefit-pill !rounded-xl !items-start !p-3.5 !gap-3">
-                                <span data-icon="shield" data-icon-class="w-5 h-5 text-primary shrink-0 mt-0.5"></span>
-                                <div>
-                                    <h4 class="text-sm font-bold text-slate-800 leading-tight">Seguros Integrales</h4>
-                                    <p class="text-sm text-slate-600 font-normal leading-relaxed mt-1">
-                                        Coberturas preferenciales de Responsabilidad Civil, deriva y equipos junto a
-                                        Grupo Gaman.
-                                    </p>
-                                </div>
+                        <div class="w-full h-full flex flex-col min-h-[380px] lg:min-h-0">
+                            <div id="pilots-native-map" role="region"
+                                aria-label="Mapa de cobertura de pilotos Vistaguay Experts"
+                                class="w-full flex-1 rounded-2xl overflow-hidden border border-slate-200 shadow-md z-10 min-h-[380px] pointer-events-none select-none cursor-default">
                             </div>
-                            <div class="benefit-pill !rounded-xl !items-start !p-3.5 !gap-3">
-                                <span data-icon="tag" data-icon-class="w-5 h-5 text-primary shrink-0 mt-0.5"></span>
-                                <div>
-                                    <h4 class="text-sm font-bold text-slate-800 leading-tight">Descuentos Especiales
-                                    </h4>
-                                    <p class="text-sm text-slate-600 font-normal leading-relaxed mt-1">
-                                        Beneficios y descuentos preferenciales en la compra de drones individuales o
-                                        combos, repuestos y accesorios.
-                                    </p>
-                                </div>
+                            <div class="flex items-center justify-start lg:justify-end gap-3 pt-4">
+                                <a href="https://play.google.com/store/apps/details?id=com.vistaguay.experts"
+                                    target="_blank"
+                                    class="inline-block transition-transform hover:scale-105 active:scale-95">
+                                    <img src="images/Google_Play.svg" alt="Disponible en Google Play"
+                                        class="h-10 w-auto">
+                                </a>
+                                <a href="https://apps.apple.com/us/app/vistaguay-experts/id6747045323" target="_blank"
+                                    class="inline-block transition-transform hover:scale-105 active:scale-95">
+                                    <img src="images/App_Store.svg" alt="Consíguelo en el App Store"
+                                        class="h-10 w-auto">
+                                </a>
                             </div>
-                        </div>
-                    </div>
-                    <div class="w-full h-full flex flex-col min-h-[380px] lg:min-h-0">
-                        <div id="pilots-native-map" role="region"
-                            aria-label="Mapa de cobertura de pilotos Vistaguay Experts"
-                            class="w-full flex-1 rounded-2xl overflow-hidden border border-slate-200 shadow-md z-10 min-h-[380px] pointer-events-none select-none cursor-default">
-                        </div>
-                        <div class="flex items-center justify-start lg:justify-end gap-3 pt-4">
-                            <a href="https://play.google.com/store/apps/details?id=com.vistaguay.experts"
-                                target="_blank"
-                                class="inline-block transition-transform hover:scale-105 active:scale-95">
-                                <img src="images/Google_Play.svg" alt="Disponible en Google Play" class="h-10 w-auto">
-                            </a>
-                            <a href="https://apps.apple.com/us/app/vistaguay-experts/id6747045323" target="_blank"
-                                class="inline-block transition-transform hover:scale-105 active:scale-95">
-                                <img src="images/App_Store.svg" alt="Consíguelo en el App Store" class="h-10 w-auto">
-                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="py-10 md:py-12 bg-slate-50 overflow-hidden relative" id="testimonios">
-        <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
-            <div class="text-center mb-6 reveal">
-                <h2 class="text-xl md:text-2xl font-extrabold text-on-surface tracking-tight mb-4">Historias de éxito
-                    real</h2>
-                <p class="text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">Lo que dicen quienes ya están
-                    transformando el campo con Vistaguay.</p>
-            </div>
-
-            <div class="relative w-full flex flex-col items-center justify-center">
-                <div class="relative w-full flex items-center justify-center">
-                    <button id="prev-test-btn" aria-label="Anterior testimonio"
-                        class="btn-circle-icon absolute left-2 md:left-6 z-40">
-                        <svg class="w-5 h-5 text-white rotate-180" viewBox="0 0 24 24">
-                            <path fill="currentColor"
-                                d="M16.175 13H5q-.425 0-.712-.288T4 12t.288-.712T5 11h11.175l-4.9-4.9q-.3-.3-.288-.7t.313-.7q.3-.275.7-.288t.7.288l6.6 6.6q.15.15.213.325t.062.375t-.062.375t-.213.325l-6.6 6.6q-.275.275-.687.275T11.3 19.3q-.3-.3-.3-.712t.3-.713z" />
-                        </svg>
-                    </button>
-
-                    <div class="w-full max-w-5xl overflow-visible px-4 md:px-12 py-8">
-                        <div id="testimonial-track"
-                            class="flex transition-transform duration-500 ease-in-out gap-4 sm:gap-6 justify-start items-center">
-                        </div>
-                    </div>
-
-                    <button id="next-test-btn" aria-label="Siguiente testimonio"
-                        class="btn-circle-icon absolute right-2 md:right-6 z-40">
-                        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24">
-                            <path fill="currentColor"
-                                d="M16.175 13H5q-.425 0-.712-.288T4 12t.288-.712T5 11h11.175l-4.9-4.9q-.3-.3-.288-.7t.313-.7q.3-.275.7-.288t.7.288l6.6 6.6q.15.15.213.325t.062.375t-.062.375t-.213.325l-6.6 6.6q-.275.275-.687.275T11.3 19.3q-.3-.3-.3-.712t.3-.713z" />
-                        </svg>
-                    </button>
+        <section class="py-10 md:py-12 bg-slate-50 overflow-hidden relative" id="testimonios">
+            <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+                <div class="text-center mb-6 reveal">
+                    <h2 class="text-xl md:text-2xl font-extrabold text-on-surface tracking-tight mb-4">Historias de
+                        éxito
+                        real</h2>
+                    <p class="text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">Lo que dicen quienes ya están
+                        transformando el campo con Vistaguay.</p>
                 </div>
 
-                <div id="testimonial-dots" class="flex items-center justify-center gap-1.5 mt-2"></div>
-            </div>
-        </div>
-    </section>
+                <div class="relative w-full flex flex-col items-center justify-center">
+                    <div class="relative w-full flex items-center justify-center">
+                        <button id="prev-test-btn" aria-label="Anterior testimonio"
+                            class="btn-circle-icon absolute left-2 md:left-6 z-40">
+                            <svg class="w-5 h-5 text-white rotate-180" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M16.175 13H5q-.425 0-.712-.288T4 12t.288-.712T5 11h11.175l-4.9-4.9q-.3-.3-.288-.7t.313-.7q.3-.275.7-.288t.7.288l6.6 6.6q.15.15.213.325t.062.375t-.062.375t-.213.325l-6.6 6.6q-.275.275-.687.275T11.3 19.3q-.3-.3-.3-.712t.3-.713z" />
+                            </svg>
+                        </button>
 
-    <section class="py-10 md:py-12 bg-slate-50 scroll-mt-14 md:scroll-mt-16" id="devs">
-        <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
-            <div
-                class="bg-inverse-surface rounded-3xl shadow-lg p-6 md:p-10 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 reveal relative overflow-hidden">
-                <div class="space-y-6 w-full lg:w-1/2 shrink-0">
-                    <div class="space-y-4">
-                        <h2 class="text-xl md:text-2xl font-extrabold text-white tracking-tight">
-                            Integrá tus algoritmos y monetizá tu código
-                        </h2>
-                        <p class="text-slate-200 text-sm leading-relaxed">
-                            Contamos con una API robusta para una integración ágil y directa. Formá parte de la
-                            biblioteca de algoritmos para el agro más grande de Argentina.
-                        </p>
-                    </div>
-                    <div>
-                        <button onclick="toggleAlgoModal()" class="btn-primary">
-                            Contanos sobre tu algoritmo
+                        <div class="w-full max-w-5xl overflow-visible px-4 md:px-12 py-8">
+                            <div id="testimonial-track"
+                                class="flex transition-transform duration-500 ease-in-out gap-4 sm:gap-6 justify-start items-center">
+                            </div>
+                        </div>
+
+                        <button id="next-test-btn" aria-label="Siguiente testimonio"
+                            class="btn-circle-icon absolute right-2 md:right-6 z-40">
+                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M16.175 13H5q-.425 0-.712-.288T4 12t.288-.712T5 11h11.175l-4.9-4.9q-.3-.3-.288-.7t.313-.7q.3-.275.7-.288t.7.288l6.6 6.6q.15.15.213.325t.062.375t-.062.375t-.213.325l-6.6 6.6q-.275.275-.687.275T11.3 19.3q-.3-.3-.3-.712t.3-.713z" />
+                            </svg>
                         </button>
                     </div>
-                </div>
 
-                <div class="w-full lg:w-1/2 relative z-10">
-                    <div
-                        class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 font-mono text-sm text-emerald-300 overflow-x-auto shadow-lg">
-                        <p class="text-white/40 mb-2">// POST /api/v1/process-field</p>
-                        <p>{</p>
-                        <p class="ml-4">"field_id": "ar_ba_lote_04",</p>
-                        <p class="ml-4">"algorithm": "weed_detector_v2",</p>
-                        <p class="ml-4">"output_format": "shapefile",</p>
-                        <p class="ml-4">"callback_url": "https://tuapp.com/webhook"</p>
-                        <p>}</p>
+                    <div id="testimonial-dots" class="flex items-center justify-center gap-1.5 mt-2"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="devs" class="py-10 md:py-12 bg-slate-50 scroll-mt-14 md:scroll-mt-16">
+            <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+                <div
+                    class="bg-inverse-surface rounded-3xl shadow-lg p-6 md:p-10 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 reveal relative overflow-hidden">
+                    <div class="space-y-6 w-full lg:w-1/2 shrink-0">
+                        <div class="space-y-4">
+                            <h2 class="text-xl md:text-2xl font-extrabold text-white tracking-tight">
+                                Integrá tus algoritmos y monetizá tu código
+                            </h2>
+                            <p class="text-slate-200 text-sm leading-relaxed">
+                                Contamos con una API robusta para una integración ágil y directa. Formá parte de la
+                                biblioteca de algoritmos para el agro más grande de Argentina.
+                            </p>
+                        </div>
+                        <div>
+                            <button onclick="toggleAlgoModal()" class="btn-primary">
+                                Contanos sobre tu algoritmo
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="w-full lg:w-1/2 relative z-10">
+                        <div
+                            class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 font-mono text-sm text-emerald-300 overflow-x-auto shadow-lg">
+                            <p class="text-white/40 mb-2">// POST /api/v1/process-field</p>
+                            <p>{</p>
+                            <p class="ml-4">"field_id": "ar_ba_lote_04",</p>
+                            <p class="ml-4">"algorithm": "weed_detector_v2",</p>
+                            <p class="ml-4">"output_format": "shapefile",</p>
+                            <p class="ml-4">"callback_url": "https://tuapp.com/webhook"</p>
+                            <p>}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="relative py-16 md:py-20 flex items-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img class="w-full h-full object-cover" alt="Campo Maiz" src="images/fondo2.jpg">
-            <div class="absolute inset-0 bg-black/60 z-10"></div>
-        </div>
+        <section class="relative py-16 md:py-20 flex items-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img class="w-full h-full object-cover" alt="Campo Maiz" src="images/fondo2.jpg">
+                <div class="absolute inset-0 bg-black/60 z-10"></div>
+            </div>
 
-        <div class="relative z-20 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 text-center text-white w-full">
-            <div class="max-w-3xl mx-auto reveal flex flex-col items-center">
-                <p class="text-sm font-semibold tracking-[0.15em] text-slate-300/90 uppercase mb-1.5">
-                    Los drones están revolucionando el agro
-                </p>
+            <div class="relative z-20 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 text-center text-white w-full">
+                <div class="max-w-3xl mx-auto reveal flex flex-col items-center">
+                    <p class="text-sm font-semibold tracking-[0.15em] text-slate-300/90 uppercase mb-1.5">
+                        Los drones están revolucionando el agro
+                    </p>
 
-                <h2
-                    class="text-xl md:text-2xl lg:text-3xl font-extrabold text-white text-center leading-tight tracking-tight mb-8">
-                    Sumate al mayor ecosistema para la agricultura
-                </h2>
+                    <h2
+                        class="text-xl md:text-2xl lg:text-3xl font-extrabold text-white text-center leading-tight tracking-tight mb-8">
+                        Sumate al mayor ecosistema para la agricultura
+                    </h2>
 
-                <div class="flex justify-center w-full sm:w-auto">
-                    <button onclick="toggleDownloadModal()" class="btn-primary">
-                        Registrarse en Vistaguay
-                    </button>
-                </div>
+                    <div class="flex justify-center w-full sm:w-auto">
+                        <button onclick="toggleDownloadModal()" class="btn-primary">
+                            Registrarse en Vistaguay
+                        </button>
+                    </div>
 
-                <div id="vistaguay-badge" class="mt-16">
-                    <div
-                        class="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-md bg-black/5 backdrop-blur-sm border border-white/5 shadow-inner">
-                        <span class="text-sm font-medium text-slate-300">Hay un</span>
-                        <img src="images/vistaguay.svg" alt="Vistaguay"
-                            class="h-3.5 md:h-4 w-auto inline-block brightness-0 invert opacity-95" />
-                        <span class="text-sm font-medium text-slate-300">para vos</span>
+                    <div id="vistaguay-badge" class="mt-16">
+                        <div
+                            class="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-md bg-black/5 backdrop-blur-sm border border-white/5 shadow-inner">
+                            <span class="text-sm font-medium text-slate-300">Hay un</span>
+                            <img src="images/vistaguay.svg" alt="Vistaguay"
+                                class="h-3.5 md:h-4 w-auto inline-block brightness-0 invert opacity-95" />
+                            <span class="text-sm font-medium text-slate-300">para vos</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+    </main>
 
     <footer class="bg-surface-container w-full py-6 md:py-8 border-t border-outline-variant/30">
         <div
@@ -876,13 +919,13 @@
                     <p class="font-bold text-slate-800 uppercase tracking-wider text-[10px]">Legales</p>
                     <ul class="space-y-1.5 text-slate-600">
                         <li>
-                            <a href="https://web.dev.vistaguay.com/terms-conditions" target="_blank"
+                            <a href="https://web.vistaguay.com/terms-conditions" target="_blank"
                                 rel="noopener noreferrer" class="hover:text-primary transition-colors">
                                 Términos y Condiciones
                             </a>
                         </li>
                         <li>
-                            <a href="https://web.dev.vistaguay.com/privacy-policies" target="_blank"
+                            <a href="https://web.vistaguay.com/privacy-policies" target="_blank"
                                 rel="noopener noreferrer" class="hover:text-primary transition-colors">
                                 Políticas de Privacidad
                             </a>
@@ -1005,8 +1048,8 @@
         </div>
     </div>
 
-    <div id="download-modal"
-        class="fixed inset-0 z-[100] hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 ease-out opacity-0"
+    <div id="download-modal" role="dialog" aria-modal="true" aria-labelledby="download-modal-title"
+        class="fixed inset-0 z-[100] hidden bg-slate-950/70 backdrop-blur-sm items-center justify-center p-4 transition-opacity duration-300 ease-out opacity-0"
         onclick="if(event.target === this) toggleDownloadModal()">
 
         <div
@@ -1022,7 +1065,7 @@
             <div
                 class="flex-1 p-8 sm:p-10 bg-slate-50 flex flex-col justify-between border-b md:border-b-0 md:border-r border-slate-200/60 overflow-y-auto">
                 <div class="space-y-4">
-                    <h3 class="text-2xl font-extrabold text-slate-900">App Vistaguay</h3>
+                    <h3 id="download-modal-title" class="text-2xl font-extrabold text-slate-900">App Vistaguay</h3>
                     <p class="text-sm text-slate-600 leading-relaxed">
                         Gestioná tus lotes, solicitá vuelos y accedé a tus prescripciones agrícolas directo en tu
                         celular.

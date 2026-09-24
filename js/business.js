@@ -31,14 +31,17 @@
 
                 nextImg.style.transition = 'none';
                 nextImg.className = `${baseClasses} translate-x-full opacity-0 z-10`;
-                nextImg.offsetHeight;
 
-                const transitionStyle = 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)';
-                currentImg.style.transition = transitionStyle;
-                nextImg.style.transition = transitionStyle;
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        const transitionStyle = 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)';
+                        currentImg.style.transition = transitionStyle;
+                        nextImg.style.transition = transitionStyle;
 
-                currentImg.className = `${baseClasses} -translate-x-full opacity-0 z-0`;
-                nextImg.className = `${baseClasses} translate-x-0 opacity-100 z-10`;
+                        currentImg.className = `${baseClasses} -translate-x-full opacity-0 z-0`;
+                        nextImg.className = `${baseClasses} translate-x-0 opacity-100 z-10`;
+                    });
+                });
             }
 
             // Actualiza estilos de las cards

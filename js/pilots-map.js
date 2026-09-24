@@ -8,33 +8,6 @@
     let cycleTimeout = null;
     let isMapVisible = false;
 
-    if (!document.getElementById('pilots-map-animation-style')) {
-        const style = document.createElement('style');
-        style.id = 'pilots-map-animation-style';
-        style.innerHTML = `
-        @keyframes pulseDotGlow {
-            0% {
-                transform: scale(1);
-                opacity: 0.8;
-            }
-            50% {
-                transform: scale(2.2);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 0.8;
-            }
-        }
-        .dot-blinking {
-            animation: pulseDotGlow 1.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            will-change: transform, opacity;
-            z-index: 9999 !important;
-        }
-    `;
-        document.head.appendChild(style);
-    }
-
     function clearAllTimeouts() {
         activeTimeouts.forEach(t => clearTimeout(t));
         activeTimeouts = [];
