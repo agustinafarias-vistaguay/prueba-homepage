@@ -9,7 +9,7 @@
     const isTestEnv = isLocal || forceTest;
 
     // 1. Webhooks de n8n
-    const N8N_WEBHOOK_TEST = 'https://n8n.soy-agus.com.ar/webhook-test/propuesta-algoritmo';
+    const N8N_WEBHOOK_TEST = 'https://n8n.soy-agus.com.ar/webhook/propuesta-algoritmo-test';
     const N8N_WEBHOOK_PROD = 'https://n8n.soy-agus.com.ar/webhook/propuesta-algoritmo';
     const N8N_WEBHOOK_URL = isTestEnv ? N8N_WEBHOOK_TEST : N8N_WEBHOOK_PROD;
 
