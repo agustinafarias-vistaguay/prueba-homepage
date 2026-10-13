@@ -219,39 +219,119 @@ window.copyEmailToClipboard = function (event, email) {
     });
 };
 
-/**
- * Alterna entre pestañas de contenido en los manuales de documentación de producto.
- * @param {string} tabId Identificador de la sección con clase .content-section a mostrar.
- * @param {HTMLElement} element Botón presionado en el menú lateral.
- * @returns {void}
- */
-function switchTab(tabId, element) {
-    if (!tabId || !element) return;
+// 1. Mapeo de nombres de las pestañas
+const TAB_TITLES = {
+    'tab-producto': 'Ficha Técnica',
+    'tab-carga': 'Solicitud del Servicio',
+    'tab-interpretacion': 'Interpretar Reporte'
+};
 
-    // 1. Oculta todas las secciones de contenido
-    document.querySelectorAll('.content-section').forEach(el => {
-        el.classList.add('hidden');
-    });
+// 2. Función de cambio de sección (Desktop + Mobile)
+function switchTab(tabId, element = null) {
+    if (!tabId) return;
 
-    // 2. Limpia el estado activo de todos los botones del menú lateral
-    const sidebar = element.closest('#sidebar-menu') || document.getElementById('sidebar-menu');
+    // A. Mostrar la sección seleccionada y ocultar el resto
+    document.querySelectorAll('.content-section').forEach(sec => sec.classList.add('hidden'));
+    const target = document.getElementById(tabId);
+    if (target) target.classList.remove('hidden');
+
+    // B. Actualizar botones de la tarjeta grande
+    const sidebar = document.getElementById('sidebar-menu');
     if (sidebar) {
         sidebar.querySelectorAll('button').forEach(btn => {
             btn.classList.remove('sidebar-tab-active');
             btn.classList.add('sidebar-tab-inactive');
         });
+
+        const activeBtn = element || sidebar.querySelector(`button[onclick*="${tabId}"]`);
+        if (activeBtn) {
+            activeBtn.classList.remove('sidebar-tab-inactive');
+            activeBtn.classList.add('sidebar-tab-active');
+        }
     }
 
-    // 3. Muestra la sección objetivo
-    const targetSection = document.getElementById(tabId);
-    if (targetSection) {
-        targetSection.classList.remove('hidden');
+    // C. Actualizar texto de la barra flotante móvil
+    const mobileTitle = document.getElementById('mobile-current-tab-name');
+    if (mobileTitle && TAB_TITLES[tabId]) {
+        mobileTitle.textContent = TAB_TITLES[tabId];
     }
 
-    // 4. Activa el botón presionado
-    element.classList.remove('sidebar-tab-inactive');
-    element.classList.add('sidebar-tab-active');
+    // D. Cerrar el menú desplegable móvil
+    closeMobileDropdown();
 
-    window.scrollTo(0, 0);
+    // E. Subir la pantalla suavemente a la cabecera
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+// 2. Control del desplegable móvil
+function toggleMobileIndex(e) {
+    if (e) e.stopPropagation();
+    const dropdown = document.getElementById('mobile-dropdown-menu');
+    const chevron = document.getElementById('mobile-chevron');
+    const btn = document.getElementById('mobile-tab-btn'); // Obtenemos el botón
+
+    if (dropdown) {
+        const isClosed = dropdown.classList.contains('hidden');
+        dropdown.classList.toggle('hidden', !isClosed);
+
+        if (chevron) chevron.classList.toggle('rotate-180', isClosed);
+
+        // Aplana el borde inferior si está abierto, lo redondea si se cierra
+        if (btn) {
+            btn.classList.toggle('rounded-b-none', isClosed);
+        }
+    }
+}
+
+function closeMobileDropdown() {
+    const dropdown = document.getElementById('mobile-dropdown-menu');
+    const chevron = document.getElementById('mobile-chevron');
+    const btn = document.getElementById('mobile-tab-btn');
+
+    if (dropdown && !dropdown.classList.contains('hidden')) {
+        dropdown.classList.add('hidden');
+        if (chevron) chevron.classList.remove('rotate-180');
+        if (btn) btn.classList.remove('rounded-b-none');
+    }
+}
+
+// Cierra el menú al tocar en cualquier otra parte de la pantalla
+document.addEventListener('click', (e) => {
+    const floatingBar = document.getElementById('mobile-floating-bar');
+    if (floatingBar && !floatingBar.contains(e.target)) {
+        closeMobileDropdown();
+    }
+});
+
+// 4. Detector de Scroll: Muestra la barra SOLO cuando el índice grande desaparece
+window.addEventListener('scroll', () => {
+    const mainCard = document.getElementById('main-sidebar-card');
+    const floatingBar = document.getElementById('mobile-floating-bar');
+
+    if (!mainCard || !floatingBar) return;
+
+    // En pantallas grandes (>= 1024px) no interviene
+    if (window.innerWidth >= 1024) {
+        floatingBar.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
+        floatingBar.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+        return;
+    }
+
+    // Calculamos si la parte inferior del menú grande ya salió de la pantalla
+    const cardRect = mainCard.getBoundingClientRect();
+    const isCardOutOfView = cardRect.bottom < 60; // 60px margen por debajo del header
+
+    if (isCardOutOfView) {
+        // Mostrar menú flotante (desliza hacia abajo)
+        floatingBar.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+        floatingBar.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+    } else {
+        // Ocultar menú flotante y cerrar desplegable si estaba abierto
+        floatingBar.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
+        floatingBar.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+        closeMobileDropdown();
+    }
+}, { passive: true });
+
 window.switchTab = switchTab;
+window.toggleMobileIndex = toggleMobileIndex;
