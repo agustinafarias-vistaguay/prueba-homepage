@@ -218,3 +218,40 @@ window.copyEmailToClipboard = function (event, email) {
         console.error('Error al copiar el correo:', err);
     });
 };
+
+/**
+ * Alterna entre pestañas de contenido en los manuales de documentación de producto.
+ * @param {string} tabId Identificador de la sección con clase .content-section a mostrar.
+ * @param {HTMLElement} element Botón presionado en el menú lateral.
+ * @returns {void}
+ */
+function switchTab(tabId, element) {
+    if (!tabId || !element) return;
+
+    // 1. Oculta todas las secciones de contenido
+    document.querySelectorAll('.content-section').forEach(el => {
+        el.classList.add('hidden');
+    });
+
+    // 2. Limpia el estado activo de todos los botones del menú lateral
+    const sidebar = element.closest('#sidebar-menu') || document.getElementById('sidebar-menu');
+    if (sidebar) {
+        sidebar.querySelectorAll('button').forEach(btn => {
+            btn.classList.remove('sidebar-tab-active');
+            btn.classList.add('sidebar-tab-inactive');
+        });
+    }
+
+    // 3. Muestra la sección objetivo
+    const targetSection = document.getElementById(tabId);
+    if (targetSection) {
+        targetSection.classList.remove('hidden');
+    }
+
+    // 4. Activa el botón presionado
+    element.classList.remove('sidebar-tab-inactive');
+    element.classList.add('sidebar-tab-active');
+
+    window.scrollTo(0, 0);
+}
+window.switchTab = switchTab;

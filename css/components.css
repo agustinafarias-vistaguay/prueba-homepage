@@ -233,3 +233,86 @@
         min-height: 440px;
     }
 }
+
+/* Contenedor padre de los manuales para evitar saltos en pestañas cortas */
+.docs-layout-container {
+    min-height: calc(100vh - 8rem);
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Sidebar de Documentación / Manuales de Producto */
+.sidebar-docs {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    border: 1px solid rgba(226, 232, 240, 0.6);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .sidebar-docs {
+        width: 260px;
+        min-width: 260px;
+        max-width: 260px;
+        flex-shrink: 0;
+
+        position: sticky;
+        top: 5rem;
+        /* Distancia fija constante desde el tope del viewport */
+        height: calc(100vh - 7rem);
+        /* Alto simétrico respecto a los márgenes */
+        align-self: flex-start;
+
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.sidebar-tab-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    font-size: 14px;
+    text-align: left;
+    transition: all 0.2s ease;
+    border-right-width: 4px;
+    border-top: none;
+    border-left: none;
+    border-bottom: none;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+}
+
+.sidebar-tab-active {
+    background-color: rgba(64, 165, 104, 0.1);
+    color: var(--color-primary);
+    border-right-color: var(--color-primary);
+    font-weight: 700;
+}
+
+.sidebar-tab-inactive {
+    color: #475569;
+    border-right-color: transparent;
+    font-weight: 500;
+}
+
+.sidebar-tab-inactive:hover {
+    background-color: #f8fafc;
+    color: #0f172a;
+}

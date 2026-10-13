@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es-AR">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Vistaguay | Centro de Ayuda</title>
+    <link rel="icon" type="image/png" href="../images/favicon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Subir 1 nivel (../) -->
+    <link rel="stylesheet" href="../css/output.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/animations.css">
+
+    <script src="../js/icons.js" defer></script>
+    <script src="../js/main.js" defer></script>
+</head>
+
+<body
+    class="bg-background text-on-surface font-body-md selection:bg-primary/20 selection:text-primary min-h-screen flex flex-col">
+
+    <!-- HEADER CENTRO DE AYUDA -->
+    <nav
+        class="fixed w-full top-0 z-50 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+        <div class="flex justify-between items-center w-full px-6 sm:px-10 lg:px-12 max-w-6xl mx-auto h-14 md:h-15">
+
+            <!-- LOGO + LÍNEA DIVISORIA + CENTRO DE AYUDA -->
+            <a href="../index.html" class="flex items-center shrink-0 z-[60]">
+                <img src="../images/logo.png" alt="Vistaguay" loading="lazy"
+                    class="h-5 md:h-[22px] w-auto object-contain transition-transform hover:scale-105">
+
+                <!-- Línea divisoria fina con aire equilibrado a ambos lados (14px de cada lado) -->
+                <span class="h-5 w-[1px] bg-slate-300 shrink-0 inline-block mx-3.5"></span>
+
+                <span class="text-[17px] font-normal text-slate-600 inline-block tracking-tight">Centro de Ayuda</span>
+            </a>
+
+            <!-- BOTÓN HAMBURGUESA Y MENÚ FLOTANTE -->
+            <div class="relative flex items-center shrink-0 lg:h-full">
+                <button id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Abrir menú de navegación"
+                    class="relative w-9 h-9 text-slate-800 focus:outline-none flex items-center justify-center hover:bg-slate-100 rounded-lg transition-colors z-[60]">
+                    <span id="icon-menu" data-icon="menu" data-icon-class="w-6 h-6"
+                        class="absolute transition-all duration-300 ease-in-out opacity-100"></span>
+                    <span id="icon-close" data-icon="close" data-icon-class="w-6 h-6"
+                        class="absolute transition-all duration-300 ease-in-out opacity-0 pointer-events-none"></span>
+                </button>
+
+                <!-- MENÚ DESPLEGABLE (RÉPLICA DE HOME SIN SECCIONES DEL SITIO NI IR AL INICIO) -->
+                <div id="mobile-menu"
+                    class="hidden fixed inset-0 top-[56px] md:top-[60px] w-full h-[calc(100vh-56px)] bg-white lg:absolute lg:inset-auto lg:top-full lg:-right-2 lg:w-80 lg:h-auto lg:bg-transparent transition-all z-50 overflow-y-auto lg:overflow-visible">
+                    <div
+                        class="hidden lg:block absolute -top-[9px] right-[17px] w-4 h-4 bg-white border-l border-t border-slate-200 rotate-45 z-20">
+                    </div>
+
+                    <div
+                        class="relative bg-white lg:border lg:border-slate-200 lg:rounded-2xl lg:shadow-2xl flex flex-col py-6 px-6 lg:py-4 lg:px-2 z-10 w-full min-h-full lg:min-h-0">
+
+                        <!-- ACCESOS DIRECTOS -->
+                        <div class="flex flex-col px-2 mt-2 lg:mt-0">
+                            <p
+                                class="text-sm lg:text-xs font-bold uppercase tracking-widest text-slate-400 px-3 py-1 mb-2 lg:mb-1">
+                                Accesos Directos</p>
+                            <a onclick="toggleMobileMenu()" href="index.html"
+                                class="flex items-center justify-between text-base lg:text-sm font-semibold text-slate-800 hover:text-primary hover:bg-slate-50 py-3 px-3 rounded-xl transition-colors">
+                                <span>Centro de Ayuda</span>
+                                <span
+                                    class="text-xs font-extrabold bg-primary/10 text-primary px-2 py-0.5 rounded-full uppercase tracking-wider">Nuevo</span>
+                            </a>
+                        </div>
+
+                        <div class="h-px bg-slate-200 my-6 lg:my-3 mx-5 lg:mx-2"></div>
+
+                        <!-- BOTONES DE ACCIÓN -->
+                        <div class="flex flex-col gap-3 px-3 pb-6 lg:pb-1">
+                            <button onclick="toggleMobileMenu(); toggleDownloadModal()"
+                                class="btn-primary w-full py-3.5 lg:py-2.5 text-base lg:text-sm font-bold justify-center shadow-none">
+                                Registrarse
+                            </button>
+                            <button onclick="toggleMobileMenu(); toggleLoginModal()"
+                                class="btn-outline w-full py-3.5 lg:py-2.5 text-base lg:text-sm font-bold justify-center">
+                                Ir a la plataforma
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-1 mt-14 md:mt-15">
+
+        <section class="bg-slate-900 text-white pt-16 pb-20 md:pt-24 md:pb-28 px-6 relative">
+            <div class="relative z-20 max-w-4xl mx-auto text-center w-full space-y-6">
+
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
+                    ¿Cómo podemos ayudarte hoy?
+                </h1>
+
+                <div class="max-w-2xl mx-auto relative mt-8">
+                    <div class="relative flex items-center">
+                        <span data-icon="search" data-icon-class="absolute left-4 text-slate-400 w-6 h-6"></span>
+                        <input type="text" placeholder="Buscá guías, protocolos o consultas frecuentes..."
+                            class="w-full pl-12 pr-4 py-3.5 md:py-4 rounded-2xl bg-white text-slate-900 text-sm font-semibold shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary placeholder:text-slate-400">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 py-12 md:py-16 bg-background relative z-20 space-y-14">
+
+            <!-- Encabezado General -->
+            <div class="text-center max-w-xl mx-auto">
+                <h2 class="text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight">Centro de Documentación
+                </h2>
+                <p class="text-sm text-slate-600 mt-2 leading-relaxed">Conocé las especificaciones técnicas de nuestros
+                    productos y cómo operar la plataforma.</p>
+            </div>
+
+            <!-- BLOQUE 1 (ARRIBA): MANUALES DE PRODUCTO -->
+            <div class="space-y-4">
+                <div class="flex items-center gap-2">
+                    <span data-icon="analytics" data-icon-class="w-5 h-5 text-primary"></span>
+                    <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest">Guías de Producto</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                    <!-- 1. Planting Quality (ACTIVO) -->
+                    <a href="productos/planting-quality.html"
+                        class="group bg-surface p-6 rounded-2xl border border-outline-variant/30 shadow-lg hover:shadow-xl hover:border-primary transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between relative overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 bg-primary/10 text-primary font-bold text-xs uppercase px-3 py-1 rounded-bl-xl tracking-wider">
+                            Disponible
+                        </div>
+                        <div>
+                            <div
+                                class="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                                <span data-icon="planting-quality" data-icon-class="w-5 h-5"></span>
+                            </div>
+                            <h4
+                                class="font-bold text-base text-slate-900 group-hover:text-primary transition-colors mb-2">
+                                Planting Quality</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed">Auditoría digital de siembra en Maíz y
+                                Girasol (V2-V3). Ficha técnica, pilares agronómicos y reporte.</p>
+                        </div>
+                        <div
+                            class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-sm font-bold text-primary">
+                            <span>Leer</span>
+                            <span data-icon="arrow_forward"
+                                data-icon-class="w-4 h-4 group-hover:translate-x-1 transition-transform"></span>
+                        </div>
+                    </a>
+
+                    <!-- 2. Mapeo de Malezas -->
+                    <div
+                        class="bg-surface p-6 rounded-2xl border border-outline-variant/20 shadow-lg flex flex-col justify-between opacity-80 transition-all duration-300">
+                        <div>
+                            <div
+                                class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center mb-4 text-slate-600">
+                                <span data-icon="mapeo-malezas" data-icon-class="w-5 h-5"></span>
+                            </div>
+                            <h4 class="font-bold text-base text-slate-900 mb-2">Mapeo de Malezas</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed">Detección, generación de prescripciones
+                                dirigidas y exportación a monitores de pulverización.</p>
+                        </div>
+                        <div
+                            class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-sm font-bold text-slate-400">
+                            <span>Próximamente</span>
+                        </div>
+                    </div>
+
+                    <!-- 3. Aplicación con Dron -->
+                    <div
+                        class="bg-surface p-6 rounded-2xl border border-outline-variant/20 shadow-lg flex flex-col justify-between opacity-80 transition-all duration-300">
+                        <div>
+                            <div
+                                class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center mb-4 text-slate-600">
+                                <span data-icon="drone" data-icon-class="w-5 h-5"></span>
+                            </div>
+                            <h4 class="font-bold text-base text-slate-900 mb-2">Aplicación con Dron</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed">Especificaciones para pulverización y
+                                siembra aérea localizada con equipos de alta capacidad.</p>
+                        </div>
+                        <div
+                            class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-sm font-bold text-slate-400">
+                            <span>Próximamente</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- BLOQUE 2 (ABAJO): MANUALES OPERATIVOS DIVIDIDOS POR ROL -->
+            <div class="space-y-4 pt-4">
+                <div class="flex items-center gap-2">
+                    <span data-icon="group" data-icon-class="w-5 h-5 text-primary"></span>
+                    <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest">Manuales Operativos</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <!-- Rol: Productor y Asesor -->
+                    <div
+                        class="bg-surface p-6 rounded-2xl border border-outline-variant/20 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div
+                                    class="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center">
+                                    <span data-icon="agriculture" data-icon-class="w-5 h-5"></span>
+                                </div>
+                                <span
+                                    class="text-xs font-extrabold bg-primary/10 text-primary px-2.5 py-1 rounded-full uppercase tracking-wider">Productores
+                                    & Asesores</span>
+                            </div>
+                            <h4 class="font-bold text-base text-slate-900 mb-2">Operación en Web Vistaguay</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed mb-4">Guía paso a paso para gestionar
+                                campañas, solicitar tareas y descargar resultados.</p>
+
+                            <ul class="space-y-2.5 text-sm font-semibold text-slate-600 pt-3 border-t border-slate-100">
+                                <li class="flex items-center gap-2">
+                                    <span data-icon="chevron_right" data-icon-class="w-4 h-4 text-primary"></span>
+                                    <span>Cómo crear un lote (KML/Shapefile) y solicitar un servicio</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span data-icon="chevron_right" data-icon-class="w-4 h-4 text-primary"></span>
+                                    <span>Carga de fotografías de dron y validación de calidad</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span data-icon="chevron_right" data-icon-class="w-4 h-4 text-primary"></span>
+                                    <span>Interpretación de informes y exportación a maquinaria</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-6 pt-3 text-sm font-bold text-slate-400">
+                            <span>Próximamente</span>
+                        </div>
+                    </div>
+
+                    <!-- Rol: Pilotos Experts (Con guiño a Protocolos de Vuelo) -->
+                    <div
+                        class="bg-surface p-6 rounded-2xl border border-outline-variant/20 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div
+                                    class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 flex items-center justify-center">
+                                    <span data-icon="drone" data-icon-class="w-5 h-5"></span>
+                                </div>
+                                <span
+                                    class="text-xs font-extrabold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full uppercase tracking-wider">Pilotos
+                                    Experts</span>
+                            </div>
+                            <h4 class="font-bold text-base text-slate-900 mb-2">Operación en App Experts</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed mb-4">Flujo de trabajo para la recepción,
+                                postulación y concreción de servicios en campo.</p>
+
+                            <ul class="space-y-2.5 text-sm font-semibold text-slate-600 pt-3 border-t border-slate-100">
+                                <li class="flex items-center gap-2">
+                                    <span data-icon="chevron_right" data-icon-class="w-4 h-4 text-slate-400"></span>
+                                    <span>Registro, licencias y vinculación con la red</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span data-icon="chevron_right" data-icon-class="w-4 h-4 text-slate-400"></span>
+                                    <span>Cómo postularte a vuelos cercanos y coordinar la agenda</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span data-icon="chevron_right" data-icon-class="w-4 h-4 text-slate-400"></span>
+                                    <span>Finalización de servicio, entrega de datos y liquidación</span>
+                                </li>
+                            </ul>
+
+                            <!-- GUIÑO / CALLOUT A PROTOCOLOS DE VUELO EXTERNOS -->
+                            <div
+                                class="mt-5 p-3 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span data-icon="flight_takeoff" data-icon-class="w-4 h-4 text-primary"></span>
+                                    <span class="text-sm font-semibold text-slate-700">¿Buscás los parámetros de
+                                        captura?</span>
+                                </div>
+                                <a href="https://protocolos.vistaguay.com" target="_blank"
+                                    class="text-sm font-bold text-primary hover:underline inline-flex items-center gap-1">
+                                    Ver Protocolo <span data-icon="open_in_new" data-icon-class="w-3.5 h-3.5"></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-3 text-sm font-bold text-slate-400">
+                            <span>Próximamente</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <section class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 py-10 md:py-14 bg-background">
+            <div
+                class="bg-gradient-to-r from-slate-900 to-emerald-950 text-white p-8 md:p-12 rounded-3xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 border border-white/10 relative overflow-hidden">
+                <div class="space-y-3 text-center md:text-left max-w-xl relative z-10">
+                    <h3 class="text-xl md:text-2xl font-extrabold text-white tracking-tight">¿No encontrás lo que
+                        buscás?</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed">Escribinos y nuestro equipo de soporte te brindará
+                        asistencia personalizada para resolver tus dudas.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto shrink-0 relative z-10">
+                    <a href="https://api.whatsapp.com/send?phone=5493516887507" target="_blank" class="btn-primary">
+                        <span data-icon="whatsapp" data-icon-class="w-5 h-5 text-white"></span> WhatsApp Soporte
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-surface-container w-full py-6 md:py-8 border-t border-outline-variant/30">
+        <div
+            class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full flex flex-col md:flex-row justify-between items-start gap-8">
+            <div class="max-w-xs">
+                <img src="../images/logo.png" alt="Vistaguay" class="h-5 w-auto mb-4 object-contain"
+                    onError="this.src='logo.png'" />
+                <div class="flex gap-2 items-center">
+                    <a href="https://api.whatsapp.com/send?phone=5493516887507" target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-primary hover:opacity-70 transition-opacity flex items-center justify-center p-0.5"
+                        aria-label="WhatsApp">
+                        <span data-icon="whatsapp" data-icon-class="w-6 h-6 text-primary"></span>
+                    </a>
+                    <a href="https://www.instagram.com/vistaguay/" target="_blank" rel="noopener noreferrer"
+                        class="text-primary hover:opacity-70 transition-opacity flex items-center justify-center p-0.5"
+                        aria-label="Instagram">
+                        <span data-icon="instagram" data-icon-class="w-6 h-6 text-primary"></span>
+                    </a>
+                    <a href="https://www.linkedin.com/company/vistaguay" target="_blank" rel="noopener noreferrer"
+                        class="text-primary hover:opacity-70 transition-opacity flex items-center justify-center p-0.5"
+                        aria-label="LinkedIn">
+                        <span data-icon="linkedin" data-icon-class="w-6 h-6 text-primary"></span>
+                    </a>
+                    <a href="https://www.youtube.com/@vistaguay310" target="_blank" rel="noopener noreferrer"
+                        class="text-primary hover:opacity-70 transition-opacity flex items-center justify-center p-0.5"
+                        aria-label="YouTube">
+                        <span data-icon="youtube" data-icon-class="w-6 h-6 text-primary"></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-8 sm:gap-12 text-sm">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-800 uppercase tracking-wider text-xs">Soporte y Contacto</p>
+                    <ul class="space-y-1.5 text-slate-600">
+                        <li>
+                            <a href="https://api.whatsapp.com/send?phone=5493516887507" target="_blank"
+                                rel="noopener noreferrer" class="hover:text-primary transition-colors">
+                                +54 9 3516 88-7507
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:soporte@vistaguay.com"
+                                onclick="copyEmailToClipboard(event, 'soporte@vistaguay.com')"
+                                class="hover:text-primary transition-colors relative group inline-flex items-center gap-1">
+                                <span>soporte@vistaguay.com</span>
+                                <span id="email-copied-toast"
+                                    class="hidden absolute -top-7 left-0 bg-slate-800 text-white text-sm px-2 py-0.5 rounded shadow">
+                                    ¡Copiado!
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-800 uppercase tracking-wider text-xs">Legales</p>
+                    <ul class="space-y-1.5 text-slate-600">
+                        <li>
+                            <a href="https://web.vistaguay.com/terms-conditions" target="_blank"
+                                rel="noopener noreferrer" class="hover:text-primary transition-colors">
+                                Términos y Condiciones
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://web.vistaguay.com/privacy-policies" target="_blank"
+                                rel="noopener noreferrer" class="hover:text-primary transition-colors">
+                                Políticas de Privacidad
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto mt-6 pt-3 border-t border-slate-200/80 text-center w-full">
+            <p class="text-sm tracking-normal text-slate-400 font-normal">
+                © 2026 Vistaguay. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
