@@ -1024,11 +1024,13 @@
 
                             <div class="md:col-span-5 space-y-4 flex flex-col justify-start items-start">
                                 <div class="segmented-control inline-flex">
-                                    <button id="toggle-acceso-app-btn" onclick="toggleAccessPlatform('app')"
+                                    <button id="toggle-acceso-app-btn"
+                                        onclick="toggleSegmentedPlatform('paso-acceso-lote', 'app')"
                                         class="segmented-btn segmented-btn-active">
                                         Ver App Móvil
                                     </button>
-                                    <button id="toggle-acceso-web-btn" onclick="toggleAccessPlatform('web')"
+                                    <button id="toggle-acceso-web-btn"
+                                        onclick="toggleSegmentedPlatform('paso-acceso-lote', 'web')"
                                         class="segmented-btn segmented-btn-inactive">
                                         Ver Web
                                     </button>
@@ -1117,27 +1119,6 @@
                         </div>
                     </div>
                 </div>
-
-                <script>
-                    function toggleAccessPlatform(platform) {
-                        const btnApp = document.getElementById('toggle-acceso-app-btn');
-                        const btnWeb = document.getElementById('toggle-acceso-web-btn');
-                        const appViews = document.querySelectorAll('#paso-acceso-lote .view-acceso-app');
-                        const webViews = document.querySelectorAll('#paso-acceso-lote .view-acceso-web');
-
-                        if (platform === 'app') {
-                            btnApp.className = 'segmented-btn segmented-btn-active';
-                            btnWeb.className = 'segmented-btn segmented-btn-inactive';
-                            appViews.forEach(el => el.classList.remove('hidden'));
-                            webViews.forEach(el => el.classList.add('hidden'));
-                        } else {
-                            btnWeb.className = 'segmented-btn segmented-btn-active';
-                            btnApp.className = 'segmented-btn segmented-btn-inactive';
-                            webViews.forEach(el => el.classList.remove('hidden'));
-                            appViews.forEach(el => el.classList.add('hidden'));
-                        }
-                    }
-                </script>
 
                 <!-- PASO 3: SELECCIÓN DE LA MODALIDAD DE TRABAJO -->
                 <div class="space-y-4" id="paso-modalidad-trabajo">

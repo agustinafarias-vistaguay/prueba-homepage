@@ -219,11 +219,23 @@ window.copyEmailToClipboard = function (event, email) {
     });
 };
 
-// 1. Mapeo de nombres de las pestañas
+// 1. Mapeo centralizado de nombres de pestañas
 const TAB_TITLES = {
+    // Planting Quality
     'tab-producto': 'Ficha Técnica',
     'tab-carga': 'Solicitud del Servicio',
-    'tab-interpretacion': 'Interpretar Reporte'
+    'tab-interpretacion': 'Interpretar Reporte',
+
+    // Productor B2C / Onboarding
+    'tab-registro': 'Creación de Cuenta',
+    'tab-estructura': 'Configuración Inicial',
+    'tab-tareas': 'Solicitud de Tareas',
+    'tab-perfil': 'Edición de Cuenta y Marca',
+
+    // Pilotos Experts (para cuando lo sumes)
+    'tab-licencias': 'Registro y Licencias',
+    'tab-vuelos': 'Gestión de Vuelos',
+    'tab-liquidacion': 'Entrega y Liquidación'
 };
 
 // 2. Función de cambio de sección (Desktop + Mobile)
@@ -235,7 +247,7 @@ function switchTab(tabId, element = null) {
     const target = document.getElementById(tabId);
     if (target) target.classList.remove('hidden');
 
-    // B. Actualizar botones de la tarjeta grande
+    // B. Actualizar botones de la sidebar grande (Desktop)
     const sidebar = document.getElementById('sidebar-menu');
     if (sidebar) {
         sidebar.querySelectorAll('button').forEach(btn => {
@@ -252,23 +264,51 @@ function switchTab(tabId, element = null) {
 
     // C. Actualizar texto de la barra flotante móvil
     const mobileTitle = document.getElementById('mobile-current-tab-name');
-    if (mobileTitle && TAB_TITLES[tabId]) {
-        mobileTitle.textContent = TAB_TITLES[tabId];
+    if (mobileTitle) {
+        // 1. Busca en el diccionario TAB_TITLES
+        let title = TAB_TITLES[tabId];
+
+        // 2. Fallback escalable: si no está en el diccionario, extrae el texto del botón del DOM
+        if (!title && sidebar) {
+            const btn = sidebar.querySelector(`button[onclick*="${tabId}"]`);
+            if (btn) {
+                // Toma el texto del último span (evita el span del icono)
+                const textSpan = btn.querySelector('span:not([data-icon])') || btn;
+                title = textSpan.textContent.trim();
+            }
+        }
+
+        if (title) {
+            mobileTitle.textContent = title;
+        }
     }
 
-    // D. Cerrar el menú desplegable móvil
+    // D. Sincronizar estilo visual activo dentro del desplegable móvil
+    const dropdown = document.getElementById('mobile-dropdown-menu');
+    if (dropdown) {
+        dropdown.querySelectorAll('button').forEach(btn => {
+            const isMatch = btn.getAttribute('onclick')?.includes(tabId);
+            btn.classList.toggle('bg-primary/10', isMatch);
+            btn.classList.toggle('text-primary', isMatch);
+            btn.classList.toggle('font-bold', isMatch);
+            btn.classList.toggle('text-slate-700', !isMatch);
+            btn.classList.toggle('font-semibold', !isMatch);
+        });
+    }
+
+    // E. Cerrar el menú desplegable móvil
     closeMobileDropdown();
 
-    // E. Subir la pantalla suavemente a la cabecera
+    // F. Subir la pantalla suavemente a la cabecera
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// 2. Control del desplegable móvil
+// 3. Control del desplegable móvil
 function toggleMobileIndex(e) {
     if (e) e.stopPropagation();
     const dropdown = document.getElementById('mobile-dropdown-menu');
     const chevron = document.getElementById('mobile-chevron');
-    const btn = document.getElementById('mobile-tab-btn'); // Obtenemos el botón
+    const btn = document.getElementById('mobile-tab-btn');
 
     if (dropdown) {
         const isClosed = dropdown.classList.contains('hidden');
@@ -276,7 +316,6 @@ function toggleMobileIndex(e) {
 
         if (chevron) chevron.classList.toggle('rotate-180', isClosed);
 
-        // Aplana el borde inferior si está abierto, lo redondea si se cierra
         if (btn) {
             btn.classList.toggle('rounded-b-none', isClosed);
         }
@@ -310,28 +349,79 @@ window.addEventListener('scroll', () => {
 
     if (!mainCard || !floatingBar) return;
 
-    // En pantallas grandes (>= 1024px) no interviene
     if (window.innerWidth >= 1024) {
         floatingBar.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
         floatingBar.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
         return;
     }
 
-    // Calculamos si la parte inferior del menú grande ya salió de la pantalla
     const cardRect = mainCard.getBoundingClientRect();
-    const isCardOutOfView = cardRect.bottom < 60; // 60px margen por debajo del header
+    const isCardOutOfView = cardRect.bottom < 60;
 
     if (isCardOutOfView) {
-        // Mostrar menú flotante (desliza hacia abajo)
         floatingBar.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
         floatingBar.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
     } else {
-        // Ocultar menú flotante y cerrar desplegable si estaba abierto
         floatingBar.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
         floatingBar.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
         closeMobileDropdown();
     }
 }, { passive: true });
 
+// Exportación global
 window.switchTab = switchTab;
 window.toggleMobileIndex = toggleMobileIndex;
+window.closeMobileDropdown = closeMobileDropdown;
+
+/**
+ * Alterna entre vistas de plataforma ('app' o 'web') dentro de cualquier contenedor segmentado.
+ * @param {string} containerId - ID del contenedor padre (ej: 'paso-crear-campana', 'paso-crear-proyecto', 'paso-crear-lotes', 'paso-acceso-lote')
+ * @param {'app'|'web'} platform - Plataforma a mostrar ('app' o 'web')
+ */
+function toggleSegmentedPlatform(containerId, platform) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    // Detectar botones del switch dentro del contenedor
+    const buttons = container.querySelectorAll('.segmented-control button');
+    let btnApp = container.querySelector('[id*="-app-btn"]');
+    let btnWeb = container.querySelector('[id*="-web-btn"]');
+
+    if (!btnApp && buttons.length >= 2) btnApp = buttons[0];
+    if (!btnWeb && buttons.length >= 2) btnWeb = buttons[1];
+
+    // Detectar vistas correspondientes a este contenedor
+    const appViews = container.querySelectorAll('[class*="view-"][class*="-app"]');
+    const webViews = container.querySelectorAll('[class*="view-"][class*="-web"]');
+
+    if (platform === 'app') {
+        if (btnApp) {
+            btnApp.classList.remove('segmented-btn-inactive');
+            btnApp.classList.add('segmented-btn-active');
+        }
+        if (btnWeb) {
+            btnWeb.classList.remove('segmented-btn-active');
+            btnWeb.classList.add('segmented-btn-inactive');
+        }
+        appViews.forEach(el => el.classList.remove('hidden'));
+        webViews.forEach(el => el.classList.add('hidden'));
+    } else {
+        if (btnWeb) {
+            btnWeb.classList.remove('segmented-btn-inactive');
+            btnWeb.classList.add('segmented-btn-active');
+        }
+        if (btnApp) {
+            btnApp.classList.remove('segmented-btn-active');
+            btnApp.classList.add('segmented-btn-inactive');
+        }
+        webViews.forEach(el => el.classList.remove('hidden'));
+        appViews.forEach(el => el.classList.add('hidden'));
+    }
+}
+
+// Exportación global y alias de compatibilidad para evitar errores
+window.toggleSegmentedPlatform = toggleSegmentedPlatform;
+window.toggleCampanaPlatform = (p) => toggleSegmentedPlatform('paso-crear-campana', p);
+window.toggleProyectoPlatform = (p) => toggleSegmentedPlatform('paso-crear-proyecto', p);
+window.toggleLotePlatform = (p) => toggleSegmentedPlatform('paso-crear-lotes', p);
+window.toggleAccessPlatform = (p) => toggleSegmentedPlatform('paso-acceso-lote', p);

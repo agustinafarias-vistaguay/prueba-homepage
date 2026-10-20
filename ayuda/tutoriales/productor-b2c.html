@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es-AR">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Vistaguay | Guía de Onboarding para Productores y Asesores</title>
+    <link rel="icon" type="image/png" href="../../images/favicon.svg">
+
+    <!-- Tipografía Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Estilos del Proyecto -->
+    <link rel="stylesheet" href="../../css/output.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/animations.css">
+
+    <!-- Scripts de Interfaz -->
+    <script src="../../js/icons.js" defer></script>
+    <script src="../../js/main.js" defer></script>
+</head>
+
+<body
+    class="bg-background text-on-surface font-body-md selection:bg-primary/20 selection:text-primary min-h-screen flex flex-col overflow-x-clip">
+
+    <!-- HEADER CENTRO DE AYUDA -->
+    <nav
+        class="fixed w-full top-0 z-50 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+        <div class="flex justify-between items-center w-full px-6 sm:px-10 lg:px-12 max-w-6xl mx-auto h-14 md:h-15">
+
+            <!-- LOGO + LÍNEA DIVISORIA + CENTRO DE AYUDA -->
+            <a href="../index.html" class="flex items-center shrink-0 z-[60]">
+                <img src="../../images/logo.png" alt="Vistaguay" loading="lazy"
+                    class="h-5 md:h-[22px] w-auto object-contain transition-transform hover:scale-105">
+
+                <span class="h-5 w-[1px] bg-slate-300 shrink-0 inline-block mx-3.5"></span>
+
+                <span class="text-[17px] font-normal text-slate-600 inline-block tracking-tight">Centro de Ayuda</span>
+            </a>
+
+            <!-- BOTÓN HAMBURGUESA Y MENÚ FLOTANTE -->
+            <div class="relative flex items-center shrink-0 lg:h-full">
+                <button id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Abrir menú de navegación"
+                    class="relative w-9 h-9 text-slate-800 focus:outline-none flex items-center justify-center hover:bg-slate-100 rounded-lg transition-colors z-[60]">
+                    <span id="icon-menu" data-icon="menu" data-icon-class="w-6 h-6"
+                        class="absolute transition-all duration-300 ease-in-out opacity-100"></span>
+                    <span id="icon-close" data-icon="close" data-icon-class="w-6 h-6"
+                        class="absolute transition-all duration-300 ease-in-out opacity-0 pointer-events-none"></span>
+                </button>
+
+                <!-- MENÚ DESPLEGABLE -->
+                <div id="mobile-menu"
+                    class="hidden fixed inset-0 top-[56px] md:top-[60px] w-full h-[calc(100vh-56px)] bg-white lg:absolute lg:inset-auto lg:top-full lg:-right-2 lg:w-80 lg:h-auto lg:bg-transparent transition-all z-50 overflow-y-auto lg:overflow-visible">
+                    <div
+                        class="hidden lg:block absolute -top-[9px] right-[17px] w-4 h-4 bg-white border-l border-t border-slate-200 rotate-45 z-20">
+                    </div>
+
+                    <div
+                        class="relative bg-white lg:border lg:border-slate-200 lg:rounded-2xl lg:shadow-2xl flex flex-col py-6 px-6 lg:py-4 lg:px-2 z-10 w-full min-h-full lg:min-h-0">
+
+                        <div class="flex flex-col px-2 mt-2 lg:mt-0">
+                            <p
+                                class="text-sm lg:text-xs font-bold uppercase tracking-widest text-slate-400 px-3 py-1 mb-2 lg:mb-1">
+                                Accesos Directos</p>
+                            <a onclick="toggleMobileMenu()" href="../index.html"
+                                class="flex items-center justify-between text-base lg:text-sm font-semibold text-slate-800 hover:text-primary hover:bg-slate-50 py-3 px-3 rounded-xl transition-colors">
+                                <span>Centro de Ayuda</span>
+                                <span
+                                    class="text-xs font-extrabold bg-primary/10 text-primary px-2 py-0.5 rounded-full uppercase tracking-wider">Nuevo</span>
+                            </a>
+                        </div>
+
+                        <div class="h-px bg-slate-200 my-6 lg:my-3 mx-5 lg:mx-2"></div>
+
+                        <div class="flex flex-col gap-3 px-3 pb-6 lg:pb-1">
+                            <button onclick="toggleMobileMenu(); toggleDownloadModal()"
+                                class="btn-primary w-full py-3.5 lg:py-2.5 text-base lg:text-sm font-bold justify-center shadow-none">
+                                Registrarse
+                            </button>
+                            <button onclick="toggleMobileMenu(); toggleLoginModal()"
+                                class="btn-outline w-full py-3.5 lg:py-2.5 text-base lg:text-sm font-bold justify-center">
+                                Ir a la plataforma
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- BARRA FLOTANTE MÓVIL (Aparece al scrollear en móviles) -->
+    <div id="mobile-floating-bar"
+        class="lg:hidden fixed top-14 left-0 right-0 z-40 px-4 py-2.5 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-sm transition-all duration-300 -translate-y-full opacity-0 pointer-events-none">
+
+        <!-- Botón que muestra la sección activa y abre el desplegable -->
+        <button type="button" id="mobile-tab-btn" onclick="toggleMobileIndex(event)"
+            class="w-full flex items-center justify-between bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-slate-800 cursor-pointer shadow-2xs transition-all">
+            <div class="flex items-center gap-2 min-w-0">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Sección:</span>
+                <span id="mobile-current-tab-name" class="text-primary font-bold truncate">Creación de Cuenta</span>
+            </div>
+            <svg id="mobile-chevron" class="w-4 h-4 text-slate-500 transition-transform duration-200 shrink-0"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M6 9l6 6 6-6" />
+            </svg>
+        </button>
+
+        <!-- Menú desplegable con las 4 solapas -->
+        <div id="mobile-dropdown-menu"
+            class="hidden absolute left-4 right-4 top-full -mt-px bg-white rounded-b-xl shadow-xl border border-t-0 border-slate-200 p-1.5 pb-2 space-y-0.5 z-50">
+
+            <button type="button" data-tab="tab-registro" onclick="switchTab('tab-registro')"
+                class="mobile-dropdown-btn w-full flex items-center gap-2.5 px-3 py-3 rounded-lg text-sm font-bold bg-primary/10 text-primary transition-colors text-left cursor-pointer">
+                <span data-icon="person_add" data-icon-class="w-4 h-4 text-primary"></span>
+                <span>Creación de Cuenta</span>
+            </button>
+
+            <button type="button" data-tab="tab-estructura" onclick="switchTab('tab-estructura')"
+                class="mobile-dropdown-btn w-full flex items-center gap-2.5 px-3 py-3 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors text-left cursor-pointer">
+                <span data-icon="account_tree" data-icon-class="w-4 h-4 text-primary opacity-80"></span>
+                <span>Configuración Inicial</span>
+            </button>
+
+            <button type="button" data-tab="tab-tareas" onclick="switchTab('tab-tareas')"
+                class="mobile-dropdown-btn w-full flex items-center gap-2.5 px-3 py-3 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors text-left cursor-pointer">
+                <span data-icon="assignment" data-icon-class="w-4 h-4 text-primary opacity-80"></span>
+                <span>Solicitud de Tareas</span>
+            </button>
+
+            <button type="button" data-tab="tab-perfil" onclick="switchTab('tab-perfil')"
+                class="mobile-dropdown-btn w-full flex items-center gap-2.5 px-3 py-3 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors text-left cursor-pointer">
+                <span data-icon="manage_accounts" data-icon-class="w-4 h-4 text-primary opacity-80"></span>
+                <span>Edición de Cuenta y Marca</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL ENMARCADO -->
+    <div
+        class="w-full max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 flex-1 mt-14 md:mt-15 pt-6 md:pt-8 pb-16 flex flex-col md:flex-row items-start gap-6 md:gap-8 min-h-[calc(100vh-8rem)]">
+
+        <!-- SIDEBAR / ÍNDICE LATERAL (4 SOLAPAS) -->
+        <aside id="main-sidebar-card" class="sidebar-docs shrink-0">
+            <div
+                class="px-5 py-4 text-sm font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 bg-slate-50/50">
+                Índice del Productor
+            </div>
+
+            <nav class="sidebar-nav" id="sidebar-menu">
+                <button onclick="switchTab('tab-registro', this)" class="sidebar-tab-btn sidebar-tab-active">
+                    <span data-icon="person_add" data-icon-class="w-5 h-5"></span>
+                    <span>Creación de Cuenta</span>
+                </button>
+                <button onclick="switchTab('tab-estructura', this)" class="sidebar-tab-btn sidebar-tab-inactive">
+                    <span data-icon="account_tree" data-icon-class="w-5 h-5"></span>
+                    <span>Configuración Inicial</span>
+                </button>
+                <button onclick="switchTab('tab-tareas', this)" class="sidebar-tab-btn sidebar-tab-inactive">
+                    <span data-icon="assignment" data-icon-class="w-5 h-5"></span>
+                    <span>Solicitud de Tareas</span>
+                </button>
+                <button onclick="switchTab('tab-perfil', this)" class="sidebar-tab-btn sidebar-tab-inactive">
+                    <span data-icon="manage_accounts" data-icon-class="w-5 h-5"></span>
+                    <span>Edición de Cuenta y Marca</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- CONTENEDOR PRINCIPAL DEL CONTENIDO -->
+        <main class="flex-1 w-full min-w-0">
+
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-slate-400 mb-6 px-1">
+                <a href="../index.html" class="hover:text-primary transition-colors">Centro de Ayuda</a>
+                <span class="text-slate-300">/</span>
+                <span class="text-slate-500">Productor</span>
+                <span class="text-slate-300">/</span>
+                <span class="font-bold text-slate-700">Onboarding</span>
+            </nav>
+
+            <!-- ========================================== -->
+            <!-- SOLAPA 1: CREACIÓN DE CUENTA (REGISTRO)    -->
+            <!-- ========================================== -->
+            <div id="tab-registro" class="content-section space-y-8">
+
+                <!-- SUBSECCIÓN 1: REGISTRO INICIAL -->
+                <section class="space-y-4">
+                    <div class="space-y-3 px-1">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shrink-0">1</span>
+                            <h2 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Creación de Cuenta y
+                                Registro Inicial</h2>
+                        </div>
+                        <div class="space-y-2 text-sm text-slate-600 leading-relaxed">
+                            <p>
+                                Podés registrar tu cuenta tanto desde la <strong class="text-slate-800">App
+                                    Móvil</strong> como la <strong class="text-slate-800">Plataforma Web</strong>.
+                            </p>
+                            <p>
+                                Con las mismas credenciales tendrás acceso sincronizado en ambos dispositivos.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+
+                            <div class="md:col-span-7 space-y-4">
+                                <h3 class="font-bold text-base text-slate-900">Paso a paso para registrarte:</h3>
+
+                                <ol class="text-sm text-slate-600 space-y-3.5 list-decimal list-inside leading-relaxed">
+                                    <li>
+                                        Ingresá a <strong class="text-slate-800">web.vistaguay.com</strong> o abrí la
+                                        App Móvil y hacé clic en <strong class="text-slate-800">Crear cuenta</strong>.
+                                    </li>
+                                    <li>
+                                        Completá el formulario con tus datos de contacto: <strong
+                                            class="text-slate-800">Nombre, Apellido, Correo electrónico y
+                                            Teléfono</strong>.
+                                    </li>
+                                    <li>
+                                        Definí una contraseña segura cumpliendo los requisitos obligatorios:
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2 pl-4">
+                                            <span
+                                                class="text-xs bg-slate-50 border border-slate-200/70 p-2 rounded-lg text-slate-600 flex items-center gap-1.5">
+                                                <span class="text-emerald-600 font-bold">✓</span> Mínimo 8 caracteres
+                                            </span>
+                                            <span
+                                                class="text-xs bg-slate-50 border border-slate-200/70 p-2 rounded-lg text-slate-600 flex items-center gap-1.5">
+                                                <span class="text-emerald-600 font-bold">✓</span> Al menos una mayúscula
+                                            </span>
+                                            <span
+                                                class="text-xs bg-slate-50 border border-slate-200/70 p-2 rounded-lg text-slate-600 flex items-center gap-1.5">
+                                                <span class="text-emerald-600 font-bold">✓</span> Al menos un número
+                                            </span>
+                                            <span
+                                                class="text-xs bg-slate-50 border border-slate-200/70 p-2 rounded-lg text-slate-600 flex items-center gap-1.5">
+                                                <span class="text-emerald-600 font-bold">✓</span> Signos especiales (ej.
+                                                #!)
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        Al completar toda la información requerida, hacé clic en el botón <strong
+                                            class="text-slate-800">Registrarse</strong>. El sistema enviará un correo
+                                        automático de confirmación a tu casilla.
+                                    </li>
+                                    <li>
+                                        Abrí el e-mail y hacé clic en el botón <strong class="text-slate-800">Activar mi
+                                            cuenta</strong> para habilitar tu ingreso a la plataforma.
+                                        <span class="block text-xs text-slate-400 mt-1 pl-4">
+                                            * El correo de confirmación puede demorar unos segundos en llegar. Si no lo
+                                            visualizás en tu bandeja de entrada, revisá la carpeta de Spam o Correo no
+                                            deseado.
+                                        </span>
+                                    </li>
+                                </ol>
+
+                                <div class="pt-2">
+                                    <button onclick="openFlowLightbox('registro', 0)"
+                                        class="btn-outline text-sm font-bold py-2.5 px-4 justify-center cursor-pointer w-full sm:w-auto">
+                                        <svg class="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                        </svg>
+                                        <span>Ver Paso a Paso</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- PLACEHOLDER VISUAL DE REGISTRO -->
+                            <div class="md:col-span-5 flex flex-col items-center justify-center">
+                                <div
+                                    class="w-full rounded-2xl overflow-hidden border border-slate-200/90 shadow-md bg-slate-50 min-h-[300px] flex flex-col items-center justify-center p-6 text-center text-slate-400">
+                                    <svg class="w-12 h-12 text-slate-300 mb-2" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="1.5">
+                                        <rect x="3" y="4" width="18" height="16" rx="2" />
+                                        <circle cx="12" cy="10" r="3" />
+                                        <path d="M7 18c0-2 2-3 5-3s5 1 5 3" />
+                                    </svg>
+                                    <span
+                                        class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Formulario
+                                        y Activación</span>
+                                    <p class="text-xs text-slate-400 mt-1">Pantalla de credenciales y correo de
+                                        verificación</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SUBSECCIÓN 2: RECUPERACIÓN DE CONTRASEÑA -->
+                <section class="space-y-4">
+                    <div class="space-y-2 px-1">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shrink-0">2</span>
+                            <h2 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Recuperación de
+                                Contraseña</h2>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            En caso de no recordar tu contraseña, podés
+                            restablecerla de forma rápida y segura.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+
+                            <div class="md:col-span-7 space-y-4">
+                                <h3 class="font-bold text-base text-slate-900">Paso a paso para recuperar tu clave:</h3>
+
+                                <ol class="text-sm text-slate-600 space-y-3.5 list-decimal list-inside leading-relaxed">
+                                    <li>
+                                        En la pantalla de inicio de sesión de la Web o la App, hacé clic en el enlace
+                                        <strong class="text-slate-800">"¿Olvidaste tu contraseña?"</strong>.
+                                    </li>
+                                    <li>
+                                        Ingresá el correo electrónico con el que te registraste y hacé clic en <strong
+                                            class="text-slate-800">Recuperar</strong>.
+                                    </li>
+                                    <li>
+                                        Se enviará un correo automático a tu casilla. Abrilo y hacé clic en el botón
+                                        <strong class="text-slate-800">Restablecer contraseña</strong>.
+                                    </li>
+                                    <li>
+                                        El enlace te redirigirá a una ventana web donde deberás ingresar y confirmar tu
+                                        nueva contraseña, teniendo en cuenta los requisitos obligatorios de seguridad
+                                        (mínimo 8 caracteres, mayúscula, número y signo especial).
+                                    </li>
+                                    <li>
+                                        Hacé clic en <strong class="text-slate-800">Confirmar</strong>. Tu nueva clave
+                                        quedará configurada y ya podrás operar normalmente con ella en cualquiera de las
+                                        dos plataformas.
+                                    </li>
+                                </ol>
+
+                                <!-- AVISO DE EXPIRACIÓN DEL LINK (15 MINUTOS) -->
+                                <div
+                                    class="bg-amber-50 border border-amber-200 p-4 rounded-xl flex items-start gap-3 text-xs text-amber-900">
+                                    <span class="text-base shrink-0 mt-0.5">⏱️</span>
+                                    <div class="space-y-1">
+                                        <strong class="font-bold block">Tiempo límite del enlace:</strong>
+                                        <p class="leading-relaxed">
+                                            Por motivos de seguridad, el enlace de recuperación expira a los <strong
+                                                class="font-semibold text-amber-950">15 minutos</strong> de haber sido
+                                            solicitado. En caso de superar ese lapso, deberás repetir el flujo desde el
+                                            inicio para recibir un nuevo link válido.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PLACEHOLDER VISUAL DE RECUPERACIÓN -->
+                            <div class="md:col-span-5 flex flex-col items-center justify-center">
+                                <div
+                                    class="w-full rounded-2xl overflow-hidden border border-slate-200/90 shadow-md bg-slate-50 min-h-[260px] flex flex-col items-center justify-center p-6 text-center text-slate-400">
+                                    <svg class="w-12 h-12 text-slate-300 mb-2" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="1.5">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                        <circle cx="12" cy="16" r="1.5" />
+                                    </svg>
+                                    <span
+                                        class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Recuperación
+                                        de Clave</span>
+                                    <p class="text-xs text-slate-400 mt-1">Pantalla de solicitud por correo y nueva
+                                        contraseña</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- ========================================== -->
+            <!-- SOLAPA 2: CONFIGURACIÓN INICIAL DE CUENTA  -->
+            <!-- ========================================== -->
+            <div id="tab-estructura" class="content-section space-y-8 hidden">
+
+                <!-- PASO 1: INTRODUCCIÓN A LA JERARQUÍA -->
+                <section class="space-y-4">
+                    <div class="space-y-3 px-1">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shrink-0">1</span>
+                            <h2 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Estructura Agrícola
+                            </h2>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            En Vistaguay la información se organiza de forma piramidal. Esta estructura te permite
+                            segmentar ordenadamente tus lotes y centralizar los resultados históricos de cada ciclo
+                            productivo.
+                        </p>
+                    </div>
+
+                    <!-- DIAGRAMA VISUAL JERÁRQUICO (SIN EJEMPLOS DE TEXTO) -->
+                    <div
+                        class="bg-gradient-to-br from-slate-900 to-slate-800 p-6 sm:p-8 rounded-3xl text-white shadow-xl space-y-6 border border-slate-700/50">
+                        <div class="text-center max-w-xl mx-auto space-y-1">
+                            <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Modelo
+                                Jerárquico</span>
+                            <h3 class="text-lg sm:text-xl font-black text-white">Campaña &rarr; Proyecto &rarr; Lote
+                                &rarr; Tareas</h3>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
+
+                            <!-- 1. CAMPAÑA -->
+                            <div
+                                class="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-4 flex flex-col justify-between space-y-3">
+                                <div>
+                                    <span
+                                        class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest block mb-1">Nivel
+                                        1</span>
+                                    <h4 class="text-base font-bold text-white flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <rect x="3" y="4" width="18" height="18" rx="2" />
+                                            <line x1="16" y1="2" x2="16" y2="6" />
+                                            <line x1="8" y1="2" x2="8" y2="6" />
+                                        </svg>
+                                        Campaña
+                                    </h4>
+                                    <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                                        Período o ciclo productivo de trabajo temporal para agrupar las actividades.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- 2. PROYECTO -->
+                            <div
+                                class="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-4 flex flex-col justify-between space-y-3">
+                                <div>
+                                    <span
+                                        class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest block mb-1">Nivel
+                                        2</span>
+                                    <h4 class="text-base font-bold text-white flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path
+                                                d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+                                        </svg>
+                                        Proyecto
+                                    </h4>
+                                    <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                                        Contenedor organizativo que representa tus <strong class="text-white">Campos,
+                                            Establecimientos, Unidades de Negocio o Clientes</strong> según prefieras
+                                        clasificar tu operación.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- 3. LOTE -->
+                            <div
+                                class="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-4 flex flex-col justify-between space-y-3">
+                                <div>
+                                    <span
+                                        class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest block mb-1">Nivel
+                                        3</span>
+                                    <h4 class="text-base font-bold text-white flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                                            <polyline points="2 17 12 22 22 17" />
+                                            <polyline points="2 12 12 17 22 12" />
+                                        </svg>
+                                        Lote
+                                    </h4>
+                                    <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                                        Delimitación geográfica real (polígono vectorial sobre mapa) donde se ejecutan
+                                        los análisis y monitoreos.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- 4. TAREAS (SERVICIOS) -->
+                            <div
+                                class="bg-emerald-950/60 backdrop-blur-md border border-emerald-500/40 rounded-2xl p-4 flex flex-col justify-between space-y-3">
+                                <div>
+                                    <span
+                                        class="text-[10px] font-bold text-emerald-300 uppercase tracking-widest block mb-1">Nivel
+                                        4 (Servicios)</span>
+                                    <h4 class="text-base font-bold text-emerald-300 flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-emerald-300" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <polyline points="9 11 12 14 22 4" />
+                                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                                        </svg>
+                                        Tareas
+                                    </h4>
+                                    <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                                        Llamamos <strong class="text-white">"Tarea"</strong> a cada servicio solicitado
+                                        (Planting Quality, Mapeo de Malezas o Aplicación aérea).
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PASO 2: CAPACIDADES POR PLATAFORMA (TABLA REUBICADA AQUÍ) -->
+                <section class="space-y-4">
+                    <div class="space-y-2 px-1">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shrink-0">2</span>
+                            <h2 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Capacidades por
+                                Plataforma</h2>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Resumen de acciones admitidas en la Plataforma Web frente a la App Móvil para gestionar tu
+                            estructura:
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
+                        <div class="overflow-x-auto pt-2">
+                            <table class="w-full text-left text-sm">
+                                <thead>
+                                    <tr class="bg-slate-50 border-b border-slate-200 text-slate-700 font-bold">
+                                        <th class="p-3 rounded-l-xl">Función / Característica</th>
+                                        <th class="p-3 text-center w-28">Plataforma Web</th>
+                                        <th class="p-3 text-center w-28 rounded-r-xl">App Móvil</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 text-slate-600">
+                                    <tr>
+                                        <td class="p-3 font-medium text-slate-800">
+                                            Crear Campaña / Proyecto / Lote
+                                        </td>
+                                        <td class="p-3 text-center">
+                                            <svg class="w-4 h-4 text-emerald-600 mx-auto" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2.5">
+                                                <polyline points="20 6 9 17 4 12" />
+                                            </svg>
+                                        </td>
+                                        <td class="p-3 text-center">
+                                            <svg class="w-4 h-4 text-emerald-600 mx-auto" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2.5">
+                                                <polyline points="20 6 9 17 4 12" />
+                                            </svg>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-medium text-slate-800">
+                                            Importar proyectos de campañas anteriores
+                                        </td>
+                                        <td class="p-3 text-center">
+                                            <svg class="w-4 h-4 text-emerald-600 mx-auto" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2.5">
+                                                <polyline points="20 6 9 17 4 12" />
+                                            </svg>
+                                        </td>
+                                        <td class="p-3 text-center">
+                                            <svg class="w-4 h-4 text-emerald-600 mx-auto" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2.5">
+                                                <polyline points="20 6 9 17 4 12" />
+                                            </svg>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-medium text-slate-800">
+                                            Carga Masiva de Lotes
+                                            <span class="block text-xs text-slate-400 font-normal">Subida múltiple de
+                                                archivos (<strong>.kml</strong> o <strong>.kmz</strong>)</span>
+                                        </td>
+                                        <td class="p-3 text-center">
+                                            <svg class="w-4 h-4 text-emerald-600 mx-auto" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2.5">
+                                                <polyline points="20 6 9 17 4 12" />
+                                            </svg>
+                                        </td>
+                                        <td class="p-3 text-center text-xs text-slate-400 font-semibold">
+                                            (Solo en Web)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-medium text-slate-800">
+                                            Editar o Eliminar Campaña / Proyecto / Lote
+                                        </td>
+                                        <td class="p-3 text-center">
+                                            <svg class="w-4 h-4 text-emerald-600 mx-auto" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2.5">
+                                                <polyline points="20 6 9 17 4 12" />
+                                            </svg>
+                                        </td>
+                                        <td class="p-3 text-center text-xs text-slate-400 font-semibold">
+                                            (Solo en Web)
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PASO 3: CREACIÓN DE CAMPAÑA (SUBSECCIÓN INDEPENDIENTE CON SWITCH) -->
+                <section class="space-y-4" id="paso-crear-campana">
+                    <div class="space-y-2 px-1">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shrink-0">3</span>
+                            <h2 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Creación de Campañas
+                            </h2>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            La Campaña representa el ciclo productivo o período de trabajo. Podés crearla directamente
+                            desde la App Móvil al iniciar una tarea o mediante la Plataforma Web:
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-5">
+
+                        <!-- SELECTOR SEGMENTADO CAMPAÑA -->
+                        <div class="segmented-control inline-flex">
+                            <button id="toggle-campana-app-btn"
+                                onclick="toggleSegmentedPlatform('paso-crear-campana', 'app')"
+                                class="segmented-btn segmented-btn-active">
+                                Ver App Móvil
+                            </button>
+                            <button id="toggle-campana-web-btn"
+                                onclick="toggleSegmentedPlatform('paso-crear-campana', 'web')"
+                                class="segmented-btn segmented-btn-inactive">
+                                Ver Web
+                            </button>
+                        </div>
+
+                        <!-- VISTA APP MÓVIL (CAMPAÑA) -->
+                        <div class="view-campana-app space-y-4">
+                            <div
+                                class="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider">
+                                <svg class="w-4 h-4 text-primary shrink-0" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <rect x="5" y="2" width="14" height="20" rx="3" />
+                                    <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3" />
+                                </svg>
+                                Desde la App Móvil
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                                <div class="md:col-span-7 space-y-3.5 text-sm text-slate-600 leading-relaxed">
+                                    <p>
+                                        A diferencia de la versión web, en la aplicación móvil el flujo está enfocado en
+                                        la gestión operativa directa a campo:
+                                    </p>
+
+                                    <ol class="space-y-3 list-decimal list-inside text-xs text-slate-600">
+                                        <li>
+                                            En la pantalla de inicio, presioná el botón verde flotante <strong
+                                                class="text-slate-800">+ Crear tarea</strong> y seleccioná el servicio a
+                                            solicitar (Planting Quality, Mapeo de Malezas o Aplicación).
+                                        </li>
+                                        <li>
+                                            El sistema autoseleccionará de forma predeterminada la última Campaña,
+                                            Proyecto y Lote que hayas utilizado.
+                                        </li>
+                                        <li>
+                                            Para registrar una nueva campaña, tocá el menú desplegable de <strong
+                                                class="text-slate-800">Campaña</strong> y hacé clic en el botón <strong
+                                                class="text-slate-800">+ Crear</strong>.
+                                        </li>
+                                        <li>
+                                            Completá los datos del ciclo:
+                                            <ul class="pl-5 pt-1.5 space-y-1.5 list-disc text-slate-600">
+                                                <li>
+                                                    <strong class="text-slate-800">Período (Obligatorio):</strong>
+                                                    Seleccioná el ciclo productivo correspondiente (por ejemplo: <strong
+                                                        class="text-slate-800">24/25</strong>).
+                                                </li>
+                                                <li>
+                                                    <strong class="text-slate-800">Nombre de la campaña
+                                                        (Opcional):</strong> Podés sumar una referencia de cultivo o
+                                                    actividad (ejemplo: <strong class="text-slate-800">Maíz</strong>).
+                                                    Al guardar, el sistema combinará automáticamente ambos valores
+                                                    (quedando: <strong class="text-slate-800">Campaña Maíz
+                                                        24/25</strong>). Si lo dejás en blanco, se guardará con el
+                                                    período seleccionado.
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            Presioná <strong class="text-slate-800">Guardar</strong>. La campaña quedará
+                                            creada y se autoasignará a la tarea actual para continuar con el formulario.
+                                        </li>
+                                    </ol>
+                                </div>
+
+                                <!-- PLACEHOLDER CAPTURA APP CAMPAÑA -->
+                                <div class="md:col-span-5 flex flex-col items-center justify-center">
+                                    <div
+                                        class="w-full rounded-2xl overflow-hidden border border-slate-200/90 shadow-md bg-slate-50 min-h-[240px] flex flex-col items-center justify-center p-6 text-center text-slate-400">
+                                        <svg class="w-10 h-10 text-slate-300 mb-2" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="1.5">
+                                            <rect x="5" y="2" width="14" height="20" rx="3" />
+                                            <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3" />
+                                        </svg>
+                                        <span
+                                            class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Crear
+                                            Campaña en App</span>
+                                        <p class="text-xs text-slate-400 mt-1">Desplegable de campaña y alta rápida
+                                            dentro de una nueva tarea</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- VISTA WEB (CAMPAÑA) -->
+                        <div class="view-campana-web hidden space-y-4">
+                            <div
+                                class="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider">
+                                <svg class="w-4 h-4 text-primary shrink-0" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" />
+                                    <line x1="8" y1="21" x2="16" y2="21" />
+                                    <line x1="12" y1="17" x2="12.01" y2="17" />
+                                </svg>
+                                Desde la Plataforma Web
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                                <div class="md:col-span-7 space-y-3 text-sm text-slate-600 leading-relaxed">
+                                    <p>
+                                        En la versión de escritorio, la navegación se estructura jerárquicamente desde
+                                        el panel superior:
+                                    </p>
+                                    <ul class="space-y-2.5 list-disc list-inside text-xs text-slate-600">
+                                        <li>
+                                            En el selector superior de campañas o al entrar por primera vez con tu
+                                            cuenta en blanco, hacé clic en <strong class="text-slate-800">+ Crear
+                                                Campaña</strong>.
+                                        </li>
+                                        <li>
+                                            Definí el <strong class="text-slate-800">Período</strong> del ciclo y, si lo
+                                            deseás, añadí el nombre de referencia.
+                                        </li>
+                                        <li>
+                                            Hacé clic en <strong class="text-slate-800">Guardar</strong> para crear tu
+                                            campaña.
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- PLACEHOLDER CAPTURA WEB CAMPAÑA -->
+                                <div class="md:col-span-5 flex flex-col items-center justify-center">
+                                    <div
+                                        class="w-full rounded-2xl overflow-hidden border border-slate-200/90 shadow-md bg-slate-50 min-h-[220px] flex flex-col items-center justify-center p-6 text-center text-slate-400">
+                                        <svg class="w-10 h-10 text-slate-300 mb-2" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="1.5">
+                                            <rect x="2" y="3" width="20" height="14" rx="2" />
+                                            <line x1="8" y1="21" x2="16" y2="21" />
+                                        </svg>
+                                        <span
+                                            class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Ventana
+                                            Crear Campaña en Web</span>
+                                        <p class="text-xs text-slate-400 mt-1">Formulario de período obligatorio y
+                                            nombre personalizado</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- PASO 4: CREACIÓN DE PROYECTO (SUBSECCIÓN INDEPENDIENTE CON SWITCH, MODAL Y PASO A PASO) -->
+                <section class="space-y-4" id="paso-crear-proyecto">
+                    <div class="space-y-2 px-1">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shrink-0">4</span>
+                            <h2 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Creación de Proyectos
+                                (Campo o Establecimiento)</h2>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            El Proyecto agrupa tus lotes según su ubicación física, campo, cliente o unidad de negocio.
+                            Podés darlo de alta en la App Móvil o aprovechar la herramienta de importación masiva en la
+                            Web:
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-5">
+
+                        <!-- SELECTOR SEGMENTADO PROYECTO -->
+                        <div class="segmented-control inline-flex">
+                            <button id="toggle-proyecto-app-btn"
+                                onclick="toggleSegmentedPlatform('paso-crear-proyecto', 'app')"
+                                class="segmented-btn segmented-btn-active">
+                                Ver App Móvil
+                            </button>
+                            <button id="toggle-proyecto-web-btn"
+                                onclick="toggleSegmentedPlatform('paso-crear-proyecto', 'web')"
+                                class="segmented-btn segmented-btn-inactive">
+                                Ver Web
+                            </button>
+                        </div>
+
+                        <!-- VISTA APP MÓVIL (PROYECTO) -->
+                        <div class="view-proyecto-app space-y-4">
+                            <div
+                                class="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider">
+                                <svg class="w-4 h-4 text-primary shrink-0" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <rect x="5" y="2" width="14" height="20" rx="3" />
+                                    <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3" />
+                                </svg>
+                                Desde la App Móvil
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                                <div class="md:col-span-7 space-y-3.5 text-sm text-slate-600 leading-relaxed">
+                                    <p>
+                                        Al crear una tarea en la aplicación, si el lote no pertenece a ninguno de tus
+                                        proyectos existentes:
+                                    </p>
+
+                                    <ol class="space-y-2.5 list-decimal list-inside text-xs text-slate-600">
+                                        <li>
+                                            En la pantalla de selección de ubicación de la tarea, tocá el menú
+                                            desplegable de <strong class="text-slate-800">Proyecto</strong>.
+                                        </li>
+                                        <li>
+                                            Hacé clic en el botón <strong class="text-slate-800">+ Crear</strong>.
+                                        </li>
+                                        <li>
+                                            Completá los campos del proyecto:
+                                            <ul class="pl-5 pt-1.5 space-y-1.5 list-disc text-slate-600">
+                                                <li>
+                                                    <strong class="text-slate-800">Nombre del proyecto
+                                                        (Obligatorio):</strong> Asigná un identificador claro (ejemplo:
+                                                    <em>Establecimiento Don Pedro</em> o <em>Campo Norte</em>).
+                                                </li>
+                                                <li>
+                                                    <strong class="text-slate-800">Color identificador:</strong>
+                                                    Seleccioná un color de la paleta. Este color se aplicará
+                                                    automáticamente a los pines, íconos y límites de todos los lotes de
+                                                    este proyecto dentro del mapa satelital, permitiéndote
+                                                    diferenciarlos visualmente a simple vista.
+                                                </li>
+                                                <li>
+                                                    <strong class="text-slate-800">Descripción (Opcional):</strong>
+                                                    Espacio para notas internas, datos catastrales o acuerdos de
+                                                    arrendamiento.
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            Presioná <strong class="text-slate-800">Guardar</strong> para asociarlo de
+                                            inmediato a la campaña activa y continuar con la tarea.
+                                        </li>
+                                    </ol>
+                                </div>
+
+                                <!-- PLACEHOLDER CAPTURA APP PROYECTO -->
+                                <div class="md:col-span-5 flex flex-col items-center justify-center">
+                                    <div
+                                        class="w-full rounded-2xl overflow-hidden border border-slate-200/90 shadow-md bg-slate-50 min-h-[250px] flex flex-col items-center justify-center p-6 text-center text-slate-400">
+                                        <svg class="w-10 h-10 text-slate-300 mb-2" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="1.5">
+                                            <rect x="5" y="2" width="14" height="20" rx="3" />
+                                        </svg>
+                                        <span
+                                            class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Crear
+                                            Proyecto en App</span>
+                                        <p class="text-xs text-slate-400 mt-1">Formulario con nombre, paleta de color y
+                                            descripción</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- VISTA WEB (PROYECTO: ELECCIÓN NUEVO VS IMPORTAR) -->
+                        <div class="view-proyecto-web hidden space-y-5">
+                            <div
+                                class="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider">
+                                <svg class="w-4 h-4 text-primary shrink-0" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" />
+                                    <line x1="8" y1="21" x2="16" y2="21" />
+                                    <line x1="12" y1="17" x2="12.01" y2="17" />
+                                </svg>
+                                Desde la Plataforma Web: Crear de Cero vs. Importar
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                                <div class="md:col-span-7 space-y-4">
+                                    <p class="text-sm text-slate-600 leading-relaxed">
+                                        Dentro de la campaña activa, al presionar <strong class="text-slate-800">+ Crear
+                                            Proyecto</strong> encontrarás dos modalidades de trabajo:
+                                    </p>
+
+                                    <div class="space-y-3">
+                                        <!-- OPCIÓN 1: DE CERO -->
+                                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-2">
+                                            <h4 class="font-bold text-sm text-slate-900 flex items-center gap-1.5">
+                                                <span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+                                                1. Crear Proyecto Nuevo (desde cero)
+                                            </h4>
+                                            <p class="text-xs text-slate-600 leading-relaxed">
+                                                Genera un proyecto completamente en blanco. Ingresás el nombre
+                                                identificador, seleccionás su color de visualización en el mapa,
+                                                completás la descripción opcional y guardás.
+                                            </p>
+                                        </div>
+
+                                        <!-- OPCIÓN 2: IMPORTAR -->
+                                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-2">
+                                            <h4 class="font-bold text-sm text-slate-900 flex items-center gap-1.5">
+                                                <span class="w-2 h-2 rounded-full bg-emerald-600 inline-block"></span>
+                                                2. Elegir proyectos de otra campaña (Importación)
+                                            </h4>
+                                            <p class="text-xs text-slate-600 leading-relaxed">
+                                                Permite reutilizar la estructura de ciclos anteriores sin volver a
+                                                cargar información desde cero:
+                                            </p>
+                                            <ul
+                                                class="text-xs text-slate-600 space-y-1.5 list-disc list-inside leading-relaxed pl-1">
+                                                <li>
+                                                    El sistema listará todos los proyectos creados previamente en tu
+                                                    cuenta.
+                                                </li>
+                                                <li>
+                                                    Podés tildar los campos específicos que vas a trabajar, o bien
+                                                    presionar <strong class="text-slate-800">Seleccionar todos</strong>
+                                                    para simplificar la selección.
+                                                </li>
+                                                <li>
+                                                    Si utilizaste "Seleccionar todos", podés destildar puntualmente
+                                                    aquellos establecimientos que no requieras en este ciclo.
+                                                </li>
+                                                <li>
+                                                    Al hacer clic en <strong class="text-slate-800">Guardar</strong>, se
+                                                    migrarán los proyectos a la campaña actual con <strong
+                                                        class="text-slate-800">todos sus lotes y perímetros ya
+                                                        trazados</strong>, ahorrando el trabajo de redibujar.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <!-- BOTÓN VER PASO A PASO PROYECTO -->
+                                    <div class="pt-2">
+                                        <button onclick="openFlowLightbox('proyecto', 0)"
+                                            class="btn-outline text-sm font-bold py-2.5 px-4 justify-center cursor-pointer w-full sm:w-auto">
+                                            <svg class="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                            </svg>
+                                            <span>Ver Paso a Paso de Importación</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- PLACEHOLDER CAPTURA PANTALLA ELECCIÓN PROYECTO -->
+                                <div class="md:col-span-5 flex flex-col items-center justify-center">
+                                    <div
+                                        class="w-full rounded-2xl overflow-hidden border border-slate-200/90 shadow-md bg-slate-50 min-h-[300px] flex flex-col items-center justify-center p-6 text-center text-slate-400">
+                                        <svg class="w-12 h-12 text-slate-300 mb-2" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="1.5">
+                                            <path
+                                                d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+                                            <path d="M12 11v6M9 14h6" />
+                                        </svg>
+                                        <span
+                                            class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Elección:
+                                            Nuevo o Importar</span>
+                                        <p class="text-xs text-slate-400 mt-1">Pantalla de selección múltiple e
+                                            importación rápida de establecimientos</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- PASO 5: GESTIÓN Y CARGA DE LOTES CON SWITCH (WEB VS APP) -->
+                <section class="space-y-4" id="paso-crear-lotes">
+                    <div class="space-y-2 px-1">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shrink-0">5</span>
+                            <h2 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Crear y Asignar Lotes
+                            </h2>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Una vez creado el proyecto, el siguiente paso es delimitar la superficie productiva.
+                            Seleccioná qué plataforma querés consultar:
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-5">
+
+                        <!-- SELECTOR SEGMENTADO LOTE -->
+                        <div class="segmented-control inline-flex">
+                            <button id="toggle-lote-app-btn"
+                                onclick="toggleSegmentedPlatform('paso-crear-lotes', 'app')"
+                                class="segmented-btn segmented-btn-active">
+                                Ver App Móvil
+                            </button>
+                            <button id="toggle-lote-web-btn"
+                                onclick="toggleSegmentedPlatform('paso-crear-lotes', 'web')"
+                                class="segmented-btn segmented-btn-inactive">
+                                Ver Web
+                            </button>
+                        </div>
+
+                        <!-- VISTA APP MÓVIL (LOTE) -->
+                        <div class="view-lote-app space-y-4">
+                            <div
+                                class="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider">
+                                <svg class="w-4 h-4 text-primary shrink-0" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <rect x="5" y="2" width="14" height="20" rx="3" />
+                                    <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3" />
+                                </svg>
+                                Delimitación a Campo desde la App Móvil
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                                <div class="md:col-span-7 space-y-4 text-sm text-slate-600 leading-relaxed">
+                                    <p>
+                                        Al crear un lote nuevo desde la aplicación móvil contás con dos alternativas de
+                                        carga directa:
+                                    </p>
+
+                                    <!-- OPCIÓN A: SUBIR ARCHIVO EN MÓVIL -->
+                                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-2">
+                                        <h4 class="font-bold text-sm text-slate-900 flex items-center gap-1.5">
+                                            <span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+                                            Opción A: Subir Archivo Georreferenciado (.KML o .KMZ)
+                                        </h4>
+                                        <p class="text-xs text-slate-600 leading-relaxed">
+                                            Podés seleccionar desde el almacenamiento interno de tu celular o desde tu
+                                            servicio en la nube un archivo <strong class="text-slate-800">.kml</strong>
+                                            o <strong class="text-slate-800">.kmz</strong>. La app trazará el polígono
+                                            de manera automática conservando las hectáreas y coordenadas originales.
+                                        </p>
+                                    </div>
+
+                                    <!-- OPCIÓN B: DIBUJAR EN APP -->
+                                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-2.5">
+                                        <h4 class="font-bold text-sm text-slate-900 flex items-center gap-1.5">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-600 inline-block"></span>
+                                            Opción B: Dibujar en el mapa (Mecánica Táctil Asistida)
+                                        </h4>
+                                        <ul
+                                            class="text-xs text-slate-600 space-y-2 list-disc list-inside leading-relaxed">
+                                            <li>
+                                                <strong class="text-slate-800">Puntero central (Cruz fija):</strong> En
+                                                lugar de tocar directamente sobre la pantalla con el dedo, verás una
+                                                cruz central fija. Desplazá el mapa satelital hasta ubicar la cruz sobre
+                                                el vértice deseado y presioná el botón verde inferior <strong
+                                                    class="text-slate-800">"Agregar punto"</strong>.
+                                            </li>
+                                            <li>
+                                                <strong class="text-slate-800">Cierre automático:</strong> Al colocar el
+                                                tercer punto, el polígono se generará y cerrará solo, desplegando los
+                                                vértices principales e intermedios para ajustes finos.
+                                            </li>
+                                            <li>
+                                                <strong class="text-slate-800">Ajuste de vértices:</strong> Para
+                                                modificar la ubicación de cualquier punto, hacé clic sobre el vértice
+                                                deseado y mantenelo presionado mientras lo arrastrás para reubicarlo.
+                                            </li>
+                                            <li>
+                                                <strong class="text-slate-800">Borrar o Deshacer:</strong> Para borrar
+                                                un vértice específico, tocalo y presioná el ícono del <strong
+                                                    class="text-slate-800">tachito</strong> a la derecha de la pantalla.
+                                                Si deseás revertir la última acción realizada, presioná el ícono de la
+                                                <strong class="text-slate-800">flecha (Volver atrás)</strong> en la
+                                                esquina izquierda.
+                                            </li>
+                                            <li>
+                                                <strong class="text-slate-800">Herramienta Recortar:</strong> Tocá el
+                                                botón <strong class="text-slate-800">"Cortar polígono"</strong>, dibujá
+                                                el contorno interno con la cruz central y "Agregar punto" para excluir
+                                                cascos, lagunas, montes o caminos, y presioná <strong
+                                                    class="text-slate-800">"Recortar"</strong> para descontar esas áreas
+                                                no productivas.
+                                            </li>
+                                            <li>
+                                                <strong class="text-slate-800">Finalizar y Asignar Nombre:</strong>
+                                                Tanto luego de editar como de recortar, debés presionar el botón <strong
+                                                    class="text-slate-800">"Listo"</strong> para salir del modo dibujo.
+                                                Finalmente, asignale un <strong class="text-slate-800">Nombre</strong>
+                                                al lote y presioná <strong class="text-slate-800">"Crear nuevo
+                                                    lote"</strong> para guardarlo y que quede asignado a tu tarea.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- PLACEHOLDER CAPTURA APP DIBUJO -->
+                                <div class="md:col-span-5 flex flex-col items-center justify-center">
+                                    <div
+                                        class="w-full rounded-2xl overflow-hidden border border-slate-200/90 shadow-md bg-slate-50 min-h-[320px] flex flex-col items-center justify-center p-6 text-center text-slate-400">
+                                        <svg class="w-10 h-10 text-slate-300 mb-2" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="1.5">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <line x1="12" y1="8" x2="12" y2="16" />
+                                            <line x1="8" y1="12" x2="16" y2="12" />
+                                        </svg>
+                                        <span
+                                            class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Mecánica
+                                            de Puntero Central</span>
+                                        <p class="text-xs text-slate-400 mt-1">Cursor central fijo, arrastre de
+                                            vértices, corte y botón Listo</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- VISTA WEB (LOTE) -->
+                        <div class="view-lote-web hidden space-y-4">
+                            <div
+                                class="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider">
+                                <svg class="w-4 h-4 text-primary shrink-0" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" />
+                                    <line x1="8" y1="21" x2="16" y2="21" />
+                                    <line x1="12" y1="17" x2="12.01" y2="17" />
+                                </svg>
+                                Carga de Lotes en Plataforma Web
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <!-- CARGA INDIVIDUAL -->
+                                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-2.5">
+                                    <h4 class="font-bold text-sm text-slate-900">Opción A: Carga Individual (Lote por
+                                        Lote)</h4>
+                                    <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside leading-relaxed">
+                                        <li>
+                                            <strong class="text-slate-800">Subir KML o KMZ:</strong> Importa el
+                                            perímetro exacto exportado desde otra plataforma. En este caso, el sistema
+                                            <strong class="text-slate-800">autoasigna automáticamente</strong> como
+                                            nombre del lote el nombre original del archivo (pudiendo conservarlo o
+                                            editarlo antes de guardar).
+                                        </li>
+                                        <li>
+                                            <strong class="text-slate-800">Dibujar en mapa:</strong> Utilizás el
+                                            buscador para centrar la localidad, activás "Dibujar" y marcás los vértices
+                                            haciendo clic sobre el mapa hasta cerrar sobre el primer punto trazado. Al
+                                            finalizar el trazo, <strong class="text-slate-800">deberás asignarle un
+                                                nombre manual</strong> al lote.
+                                        </li>
+                                        <li>
+                                            <strong class="text-slate-800">Ajustes y Recortes:</strong> Podés arrastrar
+                                            cualquier vértice para corregirlo o usar la herramienta "Recortar" para
+                                            excluir lagunas o cascos de las hectáreas netas productivas.
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- CARGA MASIVA -->
+                                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-2.5">
+                                    <h4 class="font-bold text-sm text-slate-900">Opción B: Carga Masiva de Lotes</h4>
+                                    <p class="text-xs text-slate-600 leading-relaxed">
+                                        Herramienta diseñada para subir múltiples lotes o campos completos de una sola
+                                        vez:
+                                    </p>
+                                    <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside leading-relaxed">
+                                        <li>
+                                            Arrastrás varios archivos <strong class="text-slate-800">.KML /
+                                                .KMZ</strong> sueltos o subís directamente una carpeta comprimida en
+                                            formato <strong class="text-slate-800">.ZIP</strong> que contenga los
+                                            polígonos.
+                                        </li>
+                                        <li>
+                                            <strong class="text-slate-800">Asignación automática de nombres:</strong> En
+                                            esta instancia <strong class="text-slate-800">no es posible modificar los
+                                                nombres de los archivos</strong> durante la subida masiva; cada lote se
+                                            creará tomando el nombre exacto de su archivo original. Si más adelante
+                                            deseás renombrar alguno, podrás hacerlo editando individualmente cada lote
+                                            desde el listado de la plataforma.
+                                        </li>
+                                        <li>
+                                            Confirmás haciendo clic en <strong class="text-slate-800">"Subir y
+                                                Guardar"</strong> para integrar todos los lotes al proyecto en un solo
+                                            paso.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- PASO 6: EDICIÓN Y REGLA ESTRICTA DE ELIMINACIÓN -->
+                <section class="space-y-4">
+                    <div class="space-y-2 px-1">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shrink-0">6</span>
+                            <h2 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Edición y Regla
+                                Estricta de Eliminación</h2>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-5">
+                        <div class="space-y-2">
+                            <h3 class="font-bold text-sm text-slate-900">Edición de Estructura (Exclusiva en Web)</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Desde la Web, haciendo clic en los tres puntitos al lado de cualquier Campaña, Proyecto
+                                o Lote, presionás el <strong class="text-slate-800">ícono del lápiz</strong> para editar
+                                nombres, colores identificadores o períodos de ciclo.
+                            </p>
+                            <div class="bg-amber-50 border border-amber-200 p-3.5 rounded-xl text-xs text-amber-900">
+                                ⚠️ <strong class="font-bold">Aviso importante sobre perímetros:</strong> Para preservar
+                                la trazabilidad agronómica de los informes, el polígono de un lote no se puede redibujar
+                                una vez creado. Si hubo una equivocación en el trazado, se debe crear un nuevo lote.
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-100 pt-4 space-y-3">
+                            <h3 class="font-bold text-sm text-slate-900">Regla Estricta de Eliminación (de abajo hacia
+                                arriba)</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Para proteger tus datos y no perder reportes procesados, la plataforma exige que los
+                                elementos contenedores estén vacíos antes de eliminarse:
+                            </p>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+                                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/70 text-xs">
+                                    <strong class="text-slate-900 block mb-1">1. Para borrar un Lote:</strong>
+                                    <p class="text-slate-600">No debe tener ninguna tarea creada ni historial de vuelos
+                                        o fotos procesadas.</p>
+                                </div>
+                                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/70 text-xs">
+                                    <strong class="text-slate-900 block mb-1">2. Para borrar un Proyecto:</strong>
+                                    <p class="text-slate-600">Debe estar vacío, sin ningún lote asignado en su interior.
+                                    </p>
+                                </div>
+                                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/70 text-xs">
+                                    <strong class="text-slate-900 block mb-1">3. Para borrar una Campaña:</strong>
+                                    <p class="text-slate-600">No debe tener proyectos vinculados en dicho ciclo
+                                        productivo.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- ========================================== -->
+            <!-- SOLAPA 3: SOLICITUD DE TAREAS              -->
+            <!-- ========================================== -->
+            <div id="tab-tareas" class="content-section space-y-8 hidden">
+
+                <!-- SECCIÓN 1: CLASIFICACIÓN DE SERVICIOS -->
+                <section class="space-y-4">
+                    <div class="space-y-3 px-1">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shrink-0">1</span>
+                            <h2 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Servicios
+                                Disponibles: Monitoreo y Aplicación</h2>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Al crear una tarea en un lote, elegís el servicio técnico que necesitás. Se dividen en dos
+                            categorías principales:
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                        <!-- SERVICIOS DE MONITOREO -->
+                        <div
+                            class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4 flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <polyline points="12 6 12 12 16 14" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-base text-slate-900">Servicios de Monitoreo</h3>
+                                        <span class="text-xs text-slate-400">Auditoría y diagnóstico digital</span>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-slate-600 leading-relaxed">
+                                    En las tareas de monitoreo la solicitud de vuelo es <strong
+                                        class="text-slate-800">opcional</strong>: podés volar con tu propio dron y subir
+                                    las fotos a la Web, o solicitar un piloto de la red Experts.
+                                </p>
+
+                                <div class="space-y-2 pt-2">
+                                    <!-- ENLACE ACTIVO PLANTING QUALITY -->
+                                    <a href="../productos/planting-quality.html"
+                                        class="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200/70 transition-colors group">
+                                        <div class="space-y-0.5">
+                                            <span
+                                                class="font-bold text-xs text-slate-900 group-hover:text-primary transition-colors block">Planting
+                                                Quality (Auditoría de Siembra)</span>
+                                            <span class="text-[11px] text-slate-500">Conteo planta por planta,
+                                                desuniformidad espacial y temporal</span>
+                                        </div>
+                                        <span
+                                            class="text-xs font-bold text-primary group-hover:translate-x-1 transition-transform">Ver
+                                            &rarr;</span>
+                                    </a>
+
+                                    <!-- MAPEO DE MALEZAS PREPARADO -->
+                                    <div
+                                        class="flex items-center justify-between p-3 rounded-xl bg-slate-50/70 border border-slate-200/60 opacity-80">
+                                        <div class="space-y-0.5">
+                                            <span class="font-bold text-xs text-slate-800 block">Mapeo de Malezas</span>
+                                            <span class="text-[11px] text-slate-500">Detección y prescripciones
+                                                dirigidas para pulverización</span>
+                                        </div>
+                                        <span class="text-[11px] font-bold text-slate-400">Próximamente</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SERVICIOS DE APLICACIÓN -->
+                        <div
+                            class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4 flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path d="M12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
+                                            <path d="M4.5 4.5l3 3M19.5 4.5l-3 3M4.5 19.5l3-3M19.5 19.5l-3-3" />
+                                            <circle cx="4" cy="4" r="2" />
+                                            <circle cx="20" cy="4" r="2" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-base text-slate-900">Servicios de Aplicación</h3>
+                                        <span class="text-xs text-emerald-700 font-semibold">Pulverización y Siembra
+                                            Aérea</span>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-slate-600 leading-relaxed">
+                                    Los servicios de aplicación se solicitan <strong class="text-slate-800">siempre con
+                                        solicitud de vuelo</strong> hacia un piloto u operador certificado de la red
+                                    Vistaguay.
+                                </p>
+
+                                <div
+                                    class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 text-xs text-slate-600 space-y-1.5">
+                                    <strong class="font-bold text-slate-800 block">Maquinaria terrestre:</strong>
+                                    Por el momento no se cargan maquinarias agrícolas en la plataforma. Si al coordinar
+                                    el servicio con el piloto acuerdan utilizar una máquina terrestre, es totalmente
+                                    válido y lo definen entre ustedes.
+                                </div>
+
+                                <div class="space-y-2 pt-2">
+                                    <!-- APLICACIÓN CON DRON PREPARADO -->
+                                    <div
+                                        class="flex items-center justify-between p-3 rounded-xl bg-slate-50/70 border border-slate-200/60 opacity-80">
+                                        <div class="space-y-0.5">
+                                            <span class="font-bold text-xs text-slate-800 block">Aplicación con
+                                                Dron</span>
+                                            <span class="text-[11px] text-slate-500">Pulverización y siembra aérea con
+                                                equipos de alta capacidad</span>
+                                        </div>
+                                        <span class="text-[11px] font-bold text-slate-400">Próximamente</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 2: SUBIDA DE FOTOS Y PROTOCOLOS -->
+                <section class="space-y-4">
+                    <div class="space-y-2 px-1">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shrink-0">2</span>
+                            <h2 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Subida de Fotos
+                                Propias y Protocolos de Vuelo</h2>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Si volás con tu propio equipo, recordá que la precisión del procesamiento por inteligencia
+                            artificial depende de respetar los parámetros de vuelo recomendados.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
+                        <div class="bg-amber-50/80 border border-amber-200/80 p-4 rounded-xl space-y-3">
+                            <div class="flex items-center gap-2 text-amber-900 font-bold text-sm">
+                                <span>⚠️</span> Consultá los Protocolos Oficiales de Captura de Vistaguay:
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                                <a href="https://pq-protocol.resources.vistaguay.com/" target="_blank"
+                                    class="bg-white p-3 rounded-lg border border-amber-200 hover:border-primary transition-colors flex items-center justify-between group">
+                                    <div class="space-y-0.5">
+                                        <span
+                                            class="text-xs font-bold text-slate-900 group-hover:text-primary transition-colors block">Protocolo
+                                            Planting Quality</span>
+                                        <span class="text-[11px] text-slate-500">Altura de vuelo, ángulo nadir y
+                                            encuadre de ~24 surcos</span>
+                                    </div>
+                                    <span class="text-xs font-bold text-primary">Abrir &nearr;</span>
+                                </a>
+
+                                <a href="https://weeds-protocol.resources.vistaguay.com/" target="_blank"
+                                    class="bg-white p-3 rounded-lg border border-amber-200 hover:border-primary transition-colors flex items-center justify-between group">
+                                    <div class="space-y-0.5">
+                                        <span
+                                            class="text-xs font-bold text-slate-900 group-hover:text-primary transition-colors block">Protocolo
+                                            Mapeo de Malezas</span>
+                                        <span class="text-[11px] text-slate-500">Resolución GSD, solapamiento de tomas y
+                                            velocidad</span>
+                                    </div>
+                                    <span class="text-xs font-bold text-primary">Abrir &nearr;</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- PLACEHOLDER VISUAL SUBIDA DE FOTOS -->
+                        <div
+                            class="w-full rounded-2xl overflow-hidden border border-slate-200/90 shadow-xs bg-slate-50 min-h-[190px] flex flex-col items-center justify-center p-6 text-center text-slate-400">
+                            <svg class="w-10 h-10 text-slate-300 mb-2" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="17 8 12 3 7 8" />
+                                <line x1="12" y1="3" x2="12" y2="15" />
+                            </svg>
+                            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Inspección
+                                de Fotografías en Web</span>
+                            <p class="text-xs text-slate-400 mt-1">Carga directa de archivos .JPG y filtro automático de
+                                calidad</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 3: SOLICITUD DE VUELO EXPERTS -->
+                <section class="space-y-4">
+                    <div class="space-y-2 px-1">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shrink-0">3</span>
+                            <h2 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Solicitud de Vuelo
+                                con Pilotos Experts</h2>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Al solicitar piloto, la plataforma abre la licitación entre operadores certificados cercanos
+                            a tu lote.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-1.5">
+                                <span class="font-bold text-slate-900 text-sm block">1. Postulaciones</span>
+                                <p class="text-slate-600 leading-relaxed">
+                                    Recibís notificaciones y evaluás a los pilotos por cotización ($/ha), estrellas y
+                                    distancia al campo.
+                                </p>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-1.5">
+                                <span class="font-bold text-slate-900 text-sm block">2. Chat Directo</span>
+                                <p class="text-slate-600 leading-relaxed">
+                                    Al elegir un piloto, se abre un chat privado para coordinar tranqueras de acceso,
+                                    fecha y clima.
+                                </p>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-1.5">
+                                <span class="font-bold text-slate-900 text-sm block">3. Control por IA</span>
+                                <p class="text-slate-600 leading-relaxed">
+                                    Las imágenes capturadas pasan por un filtro de control de calidad antes de procesar
+                                    los resultados.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex justify-end">
+                            <button onclick="openFlowLightbox('vuelo', 0)"
+                                class="btn-outline text-sm font-bold py-2.5 px-4 justify-center cursor-pointer">
+                                <svg class="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                </svg>
+                                <span>Ver Flujo de Contratación de Pilotos</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- ========================================== -->
+            <!-- SOLAPA 4: EDICIÓN DE CUENTA Y MARCA        -->
+            <!-- ========================================== -->
+            <div id="tab-perfil" class="content-section space-y-8 hidden">
+
+                <section class="space-y-4">
+                    <div class="space-y-3 px-1">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shrink-0">1</span>
+                            <h2 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Edición de Perfil y
+                                Datos Personales</h2>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Podés actualizar tus datos de contacto y credenciales de acceso cuando lo necesites:
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-2">
+                                <h3 class="font-bold text-sm text-slate-900 flex items-center gap-2">
+                                    <svg class="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2">
+                                        <rect x="2" y="3" width="20" height="14" rx="2" />
+                                    </svg>
+                                    Desde Plataforma Web
+                                </h3>
+                                <p class="text-xs text-slate-600 leading-relaxed">
+                                    Hacé clic en tu avatar o nombre arriba a la derecha y seleccioná <strong
+                                        class="text-slate-800">Mi Perfil &gt; Mis datos</strong>. Podrás actualizar
+                                    nombre, teléfono de contacto y cambiar contraseña.
+                                </p>
+                            </div>
+
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-2">
+                                <h3 class="font-bold text-sm text-slate-900 flex items-center gap-2">
+                                    <svg class="w-4 h-4 text-emerald-600" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2">
+                                        <rect x="5" y="2" width="14" height="20" rx="3" />
+                                    </svg>
+                                    Desde App Móvil
+                                </h3>
+                                <p class="text-xs text-slate-600 leading-relaxed">
+                                    Ingresá a la pestaña <strong class="text-slate-800">Cuenta</strong> en la barra
+                                    inferior y seleccioná <strong class="text-slate-800">Mis datos</strong>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="space-y-4">
+                    <div class="space-y-3 px-1">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shrink-0">2</span>
+                            <h2 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Personalización de
+                                Marca (Logo en Reportes)</h2>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Si sos asesor, empresa de servicios o querés entregar los informes con tu propia identidad
+                            corporativa, podés configurar el logo de tu empresa.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+
+                            <div class="md:col-span-7 space-y-4">
+                                <div
+                                    class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl text-xs text-emerald-950 space-y-2">
+                                    <h4 class="font-bold text-sm text-emerald-900">Aplicación Automática en Documentos
+                                        PDF</h4>
+                                    <p class="leading-relaxed">
+                                        Al subir el logo en la sección <strong class="text-slate-900">Datos de la
+                                            Empresa</strong>, la imagen se colocará de forma automática en el encabezado
+                                        superior izquierdo de todos los reportes descargables generados por Vistaguay
+                                        (Planting Quality, Mapeo de Malezas, etc.).
+                                    </p>
+                                </div>
+
+                                <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside">
+                                    <li>Formatos recomendados: <strong class="text-slate-800">PNG o JPG</strong> con
+                                        fondo transparente o blanco.</li>
+                                    <li>Resolución recomendada: al menos 500 px de ancho.</li>
+                                    <li>No requiere regenerar reportes pasados: se vincula automáticamente a tus
+                                        entregas.</li>
+                                </ul>
+                            </div>
+
+                            <!-- PLACEHOLDER VISUAL: REPORTE CON LOGO -->
+                            <div class="md:col-span-5 flex flex-col items-center justify-center">
+                                <div
+                                    class="w-full rounded-2xl overflow-hidden border border-slate-200/90 shadow-md bg-slate-50 min-h-[220px] flex flex-col items-center justify-center p-6 text-center text-slate-400">
+                                    <svg class="w-10 h-10 text-slate-300 mb-2" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="1.5">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                        <circle cx="10" cy="12" r="2" />
+                                    </svg>
+                                    <span
+                                        class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Reporte
+                                        Ejecutivo con Marca</span>
+                                    <p class="text-xs text-slate-400 mt-1">Logo institucional colocado en la cabecera
+                                        del documento</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- BANNER FIJO SOPORTE (PRESENTE AL PIE DEL CONTENIDO) -->
+            <section class="w-full mt-8 md:mt-12">
+                <div
+                    class="bg-gradient-to-r from-slate-900 to-emerald-950 text-white p-8 md:p-12 rounded-3xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 border border-white/10 relative overflow-hidden">
+                    <div class="space-y-3 text-center md:text-left max-w-xl relative z-10">
+                        <h3 class="text-xl md:text-2xl font-extrabold text-white tracking-tight">¿Necesitás ayuda?
+                        </h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Escribinos y nuestro equipo de soporte te brindará asistencia personalizada para
+                            resolver
+                            tus dudas.
+                        </p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto shrink-0 relative z-10">
+                        <a href="https://api.whatsapp.com/send?phone=5493516887507" target="_blank" class="btn-primary">
+                            <span data-icon="whatsapp" data-icon-class="w-5 h-5 text-white"></span> WhatsApp Soporte
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-surface-container w-full py-6 md:py-8 border-t border-outline-variant/30">
+        <div
+            class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full flex flex-col md:flex-row justify-between items-start gap-8">
+            <div class="max-w-xs">
+                <img src="../../images/logo.png" alt="Vistaguay" class="h-5 w-auto mb-4 object-contain"
+                    onError="this.src='logo.png'" />
+                <div class="flex gap-2 items-center">
+                    <a href="https://api.whatsapp.com/send?phone=5493516887507" target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-primary hover:opacity-70 transition-opacity flex items-center justify-center p-0.5"
+                        aria-label="WhatsApp">
+                        <span data-icon="whatsapp" data-icon-class="w-6 h-6 text-primary"></span>
+                    </a>
+                    <a href="https://www.instagram.com/vistaguay/" target="_blank" rel="noopener noreferrer"
+                        class="text-primary hover:opacity-70 transition-opacity flex items-center justify-center p-0.5"
+                        aria-label="Instagram">
+                        <span data-icon="instagram" data-icon-class="w-6 h-6 text-primary"></span>
+                    </a>
+                    <a href="https://www.linkedin.com/company/vistaguay" target="_blank" rel="noopener noreferrer"
+                        class="text-primary hover:opacity-70 transition-opacity flex items-center justify-center p-0.5"
+                        aria-label="LinkedIn">
+                        <span data-icon="linkedin" data-icon-class="w-6 h-6 text-primary"></span>
+                    </a>
+                    <a href="https://www.youtube.com/@vistaguay310" target="_blank" rel="noopener noreferrer"
+                        class="text-primary hover:opacity-70 transition-opacity flex items-center justify-center p-0.5"
+                        aria-label="YouTube">
+                        <span data-icon="youtube" data-icon-class="w-6 h-6 text-primary"></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-8 sm:gap-12 text-sm">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-800 uppercase tracking-wider text-xs">Soporte y Contacto</p>
+                    <ul class="space-y-1.5 text-slate-600">
+                        <li>
+                            <a href="https://api.whatsapp.com/send?phone=5493516887507" target="_blank"
+                                rel="noopener noreferrer" class="hover:text-primary transition-colors">
+                                +54 9 3516 88-7507
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:soporte@vistaguay.com"
+                                class="hover:text-primary transition-colors inline-flex items-center gap-1">
+                                <span>soporte@vistaguay.com</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-800 uppercase tracking-wider text-xs">Legales</p>
+                    <ul class="space-y-1.5 text-slate-600">
+                        <li>
+                            <a href="https://web.vistaguay.com/terms-conditions" target="_blank"
+                                rel="noopener noreferrer" class="hover:text-primary transition-colors">
+                                Términos y Condiciones
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://web.vistaguay.com/privacy-policies" target="_blank"
+                                rel="noopener noreferrer" class="hover:text-primary transition-colors">
+                                Políticas de Privacidad
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto mt-6 pt-3 border-t border-slate-200/80 text-center w-full">
+            <p class="text-sm tracking-normal text-slate-400 font-normal">
+                © 2026 Vistaguay. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ======================================================== -->
+    <!-- MODALES Y DIÁLOGOS FLOTANTES                             -->
+    <!-- ======================================================== -->
+
+    <!-- LIGHTBOX PASO A PASO -->
+    <div id="modal-flow-lightbox"
+        class="fixed inset-0 z-[9999] hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+
+        <div class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm" onclick="closeFlowLightbox()"></div>
+
+        <div
+            class="relative w-full max-w-3xl bg-white rounded-t-3xl sm:rounded-2xl p-5 sm:p-6 max-h-[92vh] flex flex-col justify-between shadow-2xl z-10 my-auto animate-slide-up overflow-hidden">
+
+            <div class="w-12 h-1 bg-slate-200 rounded-full mx-auto mb-3 sm:hidden shrink-0"></div>
+
+            <div
+                class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-3 border-b border-slate-100 gap-3 shrink-0">
+
+                <div class="flex items-center min-w-0">
+                    <h3 class="text-base sm:text-lg font-bold text-slate-900 truncate" id="lightbox-step-title">
+                        Paso a Paso
+                    </h3>
+                </div>
+
+                <div class="flex items-center justify-between sm:justify-end w-full sm:w-auto gap-3 shrink-0">
+                    <button onclick="closeFlowLightbox()" aria-label="Cerrar visor"
+                        class="text-slate-400 hover:text-slate-600 p-1 hover:bg-slate-100 rounded-full transition-colors shrink-0 cursor-pointer">
+                        <span data-icon="close" data-icon-class="w-5 h-5"></span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- CONTENEDOR DE IMAGEN / PLACEHOLDER -->
+            <div
+                class="w-full rounded-xl overflow-hidden bg-slate-50 my-4 h-[45vh] sm:h-[50vh] flex flex-col items-center justify-center relative border border-slate-200/80 shrink-0 p-4 text-center">
+                <img id="lightbox-current-image" src="" alt="Captura del flujo"
+                    class="w-full h-full object-contain hidden" />
+                <div id="lightbox-placeholder"
+                    class="flex flex-col items-center justify-center text-slate-400 space-y-2">
+                    <svg class="w-12 h-12 text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <circle cx="8.5" cy="8.5" r="1.5" />
+                        <polyline points="21 15 16 10 5 21" />
+                    </svg>
+                    <span id="lightbox-placeholder-text" class="text-sm font-semibold text-slate-600">Captura de
+                        pantalla ilustrativa</span>
+                    <span class="text-xs text-slate-400">Próximamente disponible con capturas de la plataforma</span>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between pt-3 border-t border-slate-100 shrink-0 gap-3">
+                <button onclick="prevFlowStep()" id="lightbox-btn-prev"
+                    class="btn-outline text-sm font-bold py-2 px-4 justify-center">
+                    <span>&larr;</span> Anterior
+                </button>
+
+                <div class="flex items-center gap-1.5" id="lightbox-dots-container"></div>
+
+                <button onclick="nextFlowStep()" id="lightbox-btn-next"
+                    class="btn-primary text-sm font-bold py-2 px-4 justify-center shadow-none">
+                    Siguiente <span>&rarr;</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SCRIPTS DE NAVEGACIÓN E INTERACCIÓN -->
+    <script>
+        // DATOS DEL LIGHTBOX PASO A PASO
+        const flowData = {
+            registro: [
+                { title: "1. Formulario de Registro y Datos de Contacto", image: "", desc: "Ingresá tus datos de contacto iniciales y validá el e-mail." },
+                { title: "2. Creación de Contraseña Segura", image: "", desc: "Cumplí con las condiciones mínimas de longitud y caracteres especiales." },
+                { title: "3. Activación de Cuenta por Correo", image: "", desc: "Hacé clic en el enlace de activación para habilitar tu ingreso a Vistaguay." }
+            ],
+            vuelo: [
+                { title: "1. Notificaciones de Pilotos Postulados", image: "", desc: "Compará cotizaciones ($/ha), distancias y estrellas de reputación." },
+                { title: "2. Chat Directo con el Piloto Asignado", image: "", desc: "Coordiná la fecha del vuelo, estado del cultivo y tranqueras de acceso." },
+                { title: "3. Carga y Filtro de Calidad por IA", image: "", desc: "Validación de nitidez, solapamiento y altura para asegurar datos confiables." }
+            ]
+        };
+
+        let currentFlowKey = 'registro';
+        let currentStepIndex = 0;
+
+        function openFlowLightbox(flowKey = 'registro', startIndex = 0) {
+            currentFlowKey = flowData[flowKey] ? flowKey : 'registro';
+            currentStepIndex = startIndex;
+            updateLightboxUI();
+
+            const modal = document.getElementById('modal-flow-lightbox');
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeFlowLightbox() {
+            const modal = document.getElementById('modal-flow-lightbox');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function updateLightboxUI() {
+            const steps = flowData[currentFlowKey] || flowData.registro;
+            if (currentStepIndex >= steps.length) currentStepIndex = 0;
+            const step = steps[currentStepIndex];
+
+            const titleEl = document.getElementById('lightbox-step-title');
+            if (titleEl) titleEl.innerText = step.title;
+
+            const placeholderText = document.getElementById('lightbox-placeholder-text');
+            if (placeholderText) placeholderText.innerText = step.desc;
+
+            const imgEl = document.getElementById('lightbox-current-image');
+            const placeholderEl = document.getElementById('lightbox-placeholder');
+
+            if (step.image && step.image.trim() !== '') {
+                imgEl.src = step.image;
+                imgEl.classList.remove('hidden');
+                placeholderEl.classList.add('hidden');
+            } else {
+                imgEl.classList.add('hidden');
+                placeholderEl.classList.remove('hidden');
+            }
+
+            const btnPrev = document.getElementById('lightbox-btn-prev');
+            if (btnPrev) btnPrev.style.visibility = (currentStepIndex === 0) ? 'hidden' : 'visible';
+
+            const btnNext = document.getElementById('lightbox-btn-next');
+            if (btnNext) {
+                btnNext.innerHTML = (currentStepIndex === steps.length - 1) ? 'Entendido' : 'Siguiente <span>&rarr;</span>';
+            }
+
+            const dotsContainer = document.getElementById('lightbox-dots-container');
+            if (dotsContainer) {
+                dotsContainer.innerHTML = steps.map((_, i) => `
+                    <button onclick="goToLightboxStep(${i})" aria-label="Ir al paso ${i + 1}" class="cursor-pointer p-1 focus:outline-none">
+                        <span class="block h-2 rounded-full ${i === currentStepIndex ? 'bg-primary w-5' : 'bg-slate-200 w-2'} transition-all duration-300"></span>
+                    </button>
+                `).join('');
+            }
+        }
+
+        function goToLightboxStep(idx) {
+            currentStepIndex = idx;
+            updateLightboxUI();
+        }
+
+        function prevFlowStep() {
+            if (currentStepIndex > 0) {
+                currentStepIndex--;
+                updateLightboxUI();
+            }
+        }
+
+        function nextFlowStep() {
+            const steps = flowData[currentFlowKey] || flowData.registro;
+            if (currentStepIndex < steps.length - 1) {
+                currentStepIndex++;
+                updateLightboxUI();
+            } else {
+                closeFlowLightbox();
+            }
+        }
+
+        window.switchTab = switchTab;
+        window.toggleLotePlatform = toggleLotePlatform;
+        window.toggleMobileIndex = toggleMobileIndex;
+        window.openFlowLightbox = openFlowLightbox;
+        window.closeFlowLightbox = closeFlowLightbox;
+        window.goToLightboxStep = goToLightboxStep;
+        window.prevFlowStep = prevFlowStep;
+        window.nextFlowStep = nextFlowStep;
+    </script>
+
+</body>
+
+</html>
